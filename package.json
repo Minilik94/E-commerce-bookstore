@@ -1,0 +1,11 @@
+{
+  "name": "wannaread",
+  "version": "1.0.0",
+  "description": "Building A Bookstore using Node.js, Express and Mongo DB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Minilik Zeru",
+  "license": "ISC"
+}
