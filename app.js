@@ -1,9 +1,17 @@
-const express = require('express')
-const morgan = require('morgan')
+const express = require("express");
+const morgan = require("morgan");
+const bookRouter = require("./routes/bookRoutes");
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(morgan("dev"));
 
+app.use(express.json());
 
-module.exports = app
+app.get("/", (req, res) => {
+  res.send("Welcome To Books api");
+});
+
+app.use("/api/books", bookRouter);
+
+module.exports = app;
