@@ -14,13 +14,13 @@ const bookSchema = new mongoose.Schema({
     },
 
     price: {
-        type: String,
+        type: Number,
         required: [true, 'A Book Should Have a Price']
     },
 
     category: {
         type: String,
-        enum: ['Fiction', 'Romance', 'Science Fiction', 'Mystery', 'Programming' ,'Thriller', 'Economic','Horror', 'Non-Fiction', 'Biography', 'Autobiography', 'Crime', 'Children', 'Historical Fiction'],
+        enum: ['Fiction', 'Romance', 'Science Fiction', 'Mystery', 'Self-Development','Programming' ,'Thriller', 'Economic','Horror', 'Non-Fiction', 'Biography', 'Autobiography', 'Crime', 'Children', 'Historical Fiction'],
         required: [true, 'A Book Should Have a Category ']
     },
 
@@ -60,8 +60,7 @@ const bookSchema = new mongoose.Schema({
 
     createdAt: {
         type: Date,
-        default: Date.now(),
-
+        default: new Date().toISOString().slice(0, 10)
     }
 })
 
