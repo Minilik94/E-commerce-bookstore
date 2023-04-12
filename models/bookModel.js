@@ -20,7 +20,7 @@ const bookSchema = new mongoose.Schema({
 
     category: {
         type: String,
-        enum: ['Fiction', 'Romance', 'Science Fiction', 'Mystery', 'Self-Development','Programming' ,'Thriller', 'Economic','Horror', 'Non-Fiction', 'Biography', 'Autobiography', 'Crime', 'Children', 'Historical Fiction'],
+        enum: ['Fiction', 'Romance', 'Fantasy','Science Fiction', 'Mystery','Mystery/Thriller', 'Self-Development','Programming' ,'Thriller', 'Economic','Horror', 'Non-Fiction', 'Biography', 'Autobiography', 'Crime', 'Children', 'Historical Fiction'],
         required: [true, 'A Book Should Have a Category ']
     },
 
@@ -31,7 +31,7 @@ const bookSchema = new mongoose.Schema({
 
     publishedDate: {
         type: Date,
-        required: [true, 'A Book Should Have a published Date']
+        required: [true, 'A Book Should Have a published Date'],
     },
 
     publisher: {
@@ -50,7 +50,9 @@ const bookSchema = new mongoose.Schema({
 
     ratingAverage: {
         type: Number,
-        default: 4.5
+        default: 4.5,
+        min: [0, 'Rating must be above 0.0'],
+        max: [5, 'Rating must be below 5.0'],
     },
 
     ratingQuantity: {
@@ -60,7 +62,8 @@ const bookSchema = new mongoose.Schema({
 
     createdAt: {
         type: Date,
-        default: new Date().toISOString().slice(0, 10)
+        default: new Date().toISOString().slice(0, 10),
+        select: false
     }
 })
 
