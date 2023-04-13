@@ -80,7 +80,7 @@ exports.getAllBooks = async (req, res) => {
     console.log(error.message);
     res.status(404).json({
       status: "fail",
-      message: "Something Went Wrong",
+      error: `Something wrong with the server, ${error.message} `
     });
   }
 };
@@ -106,7 +106,7 @@ exports.getBook = async (req, res) => {
     console.log(error.message);
     res.status(404).json({
       status: "fail",
-      message: "Something Went Wrong",
+      error: `Something wrong with the server, ${error.message} `,
     });
   }
 };
