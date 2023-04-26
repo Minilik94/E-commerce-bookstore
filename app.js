@@ -14,5 +14,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/books", bookRouter);
+app.use("/api/users", userRouter)
 
 module.exports = app;
