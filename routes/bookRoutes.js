@@ -1,6 +1,7 @@
 const express = require("express");
 const Book = require("../models/bookModel");
 const bookControllers = require("../controller/bookContorllers");
+const authController = require("../controller/authController")
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.route('/top-5-cheap').get(bookControllers.aliasTopBooks,bookControllers.g
 
 router
   .route("/")
-  .get(bookControllers.getAllBooks)
+  .get(authController.protect,bookControllers.getAllBooks)
   .post(bookControllers.createBook);
 
 router

@@ -66,3 +66,18 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+// Protecting the book route
+
+exports.protect = async (req, res, next) => {
+  try {
+    next();
+  } catch (error) {
+    console.log(error.message);
+    res.status(404).json({
+      status: 'fail',
+      message: error.message,
+    });
+  }
+  next();
+};
