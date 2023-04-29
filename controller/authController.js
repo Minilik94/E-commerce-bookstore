@@ -110,19 +110,19 @@ exports.protect = async (req, res, next) => {
         next()
     } catch (error) {
         console.log(error.message)
-        if(process.env.NODE_ENV === 'production'){
-          if(error.name === 'JsonWebTokenError'){
-            return res.status(401).json({
-              status: 'fail',
-              message: 'Invalid token Please login again!'
-            })
-          }
-          if(error.name === 'TokenExpiredError'){
-            return res.status(401).json({
-              status: 'fail',
-              message: 'Your token has expired please login again!'
-            })
-          }
+        if (process.env.NODE_ENV === 'production') {
+            if (error.name === 'JsonWebTokenError') {
+                return res.status(401).json({
+                    status: 'fail',
+                    message: 'Invalid token Please login again!'
+                })
+            }
+            if (error.name === 'TokenExpiredError') {
+                return res.status(401).json({
+                    status: 'fail',
+                    message: 'Your token has expired please login again!'
+                })
+            }
         }
         res.status(404).json({
             status: 'fail',
