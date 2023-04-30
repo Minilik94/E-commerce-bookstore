@@ -13,7 +13,8 @@ exports.signUp = async (req, res) => {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
-            passwordConfirm: req.body.passwordConfirm
+            passwordConfirm: req.body.passwordConfirm,
+            role: req.body.role
         })
 
         const token = signToken(newUser._id)
@@ -110,23 +111,35 @@ exports.protect = async (req, res, next) => {
         next()
     } catch (error) {
         console.log(error.message)
-        if (process.env.NODE_ENV === 'production') {
-            if (error.name === 'JsonWebTokenError') {
-                return res.status(401).json({
-                    status: 'fail',
-                    message: 'Invalid token Please login again!'
-                })
-            }
-            if (error.name === 'TokenExpiredError') {
-                return res.status(401).json({
-                    status: 'fail',
-                    message: 'Your token has expired please login again!'
-                })
-            }
-        }
+        // if (process.env.NODE_ENV === 'production') {
+        //     if (error.name === 'JsonWebTokenError') {
+        //         return res.status(401).json({
+        //             status: 'fail',
+        //             message: 'Invalid token Please login again!'
+        //         })
+        //     }
+        //     if (error.name === 'TokenExpiredError') {
+        //         return res.status(401).json({
+        //             status: 'fail',
+        //             message: 'Your token has expired please login again!'
+        //         })
+        //     }
+        // }
         res.status(404).json({
             status: 'fail',
             message: error.message
         })
+    }
+}
+
+exports.restrictTo = (...roles) => {
+    return (req, res, next) => {
+        if (!roles.includes( req.user.role )) {
+            return res.status(403).json({
+                status: 'fail',
+                message: 'You do not have permission to perform this action'
+            })
+        }
+        next()
     }
 }
