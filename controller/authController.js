@@ -143,3 +143,7 @@ exports.restrictTo = (...roles) => {
         next()
     }
 }
+
+
+exports.forgotPassword = async (req, res, next) => {}
+exports.resetPassword = async (req, res, next) => {}
