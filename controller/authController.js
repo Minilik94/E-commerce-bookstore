@@ -145,5 +145,14 @@ exports.restrictTo = (...roles) => {
 }
 
 
-exports.forgotPassword = async (req, res, next) => {}
+exports.forgotPassword = async (req, res, next) => {
+    const user = await User.findOne({email: req.body.email})
+
+    if(!user){
+        return res.status(404).json({
+            status: 'fail',
+            message: 'There is no user with this email'
+        })
+    }
+}
 exports.resetPassword = async (req, res, next) => {}
