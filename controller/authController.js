@@ -154,5 +154,29 @@ exports.forgotPassword = async (req, res, next) => {
             message: 'There is no user with this email'
         })
     }
+
+    // 2 GENERATE THE RANDOM RESET TOKEN
+    
 }
 exports.resetPassword = async (req, res, next) => {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
