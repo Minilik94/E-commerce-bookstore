@@ -156,6 +156,9 @@ exports.forgotPassword = async (req, res, next) => {
     }
 
     // 2 GENERATE THE RANDOM RESET TOKEN
+    const resetToken = user.createPasswordResetToken()
+    await user.save({ validateBeforeSave: false})
+
     
 }
 exports.resetPassword = async (req, res, next) => {}
