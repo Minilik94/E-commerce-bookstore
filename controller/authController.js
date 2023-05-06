@@ -159,6 +159,7 @@ exports.forgotPassword = async (req, res, next) => {
     const resetToken = user.createPasswordResetToken()
     await user.save({ validateBeforeSave: false})
 
+    // 3) Send it to the users email
     
 }
 exports.resetPassword = async (req, res, next) => {}
