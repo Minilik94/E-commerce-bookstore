@@ -160,6 +160,7 @@ exports.forgotPassword = async (req, res, next) => {
     await user.save({ validateBeforeSave: false})
 
     // 3) Send it to the users email
+    const resetUrl = `${req.protocol}: //${req.get('host')}/api/users/resetPassword/${resetToken}`
     
 }
 exports.resetPassword = async (req, res, next) => {}
