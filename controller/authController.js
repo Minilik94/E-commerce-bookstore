@@ -134,7 +134,7 @@ exports.protect = async (req, res, next) => {
 
 exports.restrictTo = (...roles) => {
     return (req, res, next) => {
-        if (!roles.includes( req.user.role )) {
+        if (!roles.includes(req.user.role)) {
             return res.status(403).json({
                 status: 'fail',
                 message: 'You do not have permission to perform this action'
@@ -144,11 +144,10 @@ exports.restrictTo = (...roles) => {
     }
 }
 
-
 exports.forgotPassword = async (req, res, next) => {
-    const user = await User.findOne({email: req.body.email})
+    const user = await User.findOne({ email: req.body.email })
 
-    if(!user){
+    if (!user) {
         return res.status(404).json({
             status: 'fail',
             message: 'There is no user with this email'
@@ -157,31 +156,13 @@ exports.forgotPassword = async (req, res, next) => {
 
     // 2 GENERATE THE RANDOM RESET TOKEN
     const resetToken = user.createPasswordResetToken()
-    await user.save({ validateBeforeSave: false})
+    await user.save({ validateBeforeSave: false })
 
     // 3) Send it to the users email
-    const resetUrl = `${req.protocol}: //${req.get('host')}/api/users/resetPassword/${resetToken}`
-    
+    const resetUrl = `${req.protocol}: //${req.get(
+        'host'
+    )}/api/users/resetPassword/${resetToken}`
+
+    const message = `Fogot your password Submit a patch request with a new password and passwordConfirm to: ${resetUrl}\nIf you didn't forgot you password,Please ignore this email`
 }
 exports.resetPassword = async (req, res, next) => {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
