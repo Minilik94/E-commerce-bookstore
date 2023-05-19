@@ -1,23 +1,29 @@
-const express = require("express");
-const userControllers = require("../controller/userControllers");
-const authContorller = require("../controller/authController");
+const express = require('express')
+const userControllers = require('../controller/userControllers')
+const authContorller = require('../controller/authController')
 
-const router = express.Router();
+const router = express.Router()
 
-router.route("/signup").post(authContorller.signUp);
-router.route("/login").post(authContorller.login)
+router.route('/signup').post(authContorller.signUp)
+router.route('/login').post(authContorller.login)
 
-router.route("/forgotPassword").post(authContorller.forgotPassword)
-router.route("/resetPassword").post(authContorller.resetPassword)
+router.route('/forgotPassword').post(authContorller.forgotPassword)
+router.route('/resetPassword/:token').patch(authContorller.resetPassword)
+router
+    .route('/updatePassword')
+    .patch(authContorller.protect, authContorller.updatePassword)
+router
+    .route('/updateMe')
+    .patch(authContorller.protect, userControllers.updateMe)
 
 router
-  .route("/")
-  .get(userControllers.getAllUsers)
-  .post(userControllers.createUser);
+    .route('/')
+    .get(userControllers.getAllUsers)
+    .post(userControllers.createUser)
 router
-  .route("/:id")
-  .get(userControllers.getUser)
-  .patch(userControllers.updateUser)
-  .delete(userControllers.deleteUser);
+    .route('/:id')
+    .get(userControllers.getUser)
+    .patch(userControllers.updateUser)
+    .delete(userControllers.deleteUser)
 
-module.exports = router;
+module.exports = router
