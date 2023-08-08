@@ -39,7 +39,17 @@ const userSchema = new mongoose.Schema({
     },
     passwordChangedAt: Date,
     passwordResetToken: String,
-    passwordResetExpires: Date
+    passwordResetExpires: Date,
+    active: {
+        type: Boolean,
+        default: true,
+        select: false
+    }
+})
+
+userSchema.pre(/^find/, async function(next) {
+    this.where({active: {$ne: false}})
+    next()
 })
 
 userSchema.pre('save', async function (next) {

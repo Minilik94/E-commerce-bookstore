@@ -62,6 +62,20 @@ exports.updateMe = async (req, res, next) => {
     }
 }
 
+exports.deleteMe = async (req, res, next) => {
+    try {
+        await User.findByIdAndUpdate(req.user.id, {active: false})
+        res.status(204).json({
+            status: true
+        })
+    } catch (error) {
+        return res.status(500).json({
+            status: false,
+            message: `Something went wrong ${error.message}`
+        })
+    }
+}
+
 exports.getUser = async (req, res) => {
     res.status(500).json({
         status: 'success',

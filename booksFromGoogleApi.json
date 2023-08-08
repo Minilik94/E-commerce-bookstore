@@ -1,0 +1,731 @@
+{
+    "kind": "books#volumes",
+    "totalItems": 612,
+    "items": [
+        {
+            "kind": "books#volume",
+            "id": "CWUqAAAAMAAJ",
+            "etag": "kGIlxpLX/m4",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/CWUqAAAAMAAJ",
+            "volumeInfo": {
+                "title": "The Key Reporter",
+                "publishedDate": "1962",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "UOM:39015011555441"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.5.5.0.preview.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=CWUqAAAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=CWUqAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=CWUqAAAAMAAJ&q=*key&dq=*key&hl=&cd=1&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=CWUqAAAAMAAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Key_Reporter.html?hl=&id=CWUqAAAAMAAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=CWUqAAAAMAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "First published in 1964, this attractive booklet traces the evolution of the Phi Beta <b>Kappa key</b> from the silver medal designed by the Alpha at William and Mary in 1776 to the <b>standard key</b> adopted by the United Chapters in 1910."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "jOiDzwEACAAJ",
+            "etag": "uRhVhXtxaf8",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/jOiDzwEACAAJ",
+            "volumeInfo": {
+                "title": "Francis Scott Key: Author of the Star Spangled Banner; What Else He Was and Who",
+                "authors": [
+                    "Francis Scott Key-Smith"
+                ],
+                "publisher": "Legare Street Press",
+                "publishedDate": "2022-10-27",
+                "description": "This work has been selected by scholars as being culturally important, and is part of the knowledge base of civilization as we know it. This work is in the \"public domain in the United States of America, and possibly other nations. Within the United States, you may freely copy and distribute this work, as no entity (individual or corporate) has a copyright on the body of the work. Scholars believe, and we concur, that this work is important enough to be preserved, reproduced, and made generally available to the public. We appreciate your support of the preservation process, and thank you for being an important part of keeping this knowledge alive and relevant.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1016819064"
+                    },
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781016819060"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": false
+                },
+                "pageCount": 0,
+                "printType": "BOOK",
+                "categories": [
+                    "Biography & Autobiography"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=jOiDzwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=jOiDzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=jOiDzwEACAAJ&dq=*key&hl=&cd=2&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=jOiDzwEACAAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Francis_Scott_Key_Author_of_the_Star_Spa.html?hl=&id=jOiDzwEACAAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=jOiDzwEACAAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "This work has been selected by scholars as being culturally important, and is part of the knowledge base of civilization as we know it. This work is in the &quot;public domain in the United States of America, and possibly other nations."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "1eJ9EAAAQBAJ",
+            "etag": "4zk8sN5STc4",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/1eJ9EAAAQBAJ",
+            "volumeInfo": {
+                "title": "Secret Key Cryptography",
+                "subtitle": "Ciphers, from simple to unbreakable",
+                "authors": [
+                    "Frank Rubin"
+                ],
+                "publisher": "Simon and Schuster",
+                "publishedDate": "2022-08-30",
+                "description": "Explore the fascinating and rich world of Secret Key cryptography! This book provides practical methods for encrypting messages, an interesting and entertaining historical perspective, and an incredible collection of ciphers and codes—including 30 unbreakable methods. In Secret Key Cryptography: Ciphers, from simple to unbreakable you will: Measure the strength of your ciphers and learn how to guarantee their security Construct and incorporate data-compression codes Generate true random numbers in bulk Construct huge primes and safe primes Add an undetectable backdoor to a cipher Defeat hypothetical ultracomputers that could be developed decades from now Construct 30 unbreakable ciphers Secret Key Cryptography gives you a toolbox of cryptographic techniques and Secret Key methods. The book’s simple, non-technical language is easy to understand and accessible for any reader, even without the advanced mathematics normally required for cryptography. You’ll learn how to create and solve ciphers, as well as how to measure their strength. As you go, you’ll explore both historic ciphers and groundbreaking new approaches—including a never-before-seen way to implement the uncrackable One-Time Pad algorithm. Whoever you are, this book is for you! History buffs will love seeing the evolution of sophisticated cryptographic methods, hobbyists will get a gentle introduction to cryptography, and engineers and computer scientists will learn the principles of constructing secure ciphers. Even professional cryptographers will find a range of new methods and concepts never published before. About the technology From the Roman empire’s Caesar cipher to the WWII Enigma machine, secret messages have influenced the course of history. Today, Secret Key cryptography is the backbone of all modern computing infrastructure. Properly designed, these algorithms are efficient and practical. Some are actually unbreakable, even using supercomputers or quantum technology! About the book Secret Key Cryptography teaches you how to create Secret Key ciphers, ranging from simple pen-and-paper methods to advanced techniques used in modern computer-based cryptography. It reveals both historic examples and current innovations. You’ll learn how to efficiently encrypt large files with fast stream ciphers, discover alternatives to AES encryption, and avoid strong-looking but weak ciphers. Simple language and fun-to-solve mini-ciphers make learning serious concepts easy and engaging. What's inside Construct 30 unbreakable ciphers Measure the strength of your ciphers and guarantee their security Add an undetectable backdoor to a cipher Defeat hypothetical ultracomputers of the future About the reader For professional engineers, computer scientists, and cryptography hobbyists. No advanced math knowledge is required. About the author Frank Rubin has been doing cryptography for over 50 years. He holds an MS in Mathematics, and a PhD in Computer Science. Table of Contents 1 Introduction 2 What is cryptography? 3 Preliminary concepts 4 Cryptographer’s toolbox 5 Substitution ciphers 6 Countermeasures 7 Transposition 8 Jefferson Wheel Cypher 9 Fractionation 10 Variable-length fractionation 11 Block ciphers 12 Principles for secure encryption 13 Stream ciphers 14 One-time pad 15 Matrix methods 16 Three pass protocol 17 Codes 18 Quantum computers",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781638351245"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1638351244"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": false
+                },
+                "pageCount": 552,
+                "printType": "BOOK",
+                "categories": [
+                    "Computers"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.2.2.0.preview.2",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=1eJ9EAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=1eJ9EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=1eJ9EAAAQBAJ&pg=PT39&dq=*key&hl=&cd=3&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=1eJ9EAAAQBAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Secret_Key_Cryptography.html?hl=&id=1eJ9EAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED_FOR_ACCESSIBILITY",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Secret_Key_Cryptography-sample-epub.acsm?id=1eJ9EAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=1eJ9EAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "The idea is that in <b>Secret Key</b> cryptography, Sandra and Riva use the <b>same key</b> to both encrypt and decrypt the message, while in <b>Public Key</b> cryptography, Sandra uses <b>one key</b> while Riva uses its inverse. This dichotomy overlooks <b>Personal</b>&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "XfIIEAAAQBAJ",
+            "etag": "h4+OSRWgU2s",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/XfIIEAAAQBAJ",
+            "volumeInfo": {
+                "title": "See In Key",
+                "subtitle": "Essential Scales and Chords for Self-Taught Musicians and Producers",
+                "authors": [
+                    "W J C"
+                ],
+                "publisher": "Finish Your Tracks",
+                "publishedDate": "2020-11-14",
+                "description": "Compare Scales, Find Chords, See Related Scales and Get Inspiration for Your Next Track. See in Key is a revolutionary new book for musicians and producers who don’t want to stop making music to search for Scales and Chord information. Just pick one of the twelve ‘Key Pages’ and you will be presented with the notes of many scales and chords for that key, and be able to see how the scales are related to each other. This is a very visual based theory book, designed to help you understand concepts by seeing patterns rather than through lengthy explanations. As well as the 12 Key pages, there are 12 chord pages, a basic introduction to music theory and other charts you will find useful for writing music. Don't stop making music to learn new scales and theory, use See in Key to find what you need and keep moving forward.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781838255220"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1838255222"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 55,
+                "printType": "BOOK",
+                "categories": [
+                    "Music"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.5.4.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=XfIIEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=XfIIEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=XfIIEAAAQBAJ&pg=PA14&dq=*key&hl=&cd=4&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=XfIIEAAAQBAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/See_In_Key.html?hl=&id=XfIIEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/See_In_Key-sample-epub.acsm?id=XfIIEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/See_In_Key-sample-pdf.acsm?id=XfIIEAAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=XfIIEAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "<b>Key</b> Relationships Overview <b>e Key</b> Relationships box is a tribute to Arnold Schoenberg&#39;s &#39;Chart of the Regions&#39;, from his book &#39;Structural Functions of Harmony&#39;. It is based around the Major and <b>minor keys</b> and the close relationship&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "EUvOviwwc2cC",
+            "etag": "kRsWhR9FeSs",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/EUvOviwwc2cC",
+            "volumeInfo": {
+                "title": "Key Concepts in Geography",
+                "authors": [
+                    "Nicholas Clifford",
+                    "Sarah Holloway",
+                    "Stephen P Rice",
+                    "Gill Valentine"
+                ],
+                "publisher": "SAGE Publications Ltd",
+                "publishedDate": "2008-12-12",
+                "description": "\"This book clearly outlines key concepts that all geographers should readily be able to explain. It does so in a highly accessible way. It is likely to be a text that my students will return to throughout their degree.\" - Dr Karen Parkhill, Bangor University \"The editors have done a fantastic job. This second edition is really accessible to the student and provides the key literature in the key geographical terms of scale, space, time, place and landscape.\" - Dr Elias Symeonakis, Manchester Metropolitan University \"An excellent introductory text for accessible overviews of key concepts across human and physical geography.\" - Professor Patrick Devine-Wright, Exeter University Including ten new chapters on nature, globalization, development and risk, and a new section on practicing geography, this is a completely revised and updated edition of the best-selling, standard student resource. Key Concepts in Geography explains the key terms - space, time, place, scale, landscape - that define the language of geography. It is unique in the reference literature as it provides in one volume concepts from both human geography and physical geography. Four introductory chapters on different intellectual traditions in geography situate and introduce the entries on the key concepts. Each entry then comprises a short definition, a summary of the principal arguments, a substantive 5,000-word discussion, the use of real-life examples, and annotated notes for further reading. Written in an accessible way by established figures in the discipline, the definitions provide thorough explanations of all the core concepts that undergraduates of geography must understand to complete their degree.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781446243466"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "144624346X"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": true
+                },
+                "pageCount": 482,
+                "printType": "BOOK",
+                "categories": [
+                    "Science"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": true,
+                "contentVersion": "1.12.13.0.preview.3",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=EUvOviwwc2cC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=EUvOviwwc2cC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=EUvOviwwc2cC&printsec=frontcover&dq=*key&hl=&cd=5&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=EUvOviwwc2cC&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Key_Concepts_in_Geography.html?hl=&id=EUvOviwwc2cC"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Key_Concepts_in_Geography-sample-epub.acsm?id=EUvOviwwc2cC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Key_Concepts_in_Geography-sample-pdf.acsm?id=EUvOviwwc2cC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=EUvOviwwc2cC&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "&quot;This book clearly outlines key concepts that all geographers should readily be able to explain. It does so in a highly accessible way. It is likely to be a text that my students will return to throughout their degree."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "V1YVAgAAQBAJ",
+            "etag": "UvOTy7T8gUc",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/V1YVAgAAQBAJ",
+            "volumeInfo": {
+                "title": "Key Cases: Equity & Trusts",
+                "authors": [
+                    "Judith Bray"
+                ],
+                "publisher": "Routledge",
+                "publishedDate": "2013-11-12",
+                "description": "The Key Cases series provides a portable and effective way for you to absorb and retain the essential facts needed to pass your exams effortlessly.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781444137835"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1444137832"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 196,
+                "printType": "BOOK",
+                "categories": [
+                    "Law"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.1.0.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=V1YVAgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=V1YVAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=V1YVAgAAQBAJ&pg=PA61&dq=*key&hl=&cd=6&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=V1YVAgAAQBAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Key_Cases_Equity_Trusts.html?hl=&id=V1YVAgAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Key_Cases_Equity_Trusts-sample-pdf.acsm?id=V1YVAgAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=V1YVAgAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "CA CA <b>CA Key</b> Law Adonatio mortis causa may still be valid even though the donor has contemplated death from one cause but died from another. There must be delivery of the subject matter of the gift Sen v Headley [1991] Ch <b>425 Key</b> Facts&nbsp;..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "PM-mAwAAQBAJ",
+            "etag": "O/H0iYiFJmU",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/PM-mAwAAQBAJ",
+            "volumeInfo": {
+                "title": "Key Clinical Topics in Critical Care",
+                "authors": [
+                    "Sara-Catrin Cook",
+                    "Matt Thomas",
+                    "Jerry Nolan",
+                    "Michael Parr"
+                ],
+                "publisher": "JP Medical Ltd",
+                "publishedDate": "2014-06-09",
+                "description": "Part of the Key Clinical Topics series, this title is designed to enable rapid access to core information, effective exam revision and the ideal quick reference for day-to-day practice.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9781907816673"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "1907816674"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 448,
+                "printType": "BOOK",
+                "categories": [
+                    "Medical"
+                ],
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "1.2.1.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=PM-mAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=PM-mAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=PM-mAwAAQBAJ&printsec=frontcover&dq=*key&hl=&cd=7&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=PM-mAwAAQBAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Key_Clinical_Topics_in_Critical_Care.html?hl=&id=PM-mAwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Key_Clinical_Topics_in_Critical_Care-sample-pdf.acsm?id=PM-mAwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=PM-mAwAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Each topic is written in a concise and easy-to-digest format, making this book the essential resource for exam revision and quick reference at the point of care. • Over 100 topics presented in alpha order, from acute coronary syndrome to ..."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "OxX4AwAAQBAJ",
+            "etag": "lcyG2qFunY8",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/OxX4AwAAQBAJ",
+            "volumeInfo": {
+                "title": "Key to the Kiva",
+                "authors": [
+                    "Laura Mechem"
+                ],
+                "publisher": "Lulu.com",
+                "publishedDate": "2014-07-04",
+                "description": "Funeral director Annie Proudfoot falls in love with freelance writer Lisa Cannon, but Annie's Navajo grandfather Joe has trouble coming to terms with the fact that his granddaughter is a lesbian. When Joe's friend Eldon Farney goes missing near Taos, New Mexico, the two women find themselves investigating a string of murders stretching back more than thirty years, and it's not at all clear whether the answers they seek are found in the physical realm or the spirit world.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780557085293"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0557085292"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 191,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.2.0.0.preview.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=OxX4AwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=OxX4AwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=OxX4AwAAQBAJ&pg=PA52&dq=*key&hl=&cd=8&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=OxX4AwAAQBAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/Key_to_the_Kiva.html?hl=&id=OxX4AwAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "PARTIAL",
+                "embeddable": true,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": true,
+                    "acsTokenLink": "http://books.google.com/books/download/Key_to_the_Kiva-sample-pdf.acsm?id=OxX4AwAAQBAJ&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=OxX4AwAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "SAMPLE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "In the very back of the drawer, she found a ring full <b>of keys</b> which she removed and dropped in her jacket pocket before closing the drawer. After looking through everything in the desk, she went on to the filing cabinets."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "x_COEAAAQBAJ",
+            "etag": "BGshBUbXLoE",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/x_COEAAAQBAJ",
+            "volumeInfo": {
+                "title": "The Key to Every Thing",
+                "authors": [
+                    "Pat Schmatz"
+                ],
+                "publisher": "National Geographic Books",
+                "publishedDate": "2018-05-08",
+                "description": "For eleven-year-old Tash, Cap’n Jackie isn’t just the elderly next-door neighbor — she’s family. When she disappears, only Tash holds the key that might bring her back. Tash didn’t want to go to camp, didn’t want to spend the summer with a bunch of strangers, didn’t want to be separated from the only two people she has ever been able to count on: her uncle Kevin, who saved her from foster care, and Cap’n Jackie, who lives next door. Camp turns out to be pretty fun, actually, but when Tash returns home, Cap’n Jackie is gone. And Tash needs her — the made-up stories of dolphin-dragons, the warm cookies that made everything all right after a fight, the key Cap’n Jackie always insisted had magic in it. The Captain always said all Tash had to do was hold it tight and the magic would come. Was it true? Could the key bring Cap’n Jackie back? In a heartfelt and stunningly written story, Pat Schmatz introduces readers to a tenacious, fiercely loyal girl struggling to let go of the fantasies and fears of her childhood . . . and say yes to everything that lies ahead.",
+                "industryIdentifiers": [
+                    {
+                        "type": "ISBN_13",
+                        "identifier": "9780763695668"
+                    },
+                    {
+                        "type": "ISBN_10",
+                        "identifier": "0763695661"
+                    }
+                ],
+                "readingModes": {
+                    "text": true,
+                    "image": false
+                },
+                "pageCount": 0,
+                "printType": "BOOK",
+                "categories": [
+                    "Juvenile Fiction"
+                ],
+                "averageRating": 3,
+                "ratingsCount": 7,
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "preview-1.0.0",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=x_COEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=x_COEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=x_COEAAAQBAJ&dq=*key&hl=&cd=9&source=gbs_api",
+                "infoLink": "http://books.google.com/books?id=x_COEAAAQBAJ&dq=*key&hl=&source=gbs_api",
+                "canonicalVolumeLink": "https://books.google.com/books/about/The_Key_to_Every_Thing.html?hl=&id=x_COEAAAQBAJ"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "NOT_FOR_SALE",
+                "isEbook": false
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "NO_PAGES",
+                "embeddable": false,
+                "publicDomain": false,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=x_COEAAAQBAJ&hl=&source=gbs_api",
+                "accessViewStatus": "NONE",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "And Tash needs her — the made-up stories of dolphin-dragons, the warm cookies that made everything all right after a fight, the key Cap’n Jackie always insisted had magic in it."
+            }
+        },
+        {
+            "kind": "books#volume",
+            "id": "OjUPvnQOh2IC",
+            "etag": "ExmHxOmJGdg",
+            "selfLink": "https://www.googleapis.com/books/v1/volumes/OjUPvnQOh2IC",
+            "volumeInfo": {
+                "title": "A Key to the Fourth and Previous Editions of a Manual of Plane Trigonometry. By J. MacDowell",
+                "authors": [
+                    "Joseph A. Galbraith"
+                ],
+                "publishedDate": "1857",
+                "industryIdentifiers": [
+                    {
+                        "type": "OTHER",
+                        "identifier": "BL:A0025263735"
+                    }
+                ],
+                "readingModes": {
+                    "text": false,
+                    "image": true
+                },
+                "pageCount": 142,
+                "printType": "BOOK",
+                "maturityRating": "NOT_MATURE",
+                "allowAnonLogging": false,
+                "contentVersion": "0.1.2.0.full.1",
+                "panelizationSummary": {
+                    "containsEpubBubbles": false,
+                    "containsImageBubbles": false
+                },
+                "imageLinks": {
+                    "smallThumbnail": "http://books.google.com/books/content?id=OjUPvnQOh2IC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                    "thumbnail": "http://books.google.com/books/content?id=OjUPvnQOh2IC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                },
+                "language": "en",
+                "previewLink": "http://books.google.com/books?id=OjUPvnQOh2IC&pg=PP4&dq=*key&hl=&cd=10&source=gbs_api",
+                "infoLink": "https://play.google.com/store/books/details?id=OjUPvnQOh2IC&source=gbs_api",
+                "canonicalVolumeLink": "https://play.google.com/store/books/details?id=OjUPvnQOh2IC"
+            },
+            "saleInfo": {
+                "country": "ET",
+                "saleability": "FREE",
+                "isEbook": true,
+                "buyLink": "https://play.google.com/store/books/details?id=OjUPvnQOh2IC&rdid=book-OjUPvnQOh2IC&rdot=1&source=gbs_api"
+            },
+            "accessInfo": {
+                "country": "ET",
+                "viewability": "ALL_PAGES",
+                "embeddable": true,
+                "publicDomain": true,
+                "textToSpeechPermission": "ALLOWED",
+                "epub": {
+                    "isAvailable": false,
+                    "downloadLink": "http://books.google.com/books/download/A_Key_to_the_Fourth_and_Previous_Edition.epub?id=OjUPvnQOh2IC&hl=&output=epub&source=gbs_api"
+                },
+                "pdf": {
+                    "isAvailable": false
+                },
+                "webReaderLink": "http://play.google.com/books/reader?id=OjUPvnQOh2IC&hl=&source=gbs_api",
+                "accessViewStatus": "FULL_PUBLIC_DOMAIN",
+                "quoteSharingAllowed": false
+            },
+            "searchInfo": {
+                "textSnippet": "Galbraith &amp; Haughton&#39;s Trigonometry ( M&#39;<b>Dowell&#39;s Key</b> to ) . New edition , 3s . 6d . Galbraith and Haughton&#39;s Arithmetic ( M&#39;<b>Dowell&#39;s Key</b> to ) . 3s . 6d . Vertot&#39;s History of the Revolutions of Sweden . Literally Translated from the&nbsp;..."
+            }
+        }
+    ]
+}

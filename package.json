@@ -4,7 +4,8 @@
   "description": "Building A Bookstore using Node.js, Express and Mongo DB",
   "main": "app.js",
   "scripts": {
-    "start": "set NODE_ENV=development&& nodemon server.js"
+    "start": "set NODE_ENV=development&& nodemon server.js",
+    "copytodb": "nodemon copyBooksToDB.js"
   },
   "author": "Minilik Zeru",
   "license": "ISC",
@@ -13,11 +14,16 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.7.1",
+    "helmet": "^7.0.0",
+    "hpp": "^0.2.3",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.3",
     "morgan": "^1.10.0",
     "nodemailer": "^6.9.2",
     "slugify": "^1.6.6",
-    "validator": "^13.9.0"
+    "validator": "^13.9.0",
+    "xss-clean": "^0.1.4"
   }
 }
