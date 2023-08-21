@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const slugify = require("slugify");
+// const slugify = require("slugify");
 
 const bookSchema = new mongoose.Schema(
   {
@@ -10,7 +10,7 @@ const bookSchema = new mongoose.Schema(
       trim: true,
       maxlength: [100, "Title cannot be more than 100 characters"],
     },
-    slug: String,
+    // slug: String,
     author: {
       type: String,
       required: [true, "A Book Should have an Author"],
@@ -126,10 +126,10 @@ bookSchema.virtual("yearsSincePublication").get(function () {
 });
 
 // DOCUMENT MIDDLEWARE
-bookSchema.pre("save", function (next) {
-  this.slug = slugify(this.title, { lower: true });
-  next();
-});
+// bookSchema.pre("save", function (next) {
+//   this.slug = slugify(this.title, { lower: true });
+//   next();
+// });
 
 // bookSchema.post('save', function (doc, next){
 //     console.log(doc)
