@@ -16,7 +16,9 @@ router
     .route('/updateMe')
     .patch(authContorller.protect, userControllers.updateMe)
 
-router.route('/deleteMe').patch(authContorller.protect, userControllers.deleteMe)
+router
+    .route('/deleteMe')
+    .patch(authContorller.protect, userControllers.deleteMe)
 
 router
     .route('/')
@@ -27,5 +29,7 @@ router
     .get(userControllers.getUser)
     .patch(userControllers.updateUser)
     .delete(userControllers.deleteUser)
+
+
 
 module.exports = router

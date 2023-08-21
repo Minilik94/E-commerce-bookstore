@@ -1,9 +1,19 @@
 const express = require('express')
-const Book = require('../models/bookModel')
 const bookControllers = require('../controller/bookContorllers')
+const reviewRouter = require('./reviewRoutes')
 const authController = require('../controller/authController')
 
 const router = express.Router()
+
+// router
+// .route('/:bookId/reviews')
+// .post(
+//     authController.protect,
+//     authController.restrictTo('user'),
+//     reviewController.createReview
+// )
+
+router.use('/:bookId/reviews', reviewRouter)
 
 router.route('/bookStats').get(bookControllers.getBookStats)
 router
@@ -24,5 +34,7 @@ router
         authController.restrictTo('admin','user'),
         bookControllers.deleteBook
     )
+
+
 
 module.exports = router
