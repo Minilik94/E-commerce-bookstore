@@ -38,7 +38,7 @@ const bookSchema = new mongoose.Schema(
                 'Self-Development',
                 'Programming',
                 'Thriller',
-                'Economic',
+                'Economics',
                 'Horror',
                 'Non-Fiction',
                 'Biography',
@@ -112,6 +112,8 @@ const bookSchema = new mongoose.Schema(
         toObject: { virtuals: true }
     }
 )
+
+bookSchema.index({ price: 1, ratingAverage: -1 , category: 1})
 
 bookSchema.virtual('yearsSincePublication').get(function () {
     if (this.publishedDate) {

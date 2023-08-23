@@ -1,0 +1,63 @@
+[
+    {
+      "name": "Rugas",
+      "email": "rugas@example.com",
+      "password": "123456789",
+      "passwordConfirm": "123456789"
+    },
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "password123",
+      "passwordConfirm": "password123"
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "password456",
+      "passwordConfirm": "password456"
+    },
+    {
+      "name": "Michael Johnson",
+      "email": "michael@example.com",
+      "password": "password789",
+      "passwordConfirm": "password789"
+    },
+    {
+      "name": "Emily Brown",
+      "email": "emily@example.com",
+      "password": "user4pass",
+      "passwordConfirm": "user4pass"
+    },
+    {
+      "name": "David Wilson",
+      "email": "david@example.com",
+      "password": "user5pass",
+      "passwordConfirm": "user5pass"
+    },
+    {
+      "name": "Jessica Martinez",
+      "email": "jessica@example.com",
+      "password": "user6pass",
+      "passwordConfirm": "user6pass"
+    },
+    {
+      "name": "Christopher Anderson",
+      "email": "chris@example.com",
+      "password": "user7pass",
+      "passwordConfirm": "user7pass"
+    },
+    {
+      "name": "Sarah Taylor",
+      "email": "sarah@example.com",
+      "password": "user8pass",
+      "passwordConfirm": "user8pass"
+    },
+    {
+      "name": "Daniel Davis",
+      "email": "daniel@example.com",
+      "password": "user9pass",
+      "passwordConfirm": "user9pass"
+    }
+  ]
+  

@@ -10,14 +10,25 @@ router
     .post(
         authController.protect,
         authController.restrictTo('user'),
+        reviewController.setBookUserId,
         reviewController.createReview
     )
 router
     .route('/:id')
+    .get(
+        authController.protect,
+        authController.restrictTo('user'),
+        reviewController.updateReview
+    )
     .patch(
         authController.protect,
         authController.restrictTo('user'),
         reviewController.updateReview
+    )
+    .delete(
+        authController.protect,
+        authController.restrictTo('user'),
+        reviewController.deleteReview
     )
 
 module.exports = router

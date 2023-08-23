@@ -1,6 +1,8 @@
 const fs = require('fs')
 const dotenv = require('dotenv')
 const Book = require('../models/bookModel')
+const Review = require('../models/reviewModel')
+const User = require('../models/userModel')
 const mongoose = require('mongoose')
 const { dirname } = require('path')
 
@@ -19,11 +21,16 @@ mongoose.connect(DB, {
 
 
 const books = JSON.parse(fs.readFileSync(`${__dirname}/books.json`, 'utf-8'))
+const reviews = JSON.parse(fs.readFileSync(`${__dirname}/reviews.json`, 'utf-8'))
+const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'))
 
 const importData = async () => {
     try {
-     const book = await Book.create(books, {validateBeforeSave: false})
-     console.log('Books Imported Successfuly');
+    //  const book = await Book.create(books, {validateBeforeSave: false})
+     const review = await Review.create(reviews, {validateBeforeSave: false})
+    //  const user = await User.create(users, {validateBeforeSave: false})
+     console.log('Document Imported Successfuly');
+     process.exit()
     } catch (error) {
         console.error(error)
     }
@@ -31,7 +38,10 @@ const importData = async () => {
 const deleteData = async () => {
     try {
      const book = await Book.deleteMany()
-     console.log('Books Removed Successfuly');
+     const review = await Review.deleteMany()
+     const user = await User.deleteMany()
+     console.log('Document Removed Successfuly');
+     process.exit()
     } catch (error) {
         console.error(error)
     }

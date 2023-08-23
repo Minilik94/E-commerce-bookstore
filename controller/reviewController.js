@@ -4,7 +4,10 @@ const factoryHandler = require('./handlerFactory')
 exports.getAllReviews = async (req, res, next) => {
     try {
         const filter = {}
-        if(req.params.bookId) filter: {book: req.params.bookId}
+        if (req.params.bookId)
+            filter: {
+                book: req.params.bookId
+            }
 
         const books = await Review.find(filter)
         res.status(200).json({
@@ -21,27 +24,15 @@ exports.getAllReviews = async (req, res, next) => {
     }
 }
 
-exports.createReview = async (req, res, next) => {
-    try {
-        if (!req.body.book) req.body.book = req.params.bookId
-        if (!req.body.user) req.body.user = req.user.id
+exports.setBookUserId = async (req, res, next) => {
+    if (!req.body.book) req.body.book = req.params.bookId
+    if (!req.body.user) req.body.user = req.user.id
 
-        const newReview = await Review.create(req.body)
-
-        res.status(201).json({
-            status: true,
-            newReview
-        })
-
-        next()
-    } catch (error) {
-        console.error(error)
-        res.status(404).json({
-            status: false,
-            message: error.message
-        })
-    }
+    next()
 }
 
-
+exports.createReview = factoryHandler.createOne(Review)
+exports.getReview = factoryHandler.getOne(Review)
+exports.getAllReviews = factoryHandler.getAll(Review)
 exports.updateReview = factoryHandler.updateOne(Review)
+exports.deleteReview = factoryHandler.deleteOne(Review)

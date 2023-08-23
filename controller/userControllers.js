@@ -1,4 +1,5 @@
 const User = require('../models/userModel')
+const factoryHandler = require('./handlerFactory')
 
 const filtedObj = function (body, ...allowedFields) {
     const filtedData = {}
@@ -10,24 +11,7 @@ const filtedObj = function (body, ...allowedFields) {
     return filtedData
 }
 
-exports.getAllUsers = async (req, res) => {
-    try {
-        const users = await User.find()
-
-        res.status(200).json({
-            status: 'success',
-            results: users.length,
-            data: {
-                users
-            }
-        })
-    } catch (error) {
-        res.status(404).json({
-            status: 'error',
-            message: error.message
-        })
-    }
-}
+exports.getAllUsers = factoryHandler.getAll(User)
 
 exports.updateMe = async (req, res, next) => {
     try {
@@ -76,47 +60,19 @@ exports.deleteMe = async (req, res, next) => {
     }
 }
 
-exports.getUser = async (req, res) => {
-   try {
-     const newUser = await User.findById(req.params.id)
- 
-     if(!newUser){
-         return res.status(404).json({
-             status: false,
-             message: "User not found"
-         })
-     }
- 
-     res.status(200).json({
-         status: true,
-         newUser
-     })
-   } catch (error) {
-    console.error(error);
-    res.status(500).json({
-        status: 'success',
-        message: error.message
-    })
-   }
+exports.getMe = async (req, res, next) => {
+    req.params.id = req.user.id
+    next()
 }
+
+exports.getUser = factoryHandler.getOne(User)
 
 exports.createUser = async (req, res) => {
     res.status(500).json({
         status: 'success',
-        message: 'This route is not yet implemented'
+        message: 'This route is not gonna be implemented please use /signup'
     })
 }
 
-exports.updateUser = async (req, res) => {
-    res.status(500).json({
-        status: 'success',
-        message: 'This route is not yet implemented'
-    })
-}
-
-exports.deleteUser = async (req, res) => {
-    res.status(500).json({
-        status: 'success',
-        message: 'This route is not yet implemented'
-    })
-}
+exports.updateUser = factoryHandler.updateOne(User)
+exports.deleteUser = factoryHandler.deleteOne(User)

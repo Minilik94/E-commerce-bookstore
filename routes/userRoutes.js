@@ -12,6 +12,14 @@ router.route('/resetPassword/:token').patch(authContorller.resetPassword)
 router
     .route('/updatePassword')
     .patch(authContorller.protect, authContorller.updatePassword)
+
+router
+    .route('/me')
+    .get(
+        authContorller.protect,
+        userControllers.getMe,
+        userControllers.getUser
+    )
 router
     .route('/updateMe')
     .patch(authContorller.protect, userControllers.updateMe)
@@ -29,7 +37,5 @@ router
     .get(userControllers.getUser)
     .patch(userControllers.updateUser)
     .delete(userControllers.deleteUser)
-
-
 
 module.exports = router

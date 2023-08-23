@@ -1,0 +1,230 @@
+[
+    {
+        "rating": 4,
+        "review": "Nice Book",
+        "user": "64e49b59187ff6fb5a82337e",
+        "book": "64e49b53187ff6fb5a823331"
+    },
+    {
+        "rating": 5,
+        "review": "Loved it!",
+        "user": "64e49b59187ff6fb5a82337f",
+        "book": "64e49b53187ff6fb5a823331"
+    },
+    {
+        "rating": 3,
+        "review": "Average read",
+        "user": "64e49b59187ff6fb5a823380",
+        "book": "64e49b53187ff6fb5a823332"
+    },
+    {
+        "rating": 4,
+        "review": "Well written",
+        "user": "64e49b59187ff6fb5a823381",
+        "book": "64e49b53187ff6fb5a823332"
+    },
+    {
+        "rating": 2,
+        "review": "Not my cup of tea",
+        "user": "64e49b59187ff6fb5a823382",
+        "book": "64e49b53187ff6fb5a823333"
+    },
+    {
+        "rating": 5,
+        "review": "A must-read!",
+        "user": "64e49b59187ff6fb5a823383",
+        "book": "64e49b53187ff6fb5a823333"
+    },
+    {
+        "rating": 3,
+        "review": "Decent book",
+        "user": "64e49b59187ff6fb5a823384",
+        "book": "64e49b53187ff6fb5a823334"
+    },
+    {
+        "rating": 4,
+        "review": "Engaging storyline",
+        "user": "64e49b59187ff6fb5a823387",
+        "book": "64e49b53187ff6fb5a823334"
+    },
+    {
+        "rating": 2,
+        "review": "Couldn't finish it",
+        "user": "64e49b59187ff6fb5a823385",
+        "book": "64e49b53187ff6fb5a823336"
+    },
+    {
+        "rating": 4,
+        "review": "Great characters",
+        "user": "64e49b59187ff6fb5a823386",
+        "book": "64e49b53187ff6fb5a823336"
+    },
+    {
+        "rating": 3,
+        "review": "OK read",
+        "user": "64e49b59187ff6fb5a82337e",
+        "book": "64e49b53187ff6fb5a823338"
+    },
+    {
+        "rating": 5,
+        "review": "Couldn't put it down!",
+        "user": "64e49b59187ff6fb5a82337f",
+        "book": "64e49b53187ff6fb5a823338"
+    },
+    {
+        "rating": 4,
+        "review": "Recommend it",
+        "user": "64e49b59187ff6fb5a823380",
+        "book": "64e49b53187ff6fb5a823339"
+    },
+    {
+        "rating": 2,
+        "review": "Disappointing",
+        "user": "64e49b59187ff6fb5a823381",
+        "book": "64e49b53187ff6fb5a823339"
+    },
+    {
+        "rating": 5,
+        "review": "Amazing book!",
+        "user": "64e49b59187ff6fb5a823382",
+        "book": "64e49b53187ff6fb5a823335"
+    },
+    {
+        "rating": 3,
+        "review": "Meh",
+        "user": "64e49b59187ff6fb5a823383",
+        "book": "64e49b53187ff6fb5a823335"
+    },
+    {
+        "rating": 4,
+        "review": "Well worth the read",
+        "user": "64e49b59187ff6fb5a823384",
+        "book": "64e49b53187ff6fb5a823337"
+    },
+    {
+        "rating": 2,
+        "review": "Expected more",
+        "user": "64e49b59187ff6fb5a823387",
+        "book": "64e49b53187ff6fb5a823337"
+    },
+    {
+        "rating": 4,
+        "review": "Enjoyed it",
+        "user": "64e49b59187ff6fb5a823385",
+        "book": "64e49b53187ff6fb5a823331"
+    },
+    {
+        "rating": 3,
+        "review": "Worth a read",
+        "user": "64e49b59187ff6fb5a823386",
+        "book": "64e49b53187ff6fb5a823331"
+    },
+    {
+        "rating": 5,
+        "review": "Brilliant!",
+        "user": "64e49b59187ff6fb5a82337e",
+        "book": "64e49b53187ff6fb5a823332"
+    },
+    {
+        "rating": 4,
+        "review": "Captivating",
+        "user": "64e49b59187ff6fb5a82337f",
+        "book": "64e49b53187ff6fb5a823332"
+    },
+    {
+        "rating": 2,
+        "review": "Not impressed",
+        "user": "64e49b59187ff6fb5a823380",
+        "book": "64e49b53187ff6fb5a823333"
+    },
+    {
+        "rating": 4,
+        "review": "Solid read",
+        "user": "64e49b59187ff6fb5a823381",
+        "book": "64e49b53187ff6fb5a823333"
+    },
+    {
+        "rating": 3,
+        "review": "Decent book",
+        "user": "64e49b59187ff6fb5a823382",
+        "book": "64e49b53187ff6fb5a823334"
+    },
+    {
+        "rating": 5,
+        "review": "A must-read!",
+        "user": "64e49b59187ff6fb5a823383",
+        "book": "64e49b53187ff6fb5a823334"
+    },
+    {
+        "rating": 3,
+        "review": "Average read",
+        "user": "64e49b59187ff6fb5a823384",
+        "book": "64e49b53187ff6fb5a823336"
+    },
+    {
+        "rating": 4,
+        "review": "Engaging storyline",
+        "user": "64e49b59187ff6fb5a823387",
+        "book": "64e49b53187ff6fb5a823336"
+    },
+    {
+        "rating": 2,
+        "review": "Couldn't finish it",
+        "user": "64e49b59187ff6fb5a823385",
+        "book": "64e49b53187ff6fb5a823338"
+    },
+    {
+        "rating": 4,
+        "review": "Great characters",
+        "user": "64e49b59187ff6fb5a823386",
+        "book": "64e49b53187ff6fb5a823338"
+    },
+    {
+        "rating": 3,
+        "review": "OK read",
+        "user": "64e49b59187ff6fb5a82337e",
+        "book": "64e49b53187ff6fb5a823339"
+    },
+    {
+        "rating": 5,
+        "review": "Couldn't put it down!",
+        "user": "64e49b59187ff6fb5a82337f",
+        "book": "64e49b53187ff6fb5a823339"
+    },
+    {
+        "rating": 4,
+        "review": "Recommend it",
+        "user": "64e49b59187ff6fb5a823380",
+        "book": "64e49b53187ff6fb5a823335"
+    },
+    {
+        "rating": 2,
+        "review": "Disappointing",
+        "user": "64e49b59187ff6fb5a823381",
+        "book": "64e49b53187ff6fb5a823335"
+    },
+    {
+        "rating": 5,
+        "review": "Amazing book!",
+        "user": "64e49b59187ff6fb5a823382",
+        "book": "64e49b53187ff6fb5a823337"
+    },
+    {
+        "rating": 3,
+        "review": "Meh",
+        "user": "64e49b59187ff6fb5a823383",
+        "book": "64e49b53187ff6fb5a823337"
+    },
+    {
+        "rating": 4,
+        "review": "Well worth the read",
+        "user": "64e49b59187ff6fb5a823384",
+        "book": "64e49b53187ff6fb5a823331"
+    },
+    {
+        "rating": 2,
+        "review": "Expected more",
+        "user": "64e49b59187ff6fb5a823387",
+        "book": "64e49b53187ff6fb5a823331"
+    }
+]
