@@ -3,52 +3,64 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 
-const userSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Please tell us your name']
-    },
-    email: {
-        type: String,
-        unique: true,
-        lowercase: true,
-        required: [true, 'Please provide your email address'],
-        validate: [validator.isEmail, 'Please provide your email address']
-    },
-    photo: String,
-    role: {
-        type: String,
-        enum: ['user', 'admin'],
-        default: 'user'
-    },
-    password: {
-        type: String,
-        required: [true, 'Please provide a password'],
-        minlength: 8
-    },
-    passwordConfirm: {
-        type: String,
-        required: [true, 'Please confirm your password'],
-        validate: {
-            validator: function (el) {
-                return el === this.password
-            },
-            message: 'Passwords are not the same'
+const userSchema = new mongoose.Schema(
+    {
+        name: {
+            type: String,
+            required: [true, 'Please tell us your name']
         },
-        select: false
+        email: {
+            type: String,
+            unique: true,
+            lowercase: true,
+            required: [true, 'Please provide your email address'],
+            validate: [validator.isEmail, 'Please provide your email address']
+        },
+        photo: String,
+        role: {
+            type: String,
+            enum: ['user', 'admin'],
+            default: 'user'
+        },
+        password: {
+            type: String,
+            required: [true, 'Please provide a password'],
+            minlength: 8
+        },
+        passwordConfirm: {
+            type: String,
+            required: [true, 'Please confirm your password'],
+            validate: {
+                validator: function (el) {
+                    return el === this.password
+                },
+                message: 'Passwords are not the same'
+            },
+            select: false
+        },
+        passwordChangedAt: Date,
+        passwordResetToken: String,
+        passwordResetExpires: Date,
+        active: {
+            type: Boolean,
+            default: true,
+            select: false
+        }
     },
-    passwordChangedAt: Date,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
-    active: {
-        type: Boolean,
-        default: true,
-        select: false
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true }
     }
+)
+
+userSchema.virtual('reviews', {
+    ref: 'Review',
+    foreignField: 'user',
+    localField: '_id'
 })
 
-userSchema.pre(/^find/, async function(next) {
-    this.where({active: {$ne: false}})
+userSchema.pre(/^find/, async function (next) {
+    this.where({ active: { $ne: false } })
     next()
 })
 

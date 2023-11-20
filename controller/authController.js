@@ -2,7 +2,6 @@ const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 const User = require('../models/userModel')
 const sendEmail = require('../utils/email')
-const { findOne } = require('../models/bookModel')
 
 const signToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -74,6 +73,7 @@ exports.login = async (req, res) => {
         }
 
         createSendToken(user, 200, res)
+        
 
     } catch (error) {
         console.log(error.message)

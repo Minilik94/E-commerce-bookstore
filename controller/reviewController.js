@@ -1,28 +1,28 @@
 const Review = require('../models/reviewModel')
 const factoryHandler = require('./handlerFactory')
 
-exports.getAllReviews = async (req, res, next) => {
-    try {
-        const filter = {}
-        if (req.params.bookId)
-            filter: {
-                book: req.params.bookId
-            }
+// exports.getAllReviews = async (req, res, next) => {
+//     try {
+//         const filter = {}
+//         if (req.params.bookId)
+//             filter: {
+//                 book: req.params.bookId
+//             }
 
-        const books = await Review.find(filter)
-        res.status(200).json({
-            status: true,
-            results: books.length,
-            books
-        })
-    } catch (error) {
-        console.error(error)
-        res.status(404).json({
-            status: false,
-            message: error.message
-        })
-    }
-}
+//         const books = await Review.find(filter)
+//         res.status(200).json({
+//             status: true,
+//             results: books.length,
+//             books
+//         })
+//     } catch (error) {
+//         console.error(error)
+//         res.status(404).json({
+//             status: false,
+//             message: error.message
+//         })
+//     }
+// }
 
 exports.setBookUserId = async (req, res, next) => {
     if (!req.body.book) req.body.book = req.params.bookId

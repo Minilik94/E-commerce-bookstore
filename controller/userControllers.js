@@ -65,7 +65,7 @@ exports.getMe = async (req, res, next) => {
     next()
 }
 
-exports.getUser = factoryHandler.getOne(User)
+exports.getUser = factoryHandler.getOne(User, {path: 'reviews'})
 
 exports.createUser = async (req, res) => {
     res.status(500).json({

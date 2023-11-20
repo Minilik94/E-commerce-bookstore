@@ -6,7 +6,12 @@ const User = require('../models/userModel')
 const mongoose = require('mongoose')
 const { dirname } = require('path')
 
-dotenv.config({ path: './config.env' })
+dotenv.config({ path: '../config.env' })
+
+console.log(process.env.DATABASE);
+console.log(process.env.DATABASE_PASSWORD);
+
+
 const DB = process.env.DATABASE.replace(
     '<password>',
     process.env.DATABASE_PASSWORD
@@ -20,9 +25,9 @@ mongoose.connect(DB, {
   .then(() => console.log('DB Connected Successfuly!'))
 
 
-const books = JSON.parse(fs.readFileSync(`${__dirname}/books.json`, 'utf-8'))
+// const books = JSON.parse(fs.readFileSync(`${__dirname}/books.json`, 'utf-8'))
 const reviews = JSON.parse(fs.readFileSync(`${__dirname}/reviews.json`, 'utf-8'))
-const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'))
+// const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'))
 
 const importData = async () => {
     try {
@@ -37,9 +42,9 @@ const importData = async () => {
 }
 const deleteData = async () => {
     try {
-     const book = await Book.deleteMany()
+    //  const book = await Book.deleteMany()
      const review = await Review.deleteMany()
-     const user = await User.deleteMany()
+    //  const user = await User.deleteMany()
      console.log('Document Removed Successfuly');
      process.exit()
     } catch (error) {
