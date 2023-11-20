@@ -89,18 +89,29 @@
                     <div class="form__item--first">
                         <form>
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                placeholder="Laura Johnson"
+                            />
                             <label for="email">Email</label>
-                            <input type="text" name="email" id="email" />
+                            <input
+                                type="text"
+                                name="email"
+                                id="email"
+                                placeholder="laura@example.com"
+                            />
                             <br />
                             <div class="profile__img--cover">
-                                <label for="profile">
+                                <label for="profile" class="relative">
                                     <img
                                         src={selectedImage}
-                                        class="profile-img"
+                                        class="profile-img relative"
                                         alt=""
                                         id="previewImage"
                                     />
+                                    <i class="fas fa-camera absolute top-5 left-4 opacity-1 text-white cursor-pointer"></i>
                                 </label>
                                 <input
                                     type="file"
@@ -110,10 +121,13 @@
                                     on:change={handleImageChange}
                                 />
                             </div>
-                            <button class="btn" type="submit"
+                            <button class="submit" type="submit"
                                 >Save changes</button
                             >
                         </form>
+                    </div>
+                    <div>
+                        <hr>
                     </div>
                     <div class="form__item--second">
                         <h3 class="right__container--title">Password change</h3>
@@ -137,7 +151,9 @@
                                 id="confirmPass"
                             />
 
-                            <button type="submit">Save Password</button>
+                            <button type="submit" class="submit"
+                                >Save Password</button
+                            >
                         </form>
                     </div>
                 </div>
@@ -159,34 +175,38 @@
         border-top: none;
         border-bottom: none;
         height: 100vh;
-        margin-top: 80px;
-        padding: 0 20px;
+        margin-top: 30px;
+        /* padding: 0 20px; */
     }
     .left__container {
-        /* background-color: rgb(31, 109, 49); */
-        /* color: #fff; */
+        background-color: #134f5c;
         width: 40%;
         box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.4);
+        color: red;
+        padding-bottom: 10px;
     }
     .left__container--lists {
-        padding: 3rem 0 0 0;
+        padding: 2rem 0 0 0;
     }
     .left__items {
         padding: 1rem 2rem;
         border-radius: 10px;
-        color: #134f5c;
     }
     .profile-img {
-        height: 100px;
-        width: 100px;
-        object-fit: contain;
+        height: 50px;
+        width: 50px;
         border-radius: 50%;
+    }
+    label {
+        margin-bottom: 4px;
+        margin-top: 10px;
+        color: #626060;
     }
     .right__container {
         border-left: none;
-        padding: 8rem;
+        padding: 6rem;
         width: 100%;
-        padding-top: 3rem;
+        padding-top: 2rem;
     }
     .right__items--container {
         display: flex;
@@ -198,8 +218,7 @@
         margin-top: 0px;
         color: #134f5c;
         font-weight: 900;
-        padding: 1rem 2rem;
-        box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+        padding: 0.6rem 2rem;
     }
     .form__item--first {
         margin-bottom: 20px;
@@ -210,13 +229,28 @@
     }
     input {
         padding: 10px;
-        background-color: #f0f5f6;
+        background-color: #ededed;
         outline: none;
         border: none;
+        color: #000;
+        padding: 6px;
     }
     .btn__input {
         border: none;
         background-color: transparent;
         cursor: pointer;
+        color: #fff;
+    }
+    .submit {
+        width: 30%;
+        align-self: flex-end;
+        margin-top: 10px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        border-radius: 30px;
+        background-color: #134f5c;
+        cursor: pointer;
+        border: none;
+        color: #fff;
     }
 </style>

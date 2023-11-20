@@ -1,54 +1,50 @@
 <script>
-    import {
-        elasticInOut,
-        elasticOut,
-        linear,
-        quadIn,
-        quintOut
-    } from 'svelte/easing'
-    import { scale, slide } from 'svelte/transition'
     import { page } from '$app/stores'
 
     export let data
     $: books = data.books.data.doc
     $: totalBooks = data.books.data.totalItems
-    $: console.log(totalBooks);
+    $: console.log(totalBooks)
 </script>
 
 <div class="categories">categories</div>
 
-<div class="header__hero--third">
-    <div
-        class="header__third-container--for--books"
-        transition:slide={{ duration: 300, easing: quadIn }}
-    >
+<div class="header__hero--third font-Mulish">
+    <div class="header__third-container--for--books font-Mulish">
         {#await books.status !== 'success' || data === undefined}
             Loading...
         {:then data}
             {#each books as book}
-                <a href="/book/{book.slug}" class="header__card-third">
+                <a
+                    href="/book/{book.slug}"
+                    class="header__card-third font-Mulish"
+                >
                     <div class="book-atoms">
                         <div class="book__img-container">
-                        <img class="book-img" src="/{book.coverImage}" alt="" />
-                    </div>
-                        <div class="book-details">
+                            <img
+                                class="book-img"
+                                src="/{book.coverImage}"
+                                alt=""
+                            />
+                        </div>
+                        <div class="book-details font-Mulish">
                             {#if book.title.length > 16}
                                 <p
-                                    class="book--title break"
+                                    class="book--title  font-bold break"
                                     style="text-align: left;"
                                 >
                                     {book.title}
                                 </p>
                             {:else}
                                 <p
-                                    class="book--title"
+                                    class="book--title  font-bold"
                                     style="text-align: left;"
                                 >
                                     {book.title}
                                 </p>
                             {/if}
-                            <p class="book--rating">{book.ratingAverage}</p>
-                            <p class="book--price">${book.price}</p>
+                            <p class="book--rating rating rating-half font-bold">{book.ratingAverage}</p>
+                            <p class="book--price  font-bold">${book.price}</p>
                         </div>
                     </div>
                 </a>
@@ -61,19 +57,8 @@
     .book__img-container {
         height: 269px !important;
     }
-
-    @keyframes pulse {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.1);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
     .book-details {
+        max-width: 180px;
         display: flex;
         height: 80px;
         flex-direction: column;
@@ -107,6 +92,7 @@
         align-items: center;
         justify-content: space-between;
         width: 80%;
+        row-gap: 3rem;
         margin: auto;
         flex-wrap: wrap;
         /* margin-bottom: auto; */
@@ -115,7 +101,6 @@
     .header__card-third {
         /* padding: 1rem; */
         /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6); */
-        height: 300px;
         display: flex;
         margin-top: 30px;
         margin-bottom: 60px;
@@ -124,7 +109,6 @@
         margin-bottom: 0;
         padding-bottom: 0px;
         font-size: 16px;
-        font-weight: 900;
         color: black;
         padding: 0;
         padding-right: 0px;
@@ -135,7 +119,7 @@
         margin-left: 0;
     }
     .break {
-        width: 140px;
+        width: auto;
     }
     a {
         text-decoration: none;
@@ -143,7 +127,6 @@
     .book--price {
         text-align: left;
         padding: 0px;
-        font-family: 'Muli', 'sans-serif';
         color: black;
         margin: 0;
     }

@@ -1,6 +1,6 @@
 <script>
     import { page } from '$app/stores'
-   
+    import '../style.css'
 </script>
 
 <svelte:head>
@@ -15,7 +15,7 @@
     {/if}
 </svelte:head>
 
-<header class="header">
+<header class="header font-Mulish">
     <div class="header-container">
         <a class="header__logo--img fa-bounce" href="/">
             <svg
@@ -164,25 +164,28 @@
             >
         </a>
         <ul class="header__links">
-            <li class="header__links--book">
-                <a href="/books">
-                    <abbr title="books">
-                        <i class="fa-solid fa-book" />
-                    </abbr>
+            <li class="">
+                <a
+                    href="/books"
+                    class="no-underline text-sm border-none rounded-lg shadow-lg text-[#134f5c] hover:text-white bg-transparent btn h-6 min-h-0 px-6 "
+                >
+                    Books
                 </a>
             </li>
-            <li class="header__links--cart">
-                <a href="cart">
-                    <abbr title="cart">
-                        <i class="fa-solid fa-cart-shopping" />
-                    </abbr>
+            <li class="">
+                <a
+                    href="/cart"
+                    class="no-underline text-sm border-none rounded-lg shadow-lg text-[#134f5c] hover:text-white bg-transparent btn h-6 min-h-0 px-6 "
+                >
+                    Cart
                 </a>
             </li>
-            <li class="header__links--profile">
-                <a href="/profile">
-                    <abbr title="Login">
-                        <i class="fa-solid fa-user-plus" />
-                    </abbr>
+            <li class=" ">
+                <a
+                    href="/login"
+                    class="no-underline text-sm border-none rounded-lg shadow-lg text-[#134f5c] hover:text-white bg-transparent btn h-6 min-h-0 px-6 "
+                >
+                    Login
                 </a>
             </li>
             <!-- <li class="header__links--login">
@@ -361,8 +364,6 @@
 
 <style>
     * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
     }
 
@@ -377,8 +378,7 @@
     }
     .header-container {
         display: flex;
-        /* box-shadow: 0 0 4px 2px rgba(9, 9, 99, 0.4); */
-        max-width: 1000px;
+        max-width: 1400px;
         width: 100%;
         align-items: center;
         margin: auto;
@@ -388,36 +388,18 @@
     .header__logo--img {
         height: 60px;
         width: 80px;
-        /* aspect-ratio: 4 / 1; */
-        /* object-fit: contain; */
         border-radius: 20px;
     }
     .header__links {
         display: flex;
         justify-content: center;
+        gap: 20px;
+        align-items: center;
     }
-    .header__links li {
-        list-style-type: none;
-        margin: auto 12px;
-        padding: 3px;
-        margin-bottom: -5px;
-        border-radius: 5px;
-    }
-    a {
+    a.header__logo--img {
         font-size: 24px;
         text-decoration: none;
     }
-    .fa-solid {
-        /* color: rgb(63, 63, 63); */
-        color: rgb(19, 79, 92);
-    }
-    .fa-solid:hover {
-        color: #000;
-        text-decoration: none;
-    }
-    /* .fa-solid.fa-right-to-bracket:hover {
-        color: #a32323;
-    } */
 
     .footer {
         box-shadow: 0 0 4px 2px rgba(9, 9, 99, 0.4);
@@ -429,7 +411,7 @@
     }
     .row {
         display: flex;
-        max-width: 1000px;
+        max-width: 1400px;
         width: 100%;
         align-items: center;
         justify-content: center;

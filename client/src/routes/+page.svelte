@@ -1,11 +1,11 @@
 <script>
-    import { goto } from '$app/navigation'
     export let data
-    $: books = data.books.data.doc
-    $: discountedBooks = data.discountedBooks.data.doc
+    // $: books = data.books.data.doc
+    // $: discountedBooks = data.discountedBooks.data.doc
+    console.log(data)
 </script>
 
-<div class="header-hero">
+<div class="header-hero w-full font-Mulish">
     <div class="header__hero--start">
         <p class="header-hero__para">
             Welcome to ReBook - Your One-Stop Shop for Reading
@@ -16,6 +16,7 @@
             delivery, we make it easy to indulge in your love for reading.
         </p>
         <button
+            class="btn"
             on:click={() => {
                 console.log('go to book')
             }}>Browse books</button
@@ -23,7 +24,7 @@
         <img src="/stunning_book.jpg" alt="" />
     </div>
 </div>
-<div class="header__hero--second">
+<div class="header__hero--second font-Mulish">
     <h2 class="header__title">Why Choose <span>ReBook</span></h2>
     <div class="header__hero--container">
         <div class="header__card">
@@ -55,86 +56,64 @@
         </div>
     </div>
 </div>
-<div class="header__hero--third">
+<div class="header__hero--third font-Mulish">
     <h2 class="header__title">Featured Books</h2>
     <div class="header__third-container">
-        {#await data || data === undefined}
-            Loading...
-        {:then data}
-            {#each data.books.data.doc as book}
-                <a href="/book/{book.slug}" class="header__card-third">
-                    <div class="book-atoms">
-                        <div class="book__img-container">
-                            <img
-                                class="book-img"
-                                src="/{book.coverImage}"
-                                alt=""
-                            />
-                        </div>
-                        <div class="book-details">
-                            {#if book.title.length > 16}
-                                <p
-                                    class="book--title break"
-                                    style="text-align: left;"
-                                >
-                                    {book.title}
-                                </p>
-                            {:else}
-                                <p
-                                    class="book--title"
-                                    style="text-align: left;"
-                                >
-                                    {book.title}
-                                </p>
-                            {/if}
-                            <p class="book--rating">{book.ratingAverage}</p>
-                            <p class="book--price">${book.price}</p>
-                        </div>
+        {#each data.books.data.doc as book}
+            <a href="/book/{book.slug}" class="header__card-third">
+                <div class="book-atoms">
+                    <div class="book__img-container">
+                        <img class="book-img" src="/{book.coverImage}" alt="" />
                     </div>
-                </a>
-            {/each}
-        {/await}
+                    <div class="book-details">
+                        {#if book.title.length > 16}
+                            <p
+                                class="book--title break font-bold"
+                                style="text-align: left;"
+                            >
+                                {book.title}
+                            </p>
+                        {:else}
+                            <p class="book--title font-bold" style="text-align: left;">
+                                {book.title}
+                            </p>
+                        {/if}
+                        <p class="book--rating font-bold rating rating-half">{book.ratingAverage}</p>
+                        <p class="book--price text-sm font-bold">${book.price}</p>
+                    </div>
+                </div>
+            </a>
+        {/each}
     </div>
 </div>
-<section class="header__hero--third">
+<section class="header__hero--third font-Mulish">
     <h2 class="header__title">Discounted Books</h2>
     <div class="header__third-container">
-        {#await data || data === undefined}
-            Loading...
-        {:then data}
-            {#each data.discountedBooks.data.doc.slice(0, 3) as book}
-                <a href="/book/{book.slug}" class="header__card-third">
-                    <div class="book-atoms">
-                        <div class="book__img-container">
-                            <img
-                                class="book-img"
-                                src="/{book.coverImage}"
-                                alt=""
-                            />
-                        </div>
-                        <div class="book-details">
-                            {#if book.title.trim().length > 14}
-                                <p
-                                    class="book--title break"
-                                    style="text-align: left;"
-                                >
-                                    {book.title}
-                                </p>
-                            {:else}
-                                <p
-                                    class="book--title"
-                                    style="text-align: left;"
-                                >
-                                    {book.title}
-                                </p>
-                            {/if}
-                            <p class="book--rating">{book.ratingAverage}</p>
-                            <p class="book--price">${book.price}</p>
-                        </div>
+        {#each data.discountedBooks.data.doc.slice(0, 3) as book}
+            <a href="/book/{book.slug}" class="header__card-third">
+                <div class="book-atoms">
+                    <div class="book__img-container">
+                        <img class="book-img" src="/{book.coverImage}" alt="" />
                     </div>
-                </a>
-            {/each}
-        {/await}
+                    <div class="book-details">
+                        {#if book.title.trim().length > 14}
+                            <p
+                                class="book--title break font-bold"
+                                style="text-align: left;"
+                            >
+                                {book.title}
+                            </p>
+                        {:else}
+                            <p class="book--title font-bold" style="text-align: left;">
+                                {book.title}
+                            </p>
+                        {/if}
+                        <p class="book--rating text-sm font-bold rating rating-half">{book.ratingAverage}</p>
+                        <p class="book--price text-sm font-bold">${book.price}</p>
+                    </div>
+                </div>
+            </a>
+        {/each}
     </div>
 </section>
 
@@ -143,8 +122,8 @@
         color: #134f5c;
     }
     .book-details {
+        max-width: 180px;
         display: flex;
-        height: 80px;
         flex-direction: column;
         text-align: left;
         color: #134f5c;
@@ -168,7 +147,8 @@
     }
     .book-img {
         object-fit: cover;
-        height: 100%;
+        height: inherit;
+        width: 180px;
         border: 1px solid gray;
         /* border: none; */
         border-radius: 10px;
@@ -186,25 +166,22 @@
     .header__card-third {
         /* padding: 1rem; */
         /* box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6); */
-        height: 300px;
         display: flex;
     }
     .book--title {
         margin-bottom: 0;
         padding-bottom: 0px;
         color: #000;
-        font-size: 16px;
-        font-weight: 900;
         padding: 0;
         padding-right: 0px;
         /* text-wrap: wrap; */
-        width: 100%;
+        width: auto;
         margin: auto;
         margin-right: 0;
         margin-left: 0;
     }
     .break {
-        width: 120px;
+        width: auto;
     }
     a {
         text-decoration: none;
