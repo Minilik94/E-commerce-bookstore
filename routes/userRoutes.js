@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.route('/signup').post(authContorller.signUp)
 router.route('/login').post(authContorller.login)
+router.route('/logout').post(authContorller.logout)
 
 router.route('/forgotPassword').post(authContorller.forgotPassword)
 router.route('/resetPassword/:token').patch(authContorller.resetPassword)
@@ -15,14 +16,15 @@ router
 
 router
     .route('/me')
-    .get(
-        authContorller.protect,
-        userControllers.getMe,
-        userControllers.getUser
-    )
+    .get(authContorller.protect, userControllers.getMe, userControllers.getUser)
 router
     .route('/updateMe')
-    .patch(authContorller.protect, userControllers.updateMe)
+    .patch(
+        authContorller.protect,
+        userControllers.uploadUserPhoto,
+        userControllers.resizeImage,
+        userControllers.updateMe
+    )
 
 router
     .route('/deleteMe')

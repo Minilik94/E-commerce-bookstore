@@ -1,10 +1,11 @@
 <script>
     import Spinner from '$lib/Spinner.svelte'
 
-    let selectedImage = '/default-Img.jpg'
     // @ts-ignore
     export let data
-
+    let selectedImage = '/default-Img.jpg'
+const {user} = data
+     console.log(user, 'profile');
     let selectedSection = 'settings'
     // @ts-ignore
     const changeView = (/** @type {string} */ section) => {
@@ -27,12 +28,12 @@
             }
             reader.readAsDataURL(fileInput.files[0])
         } else {
-            selectedImage = '/default-Img.jpg'
+            selectedImage = 'default-Img.jpg'
         }
     }
 </script>
 
-{#if data}
+{#if user.user !== undefined}
     <section class="profile__container">
         <div class="left__container">
             <div class="left__container--lists">
@@ -87,13 +88,13 @@
             <div class="right__items">
                 <div class="right__items--container">
                     <div class="form__item--first">
-                        <form>
+                        <form enctype="multipart/form-data" method="POST">
                             <label for="name">Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 id="name"
-                                placeholder="Laura Johnson"
+                                value="{user.user.data.user.name}"
                             />
                             <label for="email">Email</label>
                             <input
@@ -101,16 +102,26 @@
                                 name="email"
                                 id="email"
                                 placeholder="laura@example.com"
+                                value="{user.user.data.user.email}"
                             />
                             <br />
                             <div class="profile__img--cover">
                                 <label for="profile" class="relative">
+                                    {#if user.user.data.user.photo}
+                                    <img
+                                        src="/{user.user.data.user.photo}"
+                                        class="profile-img relative"
+                                        alt=""
+                                        id="previewImage"
+                                    />
+                                    {:else }
                                     <img
                                         src={selectedImage}
                                         class="profile-img relative"
                                         alt=""
                                         id="previewImage"
                                     />
+                                    {/if}
                                     <i class="fas fa-camera absolute top-5 left-4 opacity-1 text-white cursor-pointer"></i>
                                 </label>
                                 <input
@@ -161,7 +172,9 @@
         </div>
     </section>
 {:else}
-    <Spinner />
+    <div class="alert alert-error max-w-md mx-auto animate-pulse">Access Denied
+    </div>
+    <br><a href="/" class="btn btn-link mx-auto w-full">Go Back to home</a>
 {/if}
 
 <style>

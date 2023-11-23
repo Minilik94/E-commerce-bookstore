@@ -9,7 +9,7 @@ exports.deleteOne = (Model) => async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(500).json({
-            success: false,
+            success: 'fail',
             error: 'Something wrong with the server '
         })
     }
@@ -22,7 +22,7 @@ exports.updateOne = (Model) => async (req, res) => {
             runValidators: true
         })
         if (!doc) {
-           return res.status(404).json({
+            return res.status(404).json({
                 status: 'fail',
                 message: 'Document not found'
             })
@@ -46,7 +46,7 @@ exports.createOne = (Model) => async (req, res, next) => {
         const doc = await Model.create(req.body)
 
         res.status(201).json({
-            status: true,
+            status: 'success',
             doc
         })
 
@@ -54,7 +54,7 @@ exports.createOne = (Model) => async (req, res, next) => {
     } catch (error) {
         console.error(error)
         res.status(404).json({
-            status: false,
+            status: 'fail',
             message: error.message
         })
     }
@@ -68,7 +68,7 @@ exports.getOne = (Model, popOptions) => async (req, res) => {
 
         if (!doc) {
             return res.status(404).json({
-                status: false,
+                status: 'fail',
                 message: 'document does not exist'
             })
         }
@@ -90,6 +90,8 @@ exports.getOne = (Model, popOptions) => async (req, res) => {
 
 exports.getAll = (Model) => async (req, res) => {
     try {
+        let filter = {}
+        if (req.params.tourId) filter = { tour: req.params.tourId }
         const features = new APIFeatures(Model.find(), req.query)
             .filter()
             .sort()
@@ -98,14 +100,12 @@ exports.getAll = (Model) => async (req, res) => {
 
         // const doc = await features.query.explain()
         const doc = await features.query
-        const bookings = await Model.find()
         // send response
         res.status(200).json({
             status: 'success',
             result: doc.length,
             data: {
-                doc,
-                totalItems: bookings.length
+                doc
             }
         })
     } catch (error) {

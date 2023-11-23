@@ -1,8 +1,33 @@
 <script>
+    import { goto } from '$app/navigation'
+    import { page } from '$app/stores'
+
     export let data
+    
+    const {books, discountedBooks} = data
     // $: books = data.books.data.doc
     // $: discountedBooks = data.discountedBooks.data.doc
-    console.log(data)
+
+    let testimonials = [
+        {
+            avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
+            name: "Martin escobar",
+            title: "Founder of meta",
+            quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et est hendrerit, porta nunc vitae."
+        },
+        {
+            avatar: "https://randomuser.me/api/portraits/women/79.jpg",
+            name: "Angela stian",
+            title: "Product designer",
+            quote: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
+        },
+        {
+            avatar: "https://randomuser.me/api/portraits/men/86.jpg",
+            name: "Karim ahmed",
+            title: "DevOp engineer",
+            quote: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain."
+        },
+    ];
 </script>
 
 <div class="header-hero w-full font-Mulish">
@@ -15,10 +40,9 @@
             titles, our bookstore has it all. With competitive prices and fast
             delivery, we make it easy to indulge in your love for reading.
         </p>
-        <button
-            class="btn"
+        <button class="btn btn-primary"
             on:click={() => {
-                console.log('go to book')
+                goto('/books')
             }}>Browse books</button
         >
         <img src="/stunning_book.jpg" alt="" />
@@ -74,12 +98,19 @@
                                 {book.title}
                             </p>
                         {:else}
-                            <p class="book--title font-bold" style="text-align: left;">
+                            <p
+                                class="book--title font-bold"
+                                style="text-align: left;"
+                            >
                                 {book.title}
                             </p>
                         {/if}
-                        <p class="book--rating font-bold rating rating-half">{book.ratingAverage}</p>
-                        <p class="book--price text-sm font-bold">${book.price}</p>
+                        <p class="book--rating font-bold rating rating-half">
+                            {book.ratingAverage}
+                        </p>
+                        <p class="book--price text-sm font-bold">
+                            ${book.price}
+                        </p>
                     </div>
                 </div>
             </a>
@@ -104,19 +135,63 @@
                                 {book.title}
                             </p>
                         {:else}
-                            <p class="book--title font-bold" style="text-align: left;">
+                            <p
+                                class="book--title font-bold"
+                                style="text-align: left;"
+                            >
                                 {book.title}
                             </p>
                         {/if}
-                        <p class="book--rating text-sm font-bold rating rating-half">{book.ratingAverage}</p>
-                        <p class="book--price text-sm font-bold">${book.price}</p>
+                        <p
+                            class="book--rating text-sm font-bold rating rating-half"
+                        >
+                            {book.ratingAverage}
+                        </p>
+                        <p class="book--price text-sm font-bold">
+                            ${book.price}
+                        </p>
                     </div>
                 </div>
             </a>
         {/each}
     </div>
-</section>
 
+    
+</section>
+<section class="py-14">
+    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
+        <div class="max-w-xl sm:text-center md:mx-auto">
+            <h3 class="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                See what others saying about us
+            </h3>
+            <p class="mt-3 text-gray-600">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et est hendrerit, porta nunc vitae, gravida justo. Nunc fermentum magna lorem, euismod volutpat arcu volutpat et.
+            </p>
+        </div>
+        <div class="mt-12">
+            <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {#each testimonials as item (item.name)}
+                    <li class="bg-gray-100 p-4 rounded-xl">
+                        <figure>
+                            <div class="flex items-center gap-x-4">
+                                <img src={item.avatar} class="w-16 h-16 rounded-full" />
+                                <div>
+                                    <span class="block text-gray-800 font-semibold">{item.name}</span>
+                                    <span class="block text-gray-600 text-sm mt-0.5">{item.title}</span>
+                                </div>
+                            </div>
+                            <blockquote>
+                                <p class="mt-6 text-gray-700">
+                                    {item.quote}
+                                </p>
+                            </blockquote>
+                        </figure>
+                    </li>
+                {/each}
+            </ul>
+        </div>
+    </div>
+</section>
 <style>
     * {
         color: #134f5c;

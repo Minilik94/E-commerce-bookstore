@@ -1,8 +1,9 @@
 <script>
     import { page } from '$app/stores';
-    export let data;
+    export let data
+    console.log(data, 'bbokinidow');
     let pageSize = 9
-    $: totalItems = data.book.data.totalItems
+    $: totalItems = 36
     $: totalPages = Math.ceil(totalItems / pageSize)
     $: currentPage = Number($page.params.page) - 1
     $: console.log(currentPage);

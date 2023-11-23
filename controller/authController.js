@@ -24,7 +24,7 @@ const createSendToken = (user, statusCode, res) => {
     res.cookie('jwt', token, cookieOptions)
 
     res.status(statusCode).json({
-        status: true,
+        status: 'success',
         token, 
         data: {
             user
@@ -67,7 +67,7 @@ exports.login = async (req, res) => {
 
         if (!user || !(await user.correctPassword(password, user.password))) {
             return res.status(401).json({
-                status: false,
+                status: 'fail',
                 message: 'Incorrect email or password'
             })
         }
@@ -83,6 +83,26 @@ exports.login = async (req, res) => {
         })
     }
 }
+
+exports.logout = async (req, res, next) => {
+    try {
+      res.cookie('jwt', 'loggedout', {
+        expires: new Date(
+          Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+        ),
+        httpOnly: true
+      })
+  
+      res.status(200).json({
+        status: 'success'
+      })
+    } catch (error) {
+      res.status(404).json({
+        status: 'fail',
+        message: error.message
+      })
+    }
+  }
 
 // Protecting the book route
 
@@ -219,7 +239,7 @@ exports.resetPassword = async (req, res, next) => {
 
         if (!user) {
             return res.status(400).json({
-                status: false,
+                status: 'fail',
                 message: 'Invalid token or the token has expired'
             })
         }
@@ -232,12 +252,12 @@ exports.resetPassword = async (req, res, next) => {
         // 3) send jwt
         const token = signToken(user._id)
         res.status(200).json({
-            status: true,
+            status: 'success',
             token
         })
     } catch (error) {
         return res.status(500).json({
-            status: false,
+            status: 'fail',
             message: `Something went wrong ${error.message}`
         })
     }
@@ -255,7 +275,7 @@ exports.updatePassword = async (req, res, next) => {
             ))
         ) {
             return res.status(401).json({
-                status: false,
+                status: 'fail',
                 message: 'Your password is incorrect'
             })
         }
@@ -265,12 +285,12 @@ exports.updatePassword = async (req, res, next) => {
 
         const token = signToken(user._id)
         res.status(200).json({
-            status: true,
+            status: 'success',
             token
         })
     } catch (error) {
         return res.status(500).json({
-            status: false,
+            status: 'fail',
             message: `Something went wrong ${error.message}`
         })
     }
