@@ -92,7 +92,6 @@
         align-items: center;
         justify-content: space-between;
         width: 80%;
-        row-gap: 3rem;
         margin: auto;
         flex-wrap: wrap;
         /* margin-bottom: auto; */
