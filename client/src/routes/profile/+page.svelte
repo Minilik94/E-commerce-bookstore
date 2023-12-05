@@ -105,11 +105,11 @@ const {user} = data
                                 value="{user.user.data.user.email}"
                             />
                             <br />
-                            <div class="profile__img--cover">
+                            <div class="profile__img--cover btn h-fit">
                                 <label for="profile" class="relative">
                                     {#if user.user.data.user.photo}
                                     <img
-                                        src="/{user.user.data.user.photo}"
+                                        src="users/{user.user.data.user.photo}"
                                         class="profile-img relative"
                                         alt=""
                                         id="previewImage"
@@ -122,7 +122,6 @@ const {user} = data
                                         id="previewImage"
                                     />
                                     {/if}
-                                    <i class="fas fa-camera absolute top-5 left-4 opacity-1 text-white cursor-pointer"></i>
                                 </label>
                                 <input
                                     type="file"

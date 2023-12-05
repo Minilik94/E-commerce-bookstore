@@ -3,31 +3,8 @@
     import { page } from '$app/stores'
 
     export let data
-    
-    const {books, discountedBooks} = data
-    // $: books = data.books.data.doc
-    // $: discountedBooks = data.discountedBooks.data.doc
 
-    let testimonials = [
-        {
-            avatar: "https://api.uifaces.co/our-content/donated/xZ4wg2Xj.jpg",
-            name: "Martin escobar",
-            title: "Founder of meta",
-            quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et est hendrerit, porta nunc vitae."
-        },
-        {
-            avatar: "https://randomuser.me/api/portraits/women/79.jpg",
-            name: "Angela stian",
-            title: "Product designer",
-            quote: "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."
-        },
-        {
-            avatar: "https://randomuser.me/api/portraits/men/86.jpg",
-            name: "Karim ahmed",
-            title: "DevOp engineer",
-            quote: "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain."
-        },
-    ];
+    const { books, discountedBooks } = data
 </script>
 
 <div class="header-hero w-full font-Mulish">
@@ -40,7 +17,8 @@
             titles, our bookstore has it all. With competitive prices and fast
             delivery, we make it easy to indulge in your love for reading.
         </p>
-        <button class="btn btn-primary"
+        <button
+            class="btn btn-primary"
             on:click={() => {
                 goto('/books')
             }}>Browse books</button
@@ -105,22 +83,83 @@
                                 {book.title}
                             </p>
                         {/if}
-                        <p class="book--rating font-bold rating rating-half">
+                        <div
+                            class="book--rating text-sm font-bold rating rating-half flex justify-between items-center border border-dashed"
+                        >
                             {book.ratingAverage}
-                        </p>
+
+                            <div class=" flex">
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-gray-400 sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class=""
+                                    ></path>
+                                </svg>
+                            </div>
+                        </div>
                         <p class="book--price text-sm font-bold">
                             ${book.price}
                         </p>
                     </div>
                 </div>
             </a>
+            
         {/each}
     </div>
 </div>
 <section class="header__hero--third font-Mulish">
     <h2 class="header__title">Discounted Books</h2>
     <div class="header__third-container">
-        {#each data.discountedBooks.data.doc.slice(0, 3) as book}
+        {#each data.discountedBooks.data.doc.slice(0, 4) as book}
             <a href="/book/{book.slug}" class="header__card-third">
                 <div class="book-atoms">
                     <div class="book__img-container">
@@ -142,11 +181,69 @@
                                 {book.title}
                             </p>
                         {/if}
-                        <p
-                            class="book--rating text-sm font-bold rating rating-half"
+                        <div
+                            class="book--rating text-sm font-bold rating rating-half flex justify-between items-center border border-dashed"
                         >
                             {book.ratingAverage}
-                        </p>
+
+                            <div class=" flex">
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class="text-yellow-400"
+                                    ></path>
+                                </svg>
+                                <svg
+                                    class="block h-3 w-3 align-middle text-gray-400 sm:h-4 sm:w-4"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                        class=""
+                                    ></path>
+                                </svg>
+                            </div>
+                        </div>
                         <p class="book--price text-sm font-bold">
                             ${book.price}
                         </p>
@@ -155,43 +252,8 @@
             </a>
         {/each}
     </div>
+</section>
 
-    
-</section>
-<section class="py-14">
-    <div class="max-w-screen-xl mx-auto px-4 md:px-8">
-        <div class="max-w-xl sm:text-center md:mx-auto">
-            <h3 class="text-gray-800 text-3xl font-semibold sm:text-4xl">
-                See what others saying about us
-            </h3>
-            <p class="mt-3 text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et est hendrerit, porta nunc vitae, gravida justo. Nunc fermentum magna lorem, euismod volutpat arcu volutpat et.
-            </p>
-        </div>
-        <div class="mt-12">
-            <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {#each testimonials as item (item.name)}
-                    <li class="bg-gray-100 p-4 rounded-xl">
-                        <figure>
-                            <div class="flex items-center gap-x-4">
-                                <img src={item.avatar} class="w-16 h-16 rounded-full" />
-                                <div>
-                                    <span class="block text-gray-800 font-semibold">{item.name}</span>
-                                    <span class="block text-gray-600 text-sm mt-0.5">{item.title}</span>
-                                </div>
-                            </div>
-                            <blockquote>
-                                <p class="mt-6 text-gray-700">
-                                    {item.quote}
-                                </p>
-                            </blockquote>
-                        </figure>
-                    </li>
-                {/each}
-            </ul>
-        </div>
-    </div>
-</section>
 <style>
     * {
         color: #134f5c;
@@ -211,7 +273,7 @@
         text-align: center;
         margin: 60px auto 140px auto;
         color: #134f5c;
-        max-width: 1000px;
+        max-width: 1200px;
     }
     .book-atoms {
         display: flex;
