@@ -28,22 +28,29 @@ export const actions = {
                 { email, password }
             )
             const user = response.data
-            locals.user = user
+            console.log(user, 'from login');
+            console.log(response, 'response from login');
+
+                locals.user = user.data
+            console.log(locals.user, 'locals  from login');
 
             if (!user) {
                 return fail(400, { user, incorrect: true })
             }
 
             return { user: locals.user }
-        } catch (error) {
+        } catch (err) {
             // @ts-ignore
-            console.log(error.response.data, 'error')
+            console.log(err.response.data, 'err')
             // @ts-ignore
-            console.log(error.response, 'error')
+            console.log(err.response, 'err')
             // @ts-ignore
-            locals.user = error.response.data
+            locals.user = err.response.data
             // @ts-ignore
-            return fail(error.response.status, error.response.data)
+            // return fail(error.response.status, error.response.data)
+            return {
+                error: { message: err.response.data.message }
+            }
         }
     }
 }

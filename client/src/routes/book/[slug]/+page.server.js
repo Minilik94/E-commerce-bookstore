@@ -12,7 +12,6 @@ export const load = async ({ params }) => {
             book = bk
         }
     })
-    console.log(book, 'book from detail');
     const resReview = await fetch(`http://127.0.0.1:3000/api/books/${book.id}/reviews`)
     const reviewData = await resReview.json()
     return {

@@ -1,19 +1,8 @@
-import { onDestroy } from 'svelte'
-import { users } from '../lib/user.js'
+import { error } from '@sveltejs/kit'
 
-export const load = ({ locals }) => {
-    let user
-
-    // Subscribe to the users store and update the 'user' variable
-    $: {
-        const unsubscribe = users.subscribe((u) => {
-            user = u
-        })
-    }
-
-    locals.user = user // Optionally update locals.user whenever the user changes
-
-    // Return the current value of the 'user' variable
+export const load = async ({ cookies, locals }) => {
+    console.log(locals, 'main')
+    const user = locals.user
     return {
         user
     }

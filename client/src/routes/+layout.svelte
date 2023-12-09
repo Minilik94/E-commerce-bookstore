@@ -1,4 +1,5 @@
 <script>
+// @ts-nocheck
     import { page } from '$app/stores'
     // @ts-ignore
     import FaShoppingCart from 'svelte-icons/fa/FaShoppingCart.svelte'
@@ -7,26 +8,15 @@
     import '../style.css'
     import { redirect } from '@sveltejs/kit'
     import { goto } from '$app/navigation'
-
-    $: console.log($page, 'page')
+    import { setContext } from 'svelte'
 
     export let data
     let { user } = data
-    console.log(user.data.user.photo, 'parent layout')
-    console.log(data, 'data parent layout')
-
-    const logout = () => {
-        // Perform any additional logout logic if needed
-        // For example, you might want to clear tokens, etc.
-
-        // Set user to null
-        user = null
-        console.log(user, 'from logout')
-        // $page.data.user = store.set('null')
-
-        // Navigate to the login page or any other desired page
-        redirect(307, '/login')
-    }
+    console.log(user, 'user from layout svelte');
+    // }
+    setContext('canvas', {
+		user
+	});
 </script>
 
 <svelte:head>
@@ -232,7 +222,7 @@
                 </div>
             </div>
         </div>
-        {#if user !== null && user !== undefined}
+        {#if user}
             <div class="dropdown dropdown-end">
                 <div
                     tabindex="0"
@@ -242,7 +232,7 @@
                     <div class="w-10 rounded-full">
                         <img
                             alt="Tailwind CSS Navbar component"
-                            src="/users/{user.data.user.photo}"
+                            src="/users/{user.user.photo}"
                         />
                     </div>
                 </div>
@@ -272,7 +262,8 @@
 <slot />
 
 
-<footer class="px-4 divide-y ">
+
+<footer class="px-4 divide-y">
     <div
         class="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0"
     >
@@ -430,17 +421,21 @@
             <div class="space-y-3">
                 <h3 class="tracki uppercase dark:text-gray-50">Product</h3>
                 <ul class="space-y-1">
+                    <!-- svelte-ignore a11y-missing-attribute -->
                     <li>
-                        <a rel="noopener noreferrer" href="#">Features</a>
+                        <a rel="noopener noreferrer">Features</a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#">Integrations</a>
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <a rel="noopener noreferrer">Integrations</a>
+                    </li>
+                    <!-- svelte-ignore a11y-missing-attribute -->
+                    <li>
+                        <a rel="noopener noreferrer">Pricing</a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#">Pricing</a>
-                    </li>
-                    <li>
-                        <a rel="noopener noreferrer" href="#">FAQ</a>
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <a rel="noopener noreferrer">FAQ</a>
                     </li>
                 </ul>
             </div>
@@ -448,12 +443,12 @@
                 <h3 class="tracki uppercase dark:text-gray-50">Company</h3>
                 <ul class="space-y-1">
                     <li>
-                        <a rel="noopener noreferrer" href="#">Privacy</a>
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <a rel="noopener noreferrer">Privacy</a>
                     </li>
+                    <!-- svelte-ignore a11y-missing-attribute -->
                     <li>
-                        <a rel="noopener noreferrer" href="#"
-                            >Terms of Service</a
-                        >
+                        <a rel="noopener noreferrer">Terms of Service</a>
                     </li>
                 </ul>
             </div>
@@ -461,22 +456,25 @@
                 <h3 class="uppercase dark:text-gray-50">Developers</h3>
                 <ul class="space-y-1">
                     <li>
-                        <a rel="noopener noreferrer" href="#">Public API</a>
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <a rel="noopener noreferrer">Public API</a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#">Documentation</a>
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <a rel="noopener noreferrer">Documentation</a>
                     </li>
                     <li>
-                        <a rel="noopener noreferrer" href="#">Guides</a>
+                        <!-- svelte-ignore a11y-missing-attribute -->
+                        <a rel="noopener noreferrer">Guides</a>
                     </li>
                 </ul>
             </div>
             <div class="space-y-3">
                 <div class="uppercase dark:text-gray-50">Social media</div>
                 <div class="flex justify-start space-x-3">
+                    <!-- svelte-ignore a11y-missing-attribute -->
                     <a
                         rel="noopener noreferrer"
-                        href="#"
                         title="Facebook"
                         class="flex items-center p-1"
                     >
@@ -491,9 +489,9 @@
                             ></path>
                         </svg>
                     </a>
+                    <!-- svelte-ignore a11y-missing-attribute -->
                     <a
                         rel="noopener noreferrer"
-                        href="#"
                         title="Twitter"
                         class="flex items-center p-1"
                     >
@@ -507,9 +505,9 @@
                             ></path>
                         </svg>
                     </a>
+                    <!-- svelte-ignore a11y-missing-attribute -->
                     <a
                         rel="noopener noreferrer"
-                        href="#"
                         title="Instagram"
                         class="flex items-center p-1"
                     >
@@ -536,72 +534,6 @@
 <style>
     * {
         box-sizing: border-box;
-    }
-
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 100vw;
-        width: 100%;
-        margin: auto;
-        box-shadow: 0 0 4px 2px rgba(9, 9, 99, 0.4);
-    }
-    .header-container {
-        display: flex;
-        max-width: 1400px;
-        width: 100%;
-        align-items: center;
-        margin: auto;
-        justify-content: space-between;
-        padding: 1rem;
-    }
-    .header__logo--img {
-        height: 60px;
-        width: 80px;
-        border-radius: 20px;
-    }
-    .header__links {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        align-items: center;
-    }
-    a.header__logo--img {
-        font-size: 24px;
-        text-decoration: none;
-    }
-
-    .footer {
-        box-shadow: 0 0 4px 2px rgba(9, 9, 99, 0.4);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-        margin-top: 80px;
-    }
-    .row {
-        display: flex;
-        max-width: 1400px;
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .social-links a {
-        display: inline-block;
-        height: 40px;
-        width: 40px;
-        background-color: rgb(19, 79, 92);
-        text-align: center;
-        line-height: 40px;
-        border-radius: 50%;
-        color: #ffffff;
-        transition: background-color 0.3s ease;
-    }
-    .social-links a:hover {
-        background-color: #ffffff;
-        color: #242424;
     }
     .footer__logo--img svg {
         height: 80px;

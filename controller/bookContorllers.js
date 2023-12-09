@@ -2,6 +2,8 @@ const { query } = require('express')
 const Book = require('../models/bookModel')
 const APIFeatures = require('../utils/apiFeatures')
 const factoryHandler = require('./handlerFactory')
+const multer = require('multer')
+const sharp = require('sharp')
 
 exports.aliasTopBooks = (req, res, next) => {
     req.query.limit = '5'
@@ -85,6 +87,47 @@ exports.aliasTopBooks = (req, res, next) => {
 //         })
 //     }
 // }
+
+const multerStorage = multer.memoryStorage()
+
+const multerFilter = (req, file, cb) => {
+    if (file.mimetype.startsWith('image')) {
+        cb(null, true)
+    } else {
+        const error = new Error(
+            'Invalid file type. Only image files are allowed.'
+        )
+        error.statusCode = 400
+        error.data = {
+            message: 'Invalid file type. Only image files are allowed.'
+        }
+        cb(error, false)
+    }
+}
+
+const upload = multer({
+    storage: multerStorage,
+    fileFilter: multerFilter
+})
+
+exports.uploadBookImage = upload.fields(
+   [ {name: 'coverImage', maxCount: 1 }]
+)
+
+exports.resizeImage = async (req, res, next) => {
+    if (!req.files.coverImage) return next()
+
+    console.log(req.files);
+    req.body.coverImage = `book-${req.params.id}-${Date.now()}-cover.jpeg`
+
+    await sharp(req.files.coverImage[0].buffer)
+        .resize(1000, 1333)
+        .toFormat('jpeg')
+        .jpeg({ quality: 90 })
+        .toFile(`client/static/books/${req.body.coverImage}`)
+
+    next()
+}
 
 exports.getAllBooks = factoryHandler.getAll(Book)
 exports.getBook = factoryHandler.getOne(Book, { path: 'reviews' })

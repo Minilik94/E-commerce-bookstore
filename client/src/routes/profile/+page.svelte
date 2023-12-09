@@ -1,11 +1,13 @@
 <script>
     import Spinner from '$lib/Spinner.svelte'
+    import { getContext } from 'svelte'
 
     // @ts-ignore
     export let data
-    let selectedImage = '/default-Img.jpg'
-const {user} = data
-     console.log(user, 'profile');
+    let selectedImage = '/default.jpg'
+    const { user } = data
+getContext('user').user
+    console.log(user, 'profile')
     let selectedSection = 'settings'
     // @ts-ignore
     const changeView = (/** @type {string} */ section) => {
@@ -94,7 +96,7 @@ const {user} = data
                                 type="text"
                                 name="name"
                                 id="name"
-                                value="{user.user.data.user.name}"
+                                value={user.user.name}
                             />
                             <label for="email">Email</label>
                             <input
@@ -102,25 +104,26 @@ const {user} = data
                                 name="email"
                                 id="email"
                                 placeholder="laura@example.com"
-                                value="{user.user.data.user.email}"
+                                value={user.user.email}
                             />
                             <br />
                             <div class="profile__img--cover btn h-fit">
                                 <label for="profile" class="relative">
-                                    {#if user.user.data.user.photo}
-                                    <img
-                                        src="users/{user.user.data.user.photo}"
-                                        class="profile-img relative"
-                                        alt=""
-                                        id="previewImage"
-                                    />
-                                    {:else }
-                                    <img
-                                        src={selectedImage}
-                                        class="profile-img relative"
-                                        alt=""
-                                        id="previewImage"
-                                    />
+                                    {#if user.user.photo}
+                                        <img
+                                            src="users/{user.user
+                                                .photo}"
+                                            class="profile-img relative"
+                                            alt=""
+                                            id="previewImage"
+                                        />
+                                    {:else}
+                                        <img
+                                            src={selectedImage}
+                                            class="profile-img relative"
+                                            alt=""
+                                            id="previewImage"
+                                        />
                                     {/if}
                                 </label>
                                 <input
@@ -137,7 +140,7 @@ const {user} = data
                         </form>
                     </div>
                     <div>
-                        <hr>
+                        <hr />
                     </div>
                     <div class="form__item--second">
                         <h3 class="right__container--title">Password change</h3>
@@ -171,9 +174,10 @@ const {user} = data
         </div>
     </section>
 {:else}
-    <div class="alert alert-error max-w-md mx-auto animate-pulse">Access Denied
+    <div class="alert alert-error max-w-md mx-auto animate-pulse">
+        Access Denied
     </div>
-    <br><a href="/" class="btn btn-link mx-auto w-full">Go Back to home</a>
+    <br /><a href="/" class="btn btn-link mx-auto w-full">Go Back to home</a>
 {/if}
 
 <style>

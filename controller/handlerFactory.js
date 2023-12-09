@@ -91,8 +91,9 @@ exports.getOne = (Model, popOptions) => async (req, res) => {
 exports.getAll = (Model) => async (req, res) => {
     try {
         let filter = {}
-        if (req.params.tourId) filter = { tour: req.params.tourId }
-        const features = new APIFeatures(Model.find(), req.query)
+        console.log(req.params.bookId, 'bookie');
+        if (req.params.bookId) filter = { book: req.params.bookId }
+        const features = new APIFeatures(Model.find(filter), req.query)
             .filter()
             .sort()
             .limitFields()

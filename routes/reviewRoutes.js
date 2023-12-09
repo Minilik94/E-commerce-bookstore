@@ -18,7 +18,7 @@ router
     .get(
         authController.protect,
         authController.restrictTo('user'),
-        reviewController.updateReview
+        reviewController.getReview
     )
     .patch(
         authController.protect,

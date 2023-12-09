@@ -5,13 +5,9 @@
 
     export let form
 
-
+export let data
     console.log(form, 'romrle')
-    if (form) {
-        if (form.error) {
-            console.log(form.error)
-        }
-    }
+    console.log(data, 'daaromrle')
 
     
     const { user, error } = form ?? {}
@@ -50,7 +46,7 @@
     {:else if error}<div
             class="alert alert-error py-10 rounded-none mx-auto text-center block"
         >
-            {error.data.message}
+            {error.message}
         </div>{/if}
 </div>
 
@@ -85,3 +81,4 @@
         <a href="/signup" class="link link-hover link-secondary">Register</a>
     </p>
 </form>
+
