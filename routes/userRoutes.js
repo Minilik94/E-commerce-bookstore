@@ -34,6 +34,7 @@ router
     .route('/')
     .get(userControllers.getAllUsers)
     .post(userControllers.createUser)
+router.route('/bysession').get(userControllers.getByToken)
 router
     .route('/:id')
     .get(userControllers.getUser)

@@ -3,7 +3,6 @@
 
     export let data
     const { book, reviewData } = data
-
     console.log(data, 'book detail')
     let showdata = true
     // setTimeout(() => {
@@ -319,8 +318,8 @@
                 </div>
             </div>
             <!-- </div> -->
-        {/each}
-    </div>
+            {/each}
+        </div>
 {/if}
 
 <style>

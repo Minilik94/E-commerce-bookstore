@@ -1,70 +1,23 @@
 <script>
     import { goto } from '$app/navigation'
     import { page } from '$app/stores'
+    import Hero from '$lib/components/Hero.svelte'
 
     export let data
-
-    const { books, discountedBooks } = data
 </script>
 
-<div class="header-hero w-full font-Mulish">
-    <div class="header__hero--start">
-        <p class="header-hero__para">
-            Welcome to ReBook - Your One-Stop Shop for Reading
-        </p>
-        <p>
-            Whether you’re looking for bestsellers, classic literature, or niche
-            titles, our bookstore has it all. With competitive prices and fast
-            delivery, we make it easy to indulge in your love for reading.
-        </p>
-        <button
-            class="btn btn-primary"
-            on:click={() => {
-                goto('/books')
-            }}>Browse books</button
-        >
-        <img src="/stunning_book.jpg" alt="" />
-    </div>
-</div>
-<div class="header__hero--second font-Mulish">
-    <h2 class="header__title">Why Choose <span>ReBook</span></h2>
-    <div class="header__hero--container">
-        <div class="header__card">
-            <i class="fas fa-bolt-lightning" />
-            <div class="header__card--sub">
-                <h4 class="header__h4">Easy and Quick</h4>
-                <p class="header__para">
-                    Get access to the book purchesed online instantly.
-                </p>
-            </div>
-        </div>
-        <div class="header__card">
-            <i class="fas fa-book-open-reader" />
-            <div class="header__card--sub">
-                <h4 class="header__h4">10,000+ Books</h4>
-                <p class="header__para">
-                    Rebook has books in all of your favorite categories.
-                </p>
-            </div>
-        </div>
-        <div class="header__card">
-            <i class="fas fa-money-check-dollar" />
-            <div class="header__card--sub">
-                <h4 class="header__h4">Affordable</h4>
-                <p class="header__para">
-                    Get your hands on popular books as low as $10.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
+<Hero />
 <div class="header__hero--third font-Mulish">
     <h2 class="header__title">Featured Books</h2>
-    <div class="header__third-container">
-        {#each data.books.data.doc as book}
-            <a href="/book/{book.slug}" class="header__card-third">
+    <div
+        class="header__third-container grid grid-cols-1 w-full md:grid-cols-2 mx-auto lg:grid-cols-4"
+    >
+        {#each data.books.data.doc.slice(0, 4) as book}
+            <a href="/book/{book.slug}" class="header__card-third mx-auto mt-4">
                 <div class="book-atoms">
-                    <div class="book__img-container">
+                    <div
+                        class="book__img-container h-[400px] lg:h-[269px] lg:w-[189px]"
+                    >
                         <img class="book-img" src="/{book.coverImage}" alt="" />
                     </div>
                     <div class="book-details">
@@ -152,17 +105,20 @@
                     </div>
                 </div>
             </a>
-            
         {/each}
     </div>
 </div>
 <section class="header__hero--third font-Mulish">
     <h2 class="header__title">Discounted Books</h2>
-    <div class="header__third-container">
+    <div
+        class="header__third-container grid grid-cols-1 w-full md:grid-cols-2 mx-auto lg:grid-cols-4"
+    >
         {#each data.discountedBooks.data.doc.slice(0, 4) as book}
-            <a href="/book/{book.slug}" class="header__card-third">
+            <a href="/book/{book.slug}" class="header__card-third mx-auto mt-4">
                 <div class="book-atoms">
-                    <div class="book__img-container">
+                    <div
+                        class="book__img-container h-[400px] lg:h-[269px] lg:w-[189px]"
+                    >
                         <img class="book-img" src="/{book.coverImage}" alt="" />
                     </div>
                     <div class="book-details">
@@ -285,7 +241,9 @@
     .book-img {
         object-fit: cover;
         height: inherit;
-        width: 180px;
+        /* width: 180px; */
+        /* max-width: 300px; */
+        width: 300px;
         border: 1px solid gray;
         /* border: none; */
         border-radius: 10px;
@@ -293,10 +251,10 @@
     .header__third-container {
         /* display: grid; */
         /* grid-template-columns: 1fr 1fr 1fr; */
-        display: flex;
+        /* display: flex; */
         color: #134f5c;
         /* align-items: center; */
-        justify-content: space-around;
+        /* justify-content: space-around; */
         /* margin: auto; */
     }
 
@@ -338,25 +296,7 @@
         color: #000;
         font-weight: 700;
     }
-    .header-hero {
-        width: 100%;
-        margin: auto;
-        max-width: 600px;
-        font-family: 'Mulish', sans-serif;
-        /* padding: 1rem; */
-        margin-top: 3rem;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .header__hero--start {
-        text-align: center;
-    }
-    .header-hero__para {
-        text-align: center;
-        color: #134f5c;
-        font-weight: 900;
-        font-size: 24px;
-    }
+
     p {
         margin: auto;
         color: #134f5c;
@@ -369,43 +309,8 @@
         border-radius: 30%;
         text-align: center;
     }
-    button {
-        border: none;
-        padding: 1rem 2rem;
-        background-color: #134f5c;
-        color: #fff;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 3px;
-        margin: 0 0 100px 50px;
-        cursor: pointer;
-    }
-    .header__hero--second {
-        margin-top: 50px;
-        max-width: 1000px;
-        color: #134f5c;
-        margin: auto;
-        margin-bottom: 50px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-    }
-    .header__hero--container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+
     .header__title {
         margin-bottom: 80px;
-    }
-    .fas {
-        border-radius: 3px;
-        padding: 1.5rem;
-        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.6);
-        color: #134f5c;
-        font-size: 18px;
-    }
-    .book__img-container {
-        height: 269px !important;
     }
 </style>

@@ -22,7 +22,7 @@ const createSendToken = (user, statusCode, res) => {
 
     if(process.env.NODE_ENVIRONMENT === 'production') cookieOptions.secure = true
     res.cookie('jwt', token, cookieOptions)
-
+    res.header('Access-Control-Allow-Origin', '*')
     res.status(statusCode).json({
         status: 'success',
         token, 

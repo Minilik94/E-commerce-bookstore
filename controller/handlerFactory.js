@@ -27,6 +27,7 @@ exports.updateOne = (Model) => async (req, res) => {
                 message: 'Document not found'
             })
         }
+        res.header('Access-Control-Allow-Origin', '*')
 
         res.status(200).json({
             status: 'success',

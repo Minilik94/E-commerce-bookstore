@@ -4,7 +4,6 @@
     export let data
     $: books = data.books.data.doc
     $: totalBooks = data.books.data.totalItems
-    $: console.log(totalBooks)
 </script>
 
 <div class="categories">categories</div>

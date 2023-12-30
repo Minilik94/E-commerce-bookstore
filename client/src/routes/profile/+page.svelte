@@ -1,19 +1,27 @@
 <script>
+    import { invalidateAll } from '$app/navigation'
     import Spinner from '$lib/Spinner.svelte'
-    import { getContext } from 'svelte'
-
+    import { tokens } from '$lib/token.js'
+    import { users } from '$lib/user.js'
+    import axios from 'axios'
     // @ts-ignore
     export let data
     let selectedImage = '/default.jpg'
     const { user } = data
-getContext('user').user
-    console.log(user, 'profile')
     let selectedSection = 'settings'
+
+    const headers = {
+        Authorization: `Bearer ${data.token}`,
+        'Content-Type': 'multipart/form-data'
+    }
+
+    const formData = new FormData()
+
     // @ts-ignore
     const changeView = (/** @type {string} */ section) => {
         selectedSection = section
-        console.log(selectedSection)
     }
+
     /**
      * @param {{ target: any; }} event
      */
@@ -29,13 +37,57 @@ getContext('user').user
                 selectedImage = e.target.result
             }
             reader.readAsDataURL(fileInput.files[0])
+            formData.append('photo', fileInput.files[0])
         } else {
             selectedImage = 'default-Img.jpg'
+            formData.delete('photo')
+        }
+    }
+
+    $: name = ''
+    $: email = ''
+    let showAlert = null
+
+    $: handleAccountChange = async () => {
+        formData.append('name', name)
+        formData.append('email', email)
+
+        try {
+            const response = await axios.patch(
+                'http://127.0.0.1:3000/api/users/updateMe',
+                formData,
+                { headers }
+            )
+
+            if (response.status === 200) {
+                users.set(response.data.user)
+                setTimeout(() => {
+                    // showAlert = false
+                    showAlert = true
+                    user.user.name = response.data.user.name
+                    user.user.email = response.data.user.email
+            }, 1400)
+            }
+
+            user.user.email = email
+        } catch (error) {
+            console.error('Error updating user:', error)
         }
     }
 </script>
 
-{#if user.user !== undefined}
+{#if showAlert}
+    <div class="max-w-lg mx-auto px-8">
+        <div
+            class="alert alert-success py-10 rounded-none mx-auto text-center block"
+        >
+            <p class=" mx-auto">Profile data updated successfully!
+        </p>
+        </div>
+    </div>
+{/if}
+
+{#if user && user.user !== undefined}
     <section class="profile__container">
         <div class="left__container">
             <div class="left__container--lists">
@@ -90,29 +142,32 @@ getContext('user').user
             <div class="right__items">
                 <div class="right__items--container">
                     <div class="form__item--first">
-                        <form enctype="multipart/form-data" method="POST">
+                        <form
+                            enctype="multipart/form-data"
+                            on:submit|preventDefault={handleAccountChange}
+                        >
                             <label for="name">Name</label>
                             <input
+                                bind:value={name}
                                 type="text"
                                 name="name"
                                 id="name"
-                                value={user.user.name}
+                                placeholder={user.user.name}
                             />
                             <label for="email">Email</label>
                             <input
                                 type="text"
                                 name="email"
                                 id="email"
-                                placeholder="laura@example.com"
-                                value={user.user.email}
+                                placeholder={user.user.email}
+                                bind:value={email}
                             />
                             <br />
                             <div class="profile__img--cover btn h-fit">
                                 <label for="profile" class="relative">
                                     {#if user.user.photo}
                                         <img
-                                            src="users/{user.user
-                                                .photo}"
+                                            src="users/{user.user.photo}"
                                             class="profile-img relative"
                                             alt=""
                                             id="previewImage"
@@ -177,7 +232,9 @@ getContext('user').user
     <div class="alert alert-error max-w-md mx-auto animate-pulse">
         Access Denied
     </div>
-    <br /><a href="/" class="btn btn-link mx-auto w-full">Go Back to home</a>
+    <br /><a href="/login" class="btn btn-link mx-auto w-full"
+        >Login to view this page</a
+    >
 {/if}
 
 <style>

@@ -1,6 +1,7 @@
 const multer = require('multer')
 const sharp = require('sharp')
 const User = require('../models/userModel')
+const jwt = require('jsonwebtoken')
 const factoryHandler = require('./handlerFactory')
 
 // const multerStorage = multer.diskStorage({
@@ -118,6 +119,39 @@ exports.getMe = async (req, res, next) => {
 }
 
 exports.getUser = factoryHandler.getOne(User, { path: 'reviews' })
+
+exports.getByToken = async (req, res, next) => {
+    try {
+        console.log(process.env.JWT_SECRET)
+        // Get token from the request headers or cookies
+        const token = req.headers.authorization.split(' ')[1]
+        console.log(token)
+        // Verify the token
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET)
+
+        // Use the decoded information to get the user
+        const user = await User.findById(decoded.id)
+
+        if (!user) {
+            return res.status(404).json({
+                status: 'fail',
+                message: 'User not found'
+            })
+        }
+
+        res.status(200).json({
+            status: 'success',
+            user
+        })
+    } catch (error) {
+        console.error('Error decoding token:', error)
+
+        return res.status(401).json({
+            status: 'fail',
+            message: 'Invalid token'
+        })
+    }
+}
 
 exports.createUser = async (req, res) => {
     res.status(500).json({
