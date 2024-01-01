@@ -1,17 +1,18 @@
 <script>
+    import { applyAction, enhance } from '$app/forms'
     import { invalidateAll } from '$app/navigation'
-    import Spinner from '$lib/Spinner.svelte'
-    import { tokens } from '$lib/token.js'
-    import { users } from '$lib/user.js'
+    import { page } from '$app/stores'
     import axios from 'axios'
     // @ts-ignore
     export let data
+
+    export let form
     let selectedImage = '/default.jpg'
-    const { user } = data
+    $: ({ user } = $page.data)
     let selectedSection = 'settings'
 
     const headers = {
-        Authorization: `Bearer ${data.token}`,
+        Authorization: `Bearer ${data.session}`,
         'Content-Type': 'multipart/form-data'
     }
 
@@ -49,27 +50,12 @@
     let showAlert = null
 
     $: handleAccountChange = async () => {
-        formData.append('name', name)
-        formData.append('email', email)
-
         try {
             const response = await axios.patch(
                 'http://127.0.0.1:3000/api/users/updateMe',
                 formData,
                 { headers }
             )
-
-            if (response.status === 200) {
-                users.set(response.data.user)
-                setTimeout(() => {
-                    // showAlert = false
-                    showAlert = true
-                    user.user.name = response.data.user.name
-                    user.user.email = response.data.user.email
-            }, 1400)
-            }
-
-            user.user.email = email
         } catch (error) {
             console.error('Error updating user:', error)
         }
@@ -81,13 +67,12 @@
         <div
             class="alert alert-success py-10 rounded-none mx-auto text-center block"
         >
-            <p class=" mx-auto">Profile data updated successfully!
-        </p>
+            <p class=" mx-auto">Profile data updated successfully!</p>
         </div>
     </div>
 {/if}
 
-{#if user && user.user !== undefined}
+{#if user && user !== undefined}
     <section class="profile__container">
         <div class="left__container">
             <div class="left__container--lists">
@@ -141,54 +126,51 @@
             <h3 class="right__container--title">Your account settings</h3>
             <div class="right__items">
                 <div class="right__items--container">
+                    {#if form?.correct}
+                        <div
+                            class="alert alert-success py-2 rounded-none mx-auto text-center block"
+                        >
+                            {form.message}
+                        </div>
+                    {/if}
+                    {#if form?.incorrect}
+                        <div
+                            class="alert alert-error py-2 rounded-none mx-auto text-center block"
+                        >
+                            {form.message}
+                        </div>
+                    {/if}
                     <div class="form__item--first">
                         <form
+                            action="?/changeUserDetails"
+                            method="POST"
+                            use:enhance={() => {
+                                return async ({ result }) => {
+                                    invalidateAll()
+                                    await applyAction(result)
+                                }
+                            }}
+                        >
+                            <!-- <form
                             enctype="multipart/form-data"
                             on:submit|preventDefault={handleAccountChange}
-                        >
+                        > -->
                             <label for="name">Name</label>
                             <input
-                                bind:value={name}
+                                value={user.name}
                                 type="text"
                                 name="name"
                                 id="name"
-                                placeholder={user.user.name}
                             />
                             <label for="email">Email</label>
                             <input
                                 type="text"
                                 name="email"
                                 id="email"
-                                placeholder={user.user.email}
-                                bind:value={email}
+                                value={user.email}
                             />
                             <br />
-                            <div class="profile__img--cover btn h-fit">
-                                <label for="profile" class="relative">
-                                    {#if user.user.photo}
-                                        <img
-                                            src="users/{user.user.photo}"
-                                            class="profile-img relative"
-                                            alt=""
-                                            id="previewImage"
-                                        />
-                                    {:else}
-                                        <img
-                                            src={selectedImage}
-                                            class="profile-img relative"
-                                            alt=""
-                                            id="previewImage"
-                                        />
-                                    {/if}
-                                </label>
-                                <input
-                                    type="file"
-                                    name="profile"
-                                    id="profile"
-                                    accept="image/*"
-                                    on:change={handleImageChange}
-                                />
-                            </div>
+
                             <button class="submit" type="submit"
                                 >Save changes</button
                             >
@@ -197,26 +179,85 @@
                     <div>
                         <hr />
                     </div>
+                    <h3 class="right__container--title">
+                        Change Profile Picture
+                    </h3>
+                    <form
+                        action="?/changePicture"
+                        method="post"
+                        enctype="multipart/form-data"
+                        use:enhance={() => {
+                            return async ({ result }) => {
+                                invalidateAll()
+                                await applyAction(result)
+                            }
+                        }}
+                    >
+                        <div class="profile__img--cover btn h-fit">
+                            <label for="photo" class="relative">
+                                {#if user.photo}
+                                    <img
+                                        src="users/{user.photo}"
+                                        class="profile-img relative"
+                                        alt=""
+                                        id="previewImage"
+                                    />
+                                {:else}
+                                    <img
+                                        src={selectedImage}
+                                        class="profile-img relative"
+                                        alt=""
+                                        id="previewImage"
+                                    />
+                                {/if}
+                            </label>
+                            <input
+                                type="file"
+                                name="photo"
+                                id="photo"
+                                accept="image/*"
+                                on:change={handleImageChange}
+                            />
+                        </div>
+
+                        <button class="submit" type="submit"
+                            >Save changes</button
+                        >
+                    </form>
+                    <div>
+                        <hr />
+                    </div>
                     <div class="form__item--second">
                         <h3 class="right__container--title">Password change</h3>
-                        <form>
-                            <label for="currentPass">Current password</label>
+                        <form
+                            action="?/changePassword"
+                            method="POST"
+                            use:enhance={() => {
+                                return async ({ result }) => {
+                                    invalidateAll()
+                                    await applyAction(result)
+                                }
+                            }}
+                        >
+                            <label for="passwordCurrent">Current password</label
+                            >
                             <input
                                 type="password"
-                                name="currentPass"
-                                id="currentPass"
+                                name="passwordCurrent"
+                                id="passwordCurrent"
                             />
                             <label for="newPass">New password</label>
                             <input
                                 type="password"
-                                name="newPass"
-                                id="newPass"
+                                name="password"
+                                id="password"
                             />
-                            <label for="confirmPass">Confirm password</label>
+                            <label for="passwordConfirm">Confirm password</label
+                            >
                             <input
                                 type="password"
-                                name="confirmPass"
-                                id="confirmPass"
+                                name="passwordConfirm"
+                                id="passwordConfirm"
                             />
 
                             <button type="submit" class="submit"

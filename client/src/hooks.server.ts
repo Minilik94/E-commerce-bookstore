@@ -17,7 +17,7 @@ export const handle: Handle = async ({ event, resolve }) => {
         )
 
         const user = await response.data
-        console.log(user, 'from hooks')
+        // console.log(user, 'from hooks')
         if (user) {
             event.locals.user = {
                 photo: user.user.photo,
