@@ -7,9 +7,12 @@ export const load = async ({ fetch }) => {
     const discountedBooks = await fetch(base_URL + '?sort=price').then((res) =>
         res.json()
     )
-
+    const Allbooks = await fetch(base_URL).then((res) =>
+    res.json()
+)
     return {
         books,
-        discountedBooks
+        discountedBooks,
+        Allbooks
     }
 }

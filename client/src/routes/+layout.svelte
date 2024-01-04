@@ -7,7 +7,6 @@
     import NavBar from '$lib/components/NavBar.svelte'
 
     $: ({ user } = $page.data)
-
 </script>
 
 <svelte:head>
@@ -24,9 +23,7 @@
 
 <AnimatedRoute>
     <NavBar {user} />
-
-    <slot />
-
+        <slot />
     <Footer />
 </AnimatedRoute>
 

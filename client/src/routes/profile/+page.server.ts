@@ -10,6 +10,10 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
             session
         }
     }
+
+    if(!locals.user){
+        throw redirect(303, '/login')
+    }
 }
 
 export const actions: Actions = {
@@ -80,7 +84,6 @@ export const actions: Actions = {
             })
         }
 
-        console.log(passwordCurrent, password, passwordConfirm, 'pass')
     },
     changePicture: async ({ request, cookies }) => {
         const formData = await request.formData()

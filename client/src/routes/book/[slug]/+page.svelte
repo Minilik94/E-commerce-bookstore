@@ -30,7 +30,21 @@
                     <h1
                         class="text-gray-900 text-3xl title-font font-medium mb-1"
                     >
-                        The Catcher in the Rye
+                        {book.title}
+
+                        <div class="btn h-fit border text-sx my-6 cursor-pointer  active:animate-none ">
+                            <div class="btn active:scale-0 animate-none cursor-pointer  text-xs">
+                               Category:  {book.category}
+                            </div>
+                            <div class="btn active:scale-0 animate-none cursor-pointer text-xs">Downloads: {book.downloads}</div>
+                            <div class="btn active:scale-0 animate-none cursor-pointer text-xs">
+                                Recommendations: {book.recommendations}
+                            </div>
+                            <div class="btn active:scale-0 animate-none cursor-pointer text-xs">
+                                Social Media Mentions: {book.socialMediaMentions}
+                            </div>
+                            <div class="btn active:scale-0 animate-none cursor-pointer text-xs">Publisher: {book.publisher}</div>
+                        </div>
                     </h1>
                     <div class="flex mb-4">
                         <span class="flex items-center">
@@ -192,11 +206,11 @@
     <p class="text-center">What did others say about {book.title}</p>
 
     <div
-        class="relative md:order-2  md:mt-20 max-h-96 overflow-auto grid grid-cols-1  md:grid-cols-2 gap-4 max-w-5xl mx-auto "
+        class="relative md:order-2 md:mt-20 max-h-96 overflow-auto grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto"
     >
         {#each reviewData.data.doc as review}
             <div
-                class="relative grid mx-auto max-w-lg w-2/3 md:w-11/12 grid-cols-1 border rounded-lg shadow-xl gap-6 md:max-w-screen-md  "
+                class="relative grid mx-auto max-w-lg w-2/3 md:w-11/12 grid-cols-1 border rounded-lg shadow-xl gap-6 md:max-w-screen-md"
             >
                 <div
                     class="relative flex flex-col overflow-hidden rounded-lg bg-white px-2"
@@ -318,12 +332,12 @@
                 </div>
             </div>
             <!-- </div> -->
-            {/each}
-        </div>
+        {/each}
+    </div>
 {/if}
 
 <style>
     .overflow-auto::-webkit-scrollbar {
-    display: none; /* Hide the scrollbar */
-  }
+        display: none; /* Hide the scrollbar */
+    }
 </style>
