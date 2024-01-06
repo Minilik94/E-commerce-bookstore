@@ -1,4 +1,8 @@
-<div class="card card-body flex align-center items-center w-5/6 relative mx-auto h-screen">
-    <h1 class=" text-white">Welcome to admins portal</h1>
+<script>
+    import AdminPortal from '$lib/components/AdminPortal.svelte'
+    export let data
+    //
+    $: alBooks = data.data.doc
+</script>
 
-</div>
+<AdminPortal books={alBooks} />

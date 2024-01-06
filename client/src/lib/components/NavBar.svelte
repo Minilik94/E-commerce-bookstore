@@ -228,14 +228,14 @@
                     </li>
 
                     {#if user && user.role === 'admin'}
-                    <li class="list-none">
-                        <a
-                            href="/admin"
-                            class="no-underline text-sm border-none btn h-6 min-h-0 px-6 btn-ghost"
-                        >
-                            Go to admin
-                        </a>
-                    </li>
+                        <li class="list-none">
+                            <a
+                                href="/admin"
+                                class="no-underline text-sm border-none btn h-6 min-h-0 px-6 btn-ghost"
+                            >
+                                Go to admin
+                            </a>
+                        </li>
                     {/if}
                 </ul>
             </div>

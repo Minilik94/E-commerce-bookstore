@@ -10,7 +10,7 @@
                 <a
                     href="/books/{idx + 1}"
                     class={currentPage === idx
-                        ? 'flex items-center justify-center px-3 h-8 leading-tight text-blue-50 bg-black  border border-gray-300 hover:bg-gray-100 hover:text-gray-700'
+                        ? 'flex items-center justify-center px-3 h-8 leading-tight text-blue-50 bg-black  border border-gray-300  hover:text-gray-700 cursor-not-allowed'
                         : 'flex items-center justify-center px-3 h-8 leading-tight text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'}
                     >{idx + 1}</a
                 >

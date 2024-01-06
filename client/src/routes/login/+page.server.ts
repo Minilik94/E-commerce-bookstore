@@ -7,6 +7,7 @@ export const load: PageServerLoad = async ({ locals }) => {
     if (locals.user) {
         throw redirect(302, '/')
     }
+   
 }
 
 export const actions: Actions = {
@@ -32,14 +33,6 @@ export const actions: Actions = {
                     password
                 }
             )
-            const status = response.data.status
-            // on success user = response.data.user
-            // on success status = response.data.status
-            // on success status = response.data.user
-
-            console.log(response.data.token, 'token')
-
-            // console.log(response.data.data.user);
 
             cookies.set('session', response.data.token, {
                 path: '/',

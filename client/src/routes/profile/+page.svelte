@@ -2,6 +2,9 @@
     import { applyAction, enhance } from '$app/forms'
     import { invalidateAll } from '$app/navigation'
     import { page } from '$app/stores'
+    import Billings from '$lib/components/Billings.svelte'
+    import Books from '$lib/components/MyBooks.svelte'
+    import Reviews from '$lib/components/Reviews.svelte'
     import axios from 'axios'
     // @ts-ignore
     export let data
@@ -60,6 +63,27 @@
             console.error('Error updating user:', error)
         }
     }
+
+    let isSideBarOpen = false
+
+    const toggleSideBar = () => {
+        const sidebar = document.getElementById('default-sidebar')
+        console.log(sidebar);
+        if(!isSideBarOpen){
+            // sidebar?.classList.add('sm:translate-x-50')
+            sidebar?.classList.remove('-translate-x-full')
+            isSideBarOpen = true
+            document.getElementById('btn')?.classList.remove('hidden')
+        }
+        else{
+            sidebar?.classList.add('-translate-x-full')
+            isSideBarOpen = false
+            document.getElementById('btn')?.classList.add('hidden')
+        }
+
+    }
+
+
 </script>
 
 {#if showAlert}
@@ -72,77 +96,150 @@
     </div>
 {/if}
 
-{#if user && user !== undefined}
-    <section class="profile__container">
-        <div class="left__container">
-            <div class="left__container--lists">
-                <div class="left__items">
-                    <button
-                        class="btn__input"
+<section class="max-w-4xl mx-auto relative min-h-96 h-screen">
+    <button
+        data-drawer-target="default-sidebar"
+        data-drawer-toggle="default-sidebar"
+        aria-controls="default-sidebar"
+        type="button"
+        on:click={toggleSideBar}
+        class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+    >
+        <span class="sr-only">Open sidebar</span>
+        <svg
+            class="w-6 h-6"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+            ></path>
+        </svg>
+    </button>
+
+    <aside
+    id="default-sidebar"
+    class="absolute top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+    aria-label="Sidebar"
+    >
+
+        <div
+            class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800"
+        >
+            <ul class="space-y-2 font-medium">
+                <button class="btn btn-error hidden absolute border-none -right-10 -top-0 py-0 " id="btn" on:click={toggleSideBar}>
+                    X
+                </button>
+                <li>
+                    <a
+                        href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         on:click={() => {
                             changeView('settings')
                         }}
                     >
-                        <i class="fas fa-gear" />
-                        Settings
-                    </button>
-                </div>
-                <div class="left__items">
-                    <button
-                        class="btn__input"
-                        on:click={() => {
-                            changeView('books')
-                        }}
-                    >
-                        <i class="fas fa-bag-shopping" />
-                        My Books
-                    </button>
-                </div>
-                <div class="left__items">
-                    <button
-                        class="btn__input"
+                        <span class="ms-3">Settings</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         on:click={() => {
                             changeView('reviews')
                         }}
                     >
-                        <i class="fa-regular fa-star" />
-                        My Reviews
-                    </button>
-                </div>
-                <div class="left__items">
-                    <button
-                        class="btn__input"
+                        <span class="ms-3">My Reviews</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                         on:click={() => {
                             changeView('billings')
                         }}
                     >
-                        <i class="fa-regular fa-credit-card" />
-                        Billings
-                    </button>
-                </div>
-            </div>
+                        <span class="ms-3">Billings</span>
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="#"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                        on:click={() => {
+                            changeView('books')
+                        }}
+                    >
+                        <span class="ms-3">Books</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="right__container">
-            <h3 class="right__container--title">Your account settings</h3>
-            <div class="right__items">
-                <div class="right__items--container">
-                    {#if form?.correct}
-                        <div
-                            class="alert alert-success py-2 rounded-none mx-auto text-center block"
-                        >
-                            {form.message}
+    </aside>
+
+    <div class="p-4 sm:ml-64 border">
+        {#if selectedSection === 'settings'}
+            <div class="">
+                <h3 class="card card-title">Your account settings</h3>
+                <div class="">
+                    <div class="">
+                        {#if form?.correct}
+                            <div
+                                class="alert alert-success py-2 rounded-none mx-auto text-center block"
+                            >
+                                {form.message}
+                            </div>
+                        {/if}
+                        {#if form?.incorrect}
+                            <div
+                                class="alert alert-error py-2 rounded-none mx-auto text-center block"
+                            >
+                                {form.message}
+                            </div>
+                        {/if}
+                        <div class="">
+                            <form
+                                action="?/changeUserDetails"
+                                method="POST"
+                                use:enhance={() => {
+                                    return async ({ result }) => {
+                                        invalidateAll()
+                                        await applyAction(result)
+                                    }
+                                }}
+                            >
+                                <label for="name">Name</label>
+                                <input
+                                    value={user.name}
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                />
+                                <label for="email">Email</label>
+                                <input
+                                    type="text"
+                                    name="email"
+                                    id="email"
+                                    value={user.email}
+                                />
+                                <br />
+
+                                <button class="submit" type="submit"
+                                    >Save changes</button
+                                >
+                            </form>
                         </div>
-                    {/if}
-                    {#if form?.incorrect}
-                        <div
-                            class="alert alert-error py-2 rounded-none mx-auto text-center block"
-                        >
-                            {form.message}
+                        <div>
+                            <hr />
                         </div>
-                    {/if}
-                    <div class="form__item--first">
+                        <h3 class="card card-title">Change Profile Picture</h3>
                         <form
-                            action="?/changeUserDetails"
+                            action="?/changePicture"
                             method="POST"
                             use:enhance={() => {
                                 return async ({ result }) => {
@@ -151,132 +248,92 @@
                                 }
                             }}
                         >
-                            <!-- <form
-                            enctype="multipart/form-data"
-                            on:submit|preventDefault={handleAccountChange}
-                        > -->
-                            <label for="name">Name</label>
-                            <input
-                                value={user.name}
-                                type="text"
-                                name="name"
-                                id="name"
-                            />
-                            <label for="email">Email</label>
-                            <input
-                                type="text"
-                                name="email"
-                                id="email"
-                                value={user.email}
-                            />
-                            <br />
+                            <div class="profile__img--cover btn h-fit">
+                                <label for="photo" class="relative">
+                                    {#if user.photo}
+                                        <img
+                                            src="users/{user.photo}"
+                                            class="profile-img relative"
+                                            alt=""
+                                            id="previewImage"
+                                        />
+                                    {:else}
+                                        <img
+                                            src={selectedImage}
+                                            class="profile-img relative"
+                                            alt=""
+                                            id="previewImage"
+                                        />
+                                    {/if}
+                                </label>
+                                <input
+                                    type="file"
+                                    name="photo"
+                                    id="photo"
+                                    accept="image/*"
+                                    on:change={handleImageChange}
+                                />
+                            </div>
 
                             <button class="submit" type="submit"
                                 >Save changes</button
                             >
                         </form>
-                    </div>
-                    <div>
-                        <hr />
-                    </div>
-                    <h3 class="right__container--title">
-                        Change Profile Picture
-                    </h3>
-                    <form
-                        action="?/changePicture"
-                        method="post"
-                        enctype="multipart/form-data"
-                        use:enhance={() => {
-                            return async ({ result }) => {
-                                invalidateAll()
-                                await applyAction(result)
-                            }
-                        }}
-                    >
-                        <div class="profile__img--cover btn h-fit">
-                            <label for="photo" class="relative">
-                                {#if user.photo}
-                                    <img
-                                        src="users/{user.photo}"
-                                        class="profile-img relative"
-                                        alt=""
-                                        id="previewImage"
-                                    />
-                                {:else}
-                                    <img
-                                        src={selectedImage}
-                                        class="profile-img relative"
-                                        alt=""
-                                        id="previewImage"
-                                    />
-                                {/if}
-                            </label>
-                            <input
-                                type="file"
-                                name="photo"
-                                id="photo"
-                                accept="image/*"
-                                on:change={handleImageChange}
-                            />
+                        <div>
+                            <hr />
                         </div>
+                        <div class="">
+                            <h3 class="card card-title pt-2">Password change</h3>
+                            <form
+                                action="?/changePassword"
+                                method="POST"
+                                use:enhance={() => {
+                                    return async ({ result }) => {
+                                        invalidateAll()
+                                        await applyAction(result)
+                                    }
+                                }}
+                            >
+                                <label for="passwordCurrent"
+                                    >Current password</label
+                                >
+                                <input
+                                    type="password"
+                                    name="passwordCurrent"
+                                    id="passwordCurrent"
+                                />
+                                <label for="newPass">New password</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                />
+                                <label for="passwordConfirm"
+                                    >Confirm password</label
+                                >
+                                <input
+                                    type="password"
+                                    name="passwordConfirm"
+                                    id="passwordConfirm"
+                                />
 
-                        <button class="submit" type="submit"
-                            >Save changes</button
-                        >
-                    </form>
-                    <div>
-                        <hr />
-                    </div>
-                    <div class="form__item--second">
-                        <h3 class="right__container--title">Password change</h3>
-                        <form
-                            action="?/changePassword"
-                            method="POST"
-                            use:enhance={() => {
-                                return async ({ result }) => {
-                                    invalidateAll()
-                                    await applyAction(result)
-                                }
-                            }}
-                        >
-                            <label for="passwordCurrent">Current password</label
-                            >
-                            <input
-                                type="password"
-                                name="passwordCurrent"
-                                id="passwordCurrent"
-                            />
-                            <label for="newPass">New password</label>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                            />
-                            <label for="passwordConfirm">Confirm password</label
-                            >
-                            <input
-                                type="password"
-                                name="passwordConfirm"
-                                id="passwordConfirm"
-                            />
-
-                            <button type="submit" class="submit"
-                                >Save Password</button
-                            >
-                        </form>
+                                <button type="submit" class="submit"
+                                    >Save Password</button
+                                >
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-{:else}
-    <div class="alert alert-error max-w-md mx-auto animate-pulse">
-        Access Denied
+        {:else if selectedSection === 'books'}
+            <Books />
+        {:else if selectedSection === 'reviews'}
+            <Reviews />
+        {:else if selectedSection === 'billings'}
+            <Billings />
+        {/if}
     </div>
-    <br /><a href="/login" class="btn btn-link mx-auto w-full"
-        >Login to view this page</a
-    >
-{/if}
+</section>
 
 <style>
     .profile__container {

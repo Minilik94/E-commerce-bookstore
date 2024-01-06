@@ -16,11 +16,12 @@
     $: discountBooks = discountedBooks.data.doc
 </script>
 
-{#if user && user.role !== 'admin'}
+<!-- {#if !user || user.role !== 'admin'} -->
     <Hero />
     <BookItem books={feturedBooks} />
     <DiscountedBooks books={discountBooks} />
-{/if}
-{#if user && user.role === 'admin'}
+
+<!-- {/if} -->
+<!-- {#if user && user.role === 'admin'}
     <AdminPortal books={alBooks} />
-{/if}
+{/if} -->
