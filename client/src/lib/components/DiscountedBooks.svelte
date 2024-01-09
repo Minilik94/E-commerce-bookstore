@@ -15,7 +15,7 @@
                     <div
                         class="book__img-container h-[400px] lg:h-[269px] lg:w-[189px]"
                     >
-                        <img class="book-img" src="/{book.coverImage}" alt="" />
+                        <img class="book-img" src="books/{book.coverImage}" alt="" />
                     </div>
                     <div class="book-details">
                         {#if book.title.trim().length > 14}

@@ -1,20 +1,20 @@
 <script lang="ts">
     import { fade } from 'svelte/transition'
-    import type { Book } from './type'
+    import type { Books } from './type'
 
-    export let book: Book[]
+    export let book: Books
 
 </script>
 
 <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-8">
     {#each book as book}
         <div
-            class="w-80 max-w-sm bg-gray-50 text-black border border-gray-200 rounded-lg shadow-md hover:scale-105 transition-all duration-100" in:fade>
+            class="w-80 max-w-sm bg-gray-50 text-black border border-gray-200 rounded-lg shadow-md hover:scale-105 hover:shadow-green-300 hover:drop-shadow-lg transition-all duration-100" in:fade>
             <a href="/book/{book.slug}">
                 <!-- svelte-ignore a11y-img-redundant-alt -->
                 <img
                     class="rounded-t-lg h-96 w-80"
-                    src="/{book.coverImage}"
+                    src="/books/{book.coverImage}"
                     alt="book image"
                 />
             </a>

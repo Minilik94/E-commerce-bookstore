@@ -25,28 +25,28 @@ const bookSchema = new mongoose.Schema(
 
         category: {
             type: String,
-            enum: [
-                'Fiction',
-                'History',
-                'Business',
-                'Science',
-                'Romance',
-                'Fantasy',
-                'Science Fiction',
-                'Mystery',
-                'Mystery/Thriller',
-                'Self-Development',
-                'Programming',
-                'Thriller',
-                'Economics',
-                'Horror',
-                'Non-Fiction',
-                'Biography',
-                'Autobiography',
-                'Crime',
-                'Children',
-                'Historical Fiction'
-            ],
+            // enum: [
+            //     'Fiction',
+            //     'History',
+            //     'Business',
+            //     'Science',
+            //     'Romance',
+            //     'Fantasy',
+            //     'Science Fiction',
+            //     'Mystery',
+            //     'Mystery/Thriller',
+            //     'Self-Development',
+            //     'Programming',
+            //     'Thriller',
+            //     'Economics',
+            //     'Horror',
+            //     'Non-Fiction',
+            //     'Biography',
+            //     'Autobiography',
+            //     'Crime',
+            //     'Children',
+            //     'Historical Fiction'
+            // ],
             required: [true, 'A Book Should Have a Category ']
         },
 
@@ -58,6 +58,7 @@ const bookSchema = new mongoose.Schema(
         publishedDate: {
             type: Date,
             required: [true, 'A Book Should Have a published Date']
+        
         },
 
         publisher: {
@@ -71,7 +72,8 @@ const bookSchema = new mongoose.Schema(
         },
 
         coverImage: {
-            type: String
+            type: String,
+            default: 'default.jpg'
         },
 
         ratingAverage: {

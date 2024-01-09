@@ -115,18 +115,20 @@ exports.uploadBookImage = upload.fields(
 )
 
 exports.resizeImage = async (req, res, next) => {
-    if (!req.files.coverImage) return next()
+    if (!req.files || !req.files.coverImage) {
+        return next();
+    } else {
+        console.log(req.files);
+        req.body.coverImage = `book-${req.params.id}-${Date.now()}-cover.jpeg`;
 
-    console.log(req.files);
-    req.body.coverImage = `book-${req.params.id}-${Date.now()}-cover.jpeg`
+        await sharp(req.files.coverImage[0].buffer)
+            .resize(1000, 1333)
+            .toFormat('jpeg')
+            .jpeg({ quality: 90 })
+            .toFile(`client/static/books/${req.body.coverImage}`);
 
-    await sharp(req.files.coverImage[0].buffer)
-        .resize(1000, 1333)
-        .toFormat('jpeg')
-        .jpeg({ quality: 90 })
-        .toFile(`client/static/books/${req.body.coverImage}`)
-
-    next()
+        next();
+    }
 }
 
 exports.getAllBooks = factoryHandler.getAll(Book)

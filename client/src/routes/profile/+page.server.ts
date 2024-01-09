@@ -21,7 +21,6 @@ export const actions: Actions = {
         let name, email
 
         const formData = await request.formData()
-
         name = formData.get('name')
         email = formData.get('email')
 
@@ -87,6 +86,9 @@ export const actions: Actions = {
     },
     changePicture: async ({ request, cookies }) => {
         const formData = await request.formData()
+
+        console.log(formData);
+
 
         const session = cookies.get('session')
         const headers = {

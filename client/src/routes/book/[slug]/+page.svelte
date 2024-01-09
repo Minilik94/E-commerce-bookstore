@@ -19,7 +19,7 @@
                 <img
                     alt="ecommerce"
                     class="lg:w-2/6 w-1/ mx-auto object-cover object-center rounded border border-gray-200"
-                    src="/{book.coverImage}"
+                    src="/books/{book.coverImage}"
                 />
                 <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     <h2
@@ -203,7 +203,7 @@
             </div>
         </div>
     </section>
-    <p class="text-center">What did others say about {book.title}</p>
+    <p class="text-center my-10">What did others say about {book.title}</p>
 
     <div
         class="relative md:order-2 md:mt-20 max-h-96 overflow-auto grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto"

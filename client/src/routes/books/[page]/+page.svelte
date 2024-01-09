@@ -6,7 +6,6 @@
 
     export let data
     $: ({ book } = data)
-    $: ({ books } = book)
     let pageSize = 9
 
     $: totalItems = data.book.total

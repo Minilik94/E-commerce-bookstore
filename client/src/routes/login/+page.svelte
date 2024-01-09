@@ -8,45 +8,10 @@
 
     export let form: ActionData
 
-    // export let data
 
-    //     const { user, error } = form ?? {}
-
-    //     users.set(user)
-    //     let showAlert = false
-    //     let redirectTo = null
-
-    //     $: {
-    //         if (user) {
-    //             showAlert = true
-
-    //             setTimeout(() => {
-    //                 // showAlert = false
-    //                 redirectTo = '/'
-    //             }, 1000)
-    //         }
-    //     }
-
-    //     $: {
-    //         if (redirectTo) {
-    //             location.href = redirectTo
-    //         }
-    //     }
 </script>
 
-<!-- <div class="max-w-sm mx-auto px-8">
-    {#if showAlert}
-        <div
-            class="alert alert-success py-10 rounded-none mx-auto text-center block"
-        >
-            <p class="border mx-auto">Login successful!</p>
-        </div>
-    {:else if error}<div
-            class="alert alert-error py-10 rounded-none mx-auto text-center block"
-        >
-            {error.message}
-        </div>{/if}
-</div> -->
+
 
 <form
     class="card-body shadow-lg max-w-lg m-auto mt-16 gap-y-8 font-Mulish"
@@ -59,7 +24,7 @@
         }
     }}
 >
-    {#if form?.invalid}
+    {#if form?.invalid }
         <div
             class="alert alert-error py-10 rounded-none mx-auto text-center block"
         >
@@ -74,6 +39,7 @@
         </div>
     {/if}
     {#if form?.valid}
+
         <div
             class="alert alert-success py-10 rounded-none mx-auto text-center block"
         >
