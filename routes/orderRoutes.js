@@ -6,8 +6,10 @@ const router = express.Router()
 
 router.get(
     '/checkout-session/:bookId',
+
     authController.protect,
-    orderController.getCheckoutSession
+    orderController.getCheckoutSession,
+    orderController.createOrderCheckout
 )
 
 module.exports = router

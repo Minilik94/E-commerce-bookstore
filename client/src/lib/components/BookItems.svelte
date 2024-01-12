@@ -13,7 +13,7 @@
             <a href="/book/{book.slug}">
                 <!-- svelte-ignore a11y-img-redundant-alt -->
                 <img
-                    class="rounded-t-lg h-96 w-80"
+                    class="rounded-t-lg h-96 w-80 "
                     src="/books/{book.coverImage}"
                     alt="book image"
                 />

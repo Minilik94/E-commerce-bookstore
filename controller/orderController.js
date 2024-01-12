@@ -1,4 +1,5 @@
 const Book = require('../models/bookModel')
+const Order = require('../models/orderModel')
 const dotenv = require('dotenv')
 
 dotenv.config({ path: './config.env' })
@@ -20,7 +21,9 @@ exports.getCheckoutSession = async (req, res) => {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             mode: 'payment',
-            success_url: `${req.protocol}://${req.get('host')}/`,
+            success_url: `${req.protocol}://${req.get('host')}/?book=${
+                req.params.bookId
+            }&user=${req.user.id}&price=${book.price}`,
             cancel_url: `${req.protocol}://${req.get('host')}/`,
             customer_email: req.user.email,
             client_reference_id: req.params.bookId,
@@ -48,6 +51,22 @@ exports.getCheckoutSession = async (req, res) => {
         })
     } catch (error) {
         // console.log(error);
+        res.status(404).json({
+            status: 'fail',
+            message: error.message
+        })
+    }
+}
+
+exports.createOrderCheckout = async (req, res) => {
+    try {
+        // THIS IS ONLY TEMPORARY, because it's UNSECURE: everyone can make booking without paying
+        const { book, user, price } = req.query
+
+        if (!book && !user && !price) return next()
+        await Order.create({ book, user, price })
+        res.redirect(req.originalUrl.split('?')[0])
+    } catch (error) {
         res.status(404).json({
             status: 'fail',
             message: error.message

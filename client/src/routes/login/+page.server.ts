@@ -7,7 +7,6 @@ export const load: PageServerLoad = async ({ locals }) => {
     if (locals.user) {
         throw redirect(302, '/')
     }
-   
 }
 
 export const actions: Actions = {
@@ -41,8 +40,12 @@ export const actions: Actions = {
                 secure: process.env.NODE_ENV === 'production',
                 maxAge: 60 * 60 * 24 * 30
             })
-            
-            
+
+            return fail(400, {
+                valid: true,
+                message: response.data.message
+            })
+
         } catch (error) {
             console.error(error.response.data, 'error')
             return fail(400, {

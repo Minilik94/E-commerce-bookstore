@@ -1,17 +1,13 @@
 <script lang="ts">
     import { applyAction, enhance } from '$app/forms'
-    import { invalidateAll } from '$app/navigation'
+    import { goto, invalidateAll } from '$app/navigation'
     //     import { page } from '$app/stores'
     //     import { users } from '$lib/user.js'
     //     import { writable } from 'svelte/store'
     import type { ActionData } from './$types'
 
     export let form: ActionData
-
-
 </script>
-
-
 
 <form
     class="card-body shadow-lg max-w-lg m-auto mt-16 gap-y-8 font-Mulish"
@@ -19,12 +15,16 @@
     method="POST"
     use:enhance={() => {
         return async ({ result }) => {
-            invalidateAll()
-            await applyAction(result)
+            console.log('Enhance block executed');
+            invalidateAll();
+            await applyAction(result);
+            if (form?.valid) {
+                location.reload()
+            }
         }
     }}
 >
-    {#if form?.invalid }
+    {#if form?.invalid}
         <div
             class="alert alert-error py-10 rounded-none mx-auto text-center block"
         >
@@ -39,7 +39,6 @@
         </div>
     {/if}
     {#if form?.valid}
-
         <div
             class="alert alert-success py-10 rounded-none mx-auto text-center block"
         >
