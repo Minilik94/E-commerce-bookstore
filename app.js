@@ -14,32 +14,33 @@ const cors = require('cors')
 const app = express()
 
 // Set security HTTP headers with Helmet and configure CSP
-app.use(
-    helmet({
-        contentSecurityPolicy: {
-            directives: {
-                defaultSrc: ["'self'"],
-                scriptSrc: ["'self'", "'unsafe-inline'"],
-                styleSrc: [
-                    "'self'",
-                    "'unsafe-inline'",
-                    "https://fonts.googleapis.com",
-                    "https://cdnjs.cloudflare.com"
-                ],
-                styleSrcElem: [
-                    "'self'",
-                    "https://fonts.googleapis.com",
-                    "https://cdnjs.cloudflare.com"
-                ],
-                fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
-                imgSrc: ["'self'", "data:", "https://*"],  // Adjust as necessary for images
-                connectSrc: ["'self'", "https://*.stripe.com"],  // Needed for Stripe API calls
-                formAction: ["'self'", "https://*.stripe.com"],
-                frameAncestors: ["'self'"]
-            }
-        }
-    })
-);
+// app.use(
+//     helmet({
+//         contentSecurityPolicy: {
+//             directives: {
+//                 defaultSrc: ["'self'"],
+//                 scriptSrc: ["'self'", "'unsafe-inline'"],
+//                 styleSrc: [
+//                     "'self'",
+//                     "'unsafe-inline'", // To allow dynamic styles
+//                     "https://fonts.googleapis.com",
+//                     "https://cdnjs.cloudflare.com"
+//                 ],
+//                 styleSrcElem: [
+//                     "'self'",
+//                     "'unsafe-inline'", // Allows inline styles in <style> tags
+//                     "https://fonts.googleapis.com",
+//                     "https://cdnjs.cloudflare.com"
+//                 ],
+//                 fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
+//                 connectSrc: ["'self'", "https://*.stripe.com"],
+//                 formAction: ["'self'", "https://*.stripe.com"],
+//                 frameAncestors: ["'self'"]
+//             }
+//         }
+//     })
+// );
+
 
 // Configure CORS
 const corsOptions = {

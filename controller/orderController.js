@@ -79,9 +79,11 @@ exports.createOrderCheckout = async (req, res, next) => {
 
         const rest = await Order.create({ book, user, price });
         console.log(rest, 'order created successfully ')
-        res.redirect(req.originalUrl.split('?')[0]);
+        console.log(req.originalUrl.split('?')[0], '00001')
+        console.log(req, 'req usdfigohopjpk');
+        res.redirect(req.originalUrl);
     } catch (error) {
-        console.log('Error in createOrderCheckout', error);
+        // console.log('Error in createOrderCheckout', error);
         res.status(500).json({
             status: 'fail',
             message: error.message
