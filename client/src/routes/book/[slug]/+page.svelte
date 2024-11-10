@@ -215,7 +215,7 @@
     >
         {#each reviewData.data.doc as review}
             <div
-                class="relative grid mx-auto max-w-lg w-2/3 md:w-11/12 grid-cols-1 border rounded-lg shadow-xl gap-6 md:max-w-screen-md"
+                class="relative grid mx-auto max-w-lg w-full px-2 md:w-11/12 grid-cols-1 border rounded-lg shadow-xl gap-6 md:max-w-screen-md"
             >
                 <div
                     class="relative flex flex-col overflow-hidden rounded-lg bg-white px-2"
