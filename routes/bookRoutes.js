@@ -1,5 +1,6 @@
 const express = require('express')
 const bookControllers = require('../controller/bookContorllers')
+const orderController = require('../controller/orderController')
 const reviewRouter = require('./reviewRoutes')
 const authController = require('../controller/authController')
 
@@ -23,7 +24,7 @@ router
 
 router
     .route('/')
-    .get(bookControllers.getAllBooks)
+    .get(orderController.createOrderCheckout,bookControllers.getAllBooks, )
     .post(authController.protect, bookControllers.createBook)
 
 router

@@ -9,7 +9,8 @@ router.get(
 
     authController.protect,
     orderController.getCheckoutSession,
-    orderController.createOrderCheckout
 )
+
+router.get('/', orderController.createOrderCheckout)
 
 module.exports = router

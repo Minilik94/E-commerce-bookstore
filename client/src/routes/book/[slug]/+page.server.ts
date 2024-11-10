@@ -4,7 +4,7 @@ import { redirect } from '@sveltejs/kit'
 
 export const load = async ({ params }) => {
     const currentSlug = params.slug
-    const res = await fetch(`http://127.0.0.1:3000/api/books`)
+    const res = await fetch(`https://rebook-by-minilik.onrender.com/api/books`)
     const data = await res.json()
     let cb
     let book
@@ -17,7 +17,7 @@ export const load = async ({ params }) => {
         }
     })
     const resReview = await fetch(
-        `http://127.0.0.1:3000/api/books/${book.id}/reviews`
+        `https://rebook-by-minilik.onrender.com/api/books/${book.id}/reviews`
     )
     const reviewData = await resReview.json()
     return {
@@ -37,7 +37,7 @@ export const actions: Actions = {
         console.log(session);
 
         const currentSlug = params.slug
-        const res = await fetch(`http://127.0.0.1:3000/api/books`)
+        const res = await fetch(`https://rebook-by-minilik.onrender.com/api/books`)
         const data = await res.json()
         let cb
         let book
@@ -52,12 +52,13 @@ export const actions: Actions = {
 
         console.log(book);
         const response = await axios.get(
-            `http://127.0.0.1:3000/api/ordering/checkout-session/${book.id}`,
+            `https://rebook-by-minilik.onrender.com/api/ordering/checkout-session/${book.id}`,
             {
                 headers
             }
         )
         console.log(response.data.session.url, 'res');
+        console.log(response.data, 'STRIPE RESPONSE ')
 
         throw redirect(303, `${response.data.session.url}`)
 

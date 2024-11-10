@@ -1,6 +1,7 @@
-const base_URL = 'http://127.0.0.1:3000/api/books'
+const base_URL = 'https://rebook-by-minilik.onrender.com/api/books'
 
 export const load = async ({ fetch }) => {
+
     const books = await fetch(base_URL + '?ratingAverage[gte]=4.8').then(
         (res) => res.json()
     )
