@@ -19,14 +19,25 @@ app.use(
         contentSecurityPolicy: {
             directives: {
                 defaultSrc: ["'self'"],
-                scriptSrc: ["'self'"],
-                connectSrc: ["'self'", "https://*.stripe.com"],
-                imgSrc: ["'self'", "data:", "https://*.stripe.com"],
-                styleSrc: ["'self'", "'unsafe-inline'"],
+                scriptSrc: ["'self'", "'unsafe-inline'"],
+                styleSrc: [
+                    "'self'",
+                    "'unsafe-inline'",
+                    "https://fonts.googleapis.com",
+                    "https://cdnjs.cloudflare.com"
+                ],
+                styleSrcElem: [
+                    "'self'",
+                    "https://fonts.googleapis.com",
+                    "https://cdnjs.cloudflare.com"
+                ],
+                fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
+                imgSrc: ["'self'", "data:", "https://*"],  // Adjust as necessary for images
+                connectSrc: ["'self'", "https://*.stripe.com"],  // Needed for Stripe API calls
                 formAction: ["'self'", "https://*.stripe.com"],
                 frameAncestors: ["'self'"]
-            },
-        },
+            }
+        }
     })
 );
 
@@ -73,7 +84,7 @@ app.use(express.static(`${__dirname}/client/build`))
 
 // Import and use the handler for the client build
 import("././client/build/handler.js").then(({ handler }) => {
-  app.use(handler)
+    app.use(handler)
 });
 
 module.exports = app
