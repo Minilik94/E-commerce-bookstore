@@ -8,7 +8,7 @@ export const handle: Handle = async ({ event, resolve }) => {
     try {
         // Add proper Authorization header syntax
         const response = await axios.get(
-            'https://rebook-by-minilik.onrender.com/api/users/bysession',
+            'http://127.0.0.1:3000/api/users/bysession',
             {
                 headers: {
                     Authorization: `Bearer ${session}`

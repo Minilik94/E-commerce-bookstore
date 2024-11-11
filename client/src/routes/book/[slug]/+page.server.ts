@@ -2,9 +2,13 @@ import axios from 'axios'
 import type { Actions } from './$types'
 import { redirect } from '@sveltejs/kit'
 
-export const load = async ({ params }) => {
+export const load = async ({ params, locals }) => {
+    if (!locals.user) {
+        throw redirect(307, '/login')
+    }
+
     const currentSlug = params.slug
-    const res = await fetch(`https://rebook-by-minilik.onrender.com/api/books`)
+    const res = await fetch(`http://127.0.0.1:3000/api/books`)
     const data = await res.json()
     let cb
     let book
@@ -17,7 +21,7 @@ export const load = async ({ params }) => {
         }
     })
     const resReview = await fetch(
-        `https://rebook-by-minilik.onrender.com/api/books/${book.id}/reviews`
+        `http://127.0.0.1:3000/api/books/${book.id}/reviews`
     )
     const reviewData = await resReview.json()
     return {
@@ -34,10 +38,12 @@ export const actions: Actions = {
             Authorization: `Bearer ${session}`
         }
 
-        console.log(session);
+        console.log(session)
 
         const currentSlug = params.slug
-        const res = await fetch(`https://rebook-by-minilik.onrender.com/api/books`)
+        const res = await fetch(
+            `http://127.0.0.1:3000/api/books`
+        )
         const data = await res.json()
         let cb
         let book
@@ -50,17 +56,16 @@ export const actions: Actions = {
             }
         })
 
-        console.log(book);
+        console.log(book)
         const response = await axios.get(
-            `https://rebook-by-minilik.onrender.com/api/ordering/checkout-session/${book.id}`,
+            `http://127.0.0.1:3000/api/ordering/checkout-session/${book.id}`,
             {
                 headers
             }
         )
-        console.log(response.data.session.url, 'res');
+        console.log(response.data.session.url, 'res')
         console.log(response.data, 'STRIPE RESPONSE ')
 
         throw redirect(303, `${response.data.session.url}`)
-
     }
 }
