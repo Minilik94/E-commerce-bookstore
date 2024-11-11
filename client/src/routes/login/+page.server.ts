@@ -26,7 +26,7 @@ export const actions: Actions = {
         }
         try {
             const response = await axios.post(
-                'http://127.0.0.1:3000/api/users/login',
+                'https://rebook-by-minilik.onrender.com/api/users/login',
                 {
                     email,
                     password

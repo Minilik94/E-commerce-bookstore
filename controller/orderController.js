@@ -34,7 +34,7 @@ exports.getCheckoutSession = async (req, res, next) => {
                         product_data: {
                             name: `${book.title}`,
                             images: [
-                                `http://127.0.0.1:3000/books/${book.coverImage}`
+                                `https://rebook-by-minilik.onrender.com/books/${book.coverImage}`
                             ]
                         },
                         unit_amount: fixedPrice * 100

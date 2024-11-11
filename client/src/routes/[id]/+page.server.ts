@@ -8,7 +8,7 @@ export const load: PageServerLoad = async ({ params }) => {
 
         try {
             const response = await axios.get(
-                `http://127.0.0.1:3000/api/books/${id}`
+                `https://rebook-by-minilik.onrender.com/api/books/${id}`
             )
 
             return {
@@ -47,7 +47,7 @@ export const actions: Actions = {
 
         try {
             const newBook = await axios.patch(
-                `http://127.0.0.1:3000/api/books/${id}`,
+                `https://rebook-by-minilik.onrender.com/api/books/${id}`,
                 {
                     title,
                     author,
@@ -80,7 +80,7 @@ export const actions: Actions = {
         }
         try {
             const response = await axios.patch(
-                `http://127.0.0.1:3000/api/books/${id}`,
+                `https://rebook-by-minilik.onrender.com/api/books/${id}`,
                 formData,
                 { headers }
             )
