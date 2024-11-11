@@ -27,6 +27,13 @@ const orderSchema = new mongoose.Schema({
 
 })
 
+orderSchema.pre(/^find/, function(next) {
+    this.populate('user').populate({
+        path: 'book',
+        select: 'name'
+    })
+})
+
 const Order = mongoose.model('Order', orderSchema)
 
 module.exports = Order

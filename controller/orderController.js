@@ -22,7 +22,7 @@ exports.getCheckoutSession = async (req, res, next) => {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             mode: 'payment',
-            success_url: `${req.protocol}://${req.get('host')}?book=${req.params.bookId
+            success_url: `${req.protocol}://${req.get('host')}/?book=${req.params.bookId
                 }&user=${req.user.id}&price=${book.price}`,
             cancel_url: `${req.protocol}://${req.get('host')}/`,
             customer_email: req.user.email,
@@ -34,7 +34,7 @@ exports.getCheckoutSession = async (req, res, next) => {
                         product_data: {
                             name: `${book.title}`,
                             images: [
-                                `https://rebook-by-minilik.onrender.com/books/${book.coverImage}`
+                                `http://127.0.0.1:3000/books/${book.coverImage}`
                             ]
                         },
                         unit_amount: fixedPrice * 100
@@ -63,38 +63,70 @@ exports.createOrderCheckout = async (req, res, next) => {
         console.log('Inside createOrderCheckout');
         console.log('request query', req.query);
 
-        // THIS IS ONLY TEMPORARY, because it's UNSECURE: everyone can make booking without paying
+        // Check for necessary parameters
         const book = req.query.book;
         const user = req.query.user;
         const price = req.query.price;
-
-        console.log('creating order', book, user, price);
+        console.log('Creating order', book, user, price);
 
         if (!book || !user || !price) {
             console.log('Missing parameters');
-            return next()
+            return next(); // If parameters are missing, skip order creation
         }
 
 
+        // Create the order
+        const order = await Order.create({ book, user, price });
+        console.log(order, 'order created successfully');
 
-        const rest = await Order.create({ book, user, price });
-        console.log(rest, 'order created successfully ')
-        console.log(req.originalUrl.split('?')[0], '00001')
-        console.log(req, 'req usdfigohopjpk');
-        res.redirect(req.originalUrl);
+        // Send a JSON response instead of redirecting
+        res.status(200).json({
+            status: 'success',
+            message: 'Order created successfully',
+            order
+        });
+
     } catch (error) {
-        // console.log('Error in createOrderCheckout', error);
+        console.log('Error in createOrderCheckout', error);
         res.status(500).json({
             status: 'fail',
             message: error.message
         });
+        next()
     }
 };
 
 
 
-exports.createOrder = factory.createOne(Order)
-exports.getOrder = factory.getOne(Order)
-exports.getAllOrders = factory.getAll(Order)
-exports.updateOrder = factory.updateOne(Order)
+exports.getMyOrders = async (req, res, next) => {
+    try {
+        // 1) Find all orders for the logged-in user
+        const orders = await Order.find({ user: req.user.id });
+
+        if (!orders || orders.length === 0) {
+            return res.status(404).json({ message: 'No orders found for this user' });
+        }
+
+        // 2) Map over orders to get books
+        const bookIds = orders.map(order => order.book);
+        const books = await Book.find({ _id: { $in: bookIds } });
+
+        res.status(200).json({
+            status: 'success',
+            books
+        });
+    } catch (error) {
+        console.log('Error in getMyOrders:', error);
+        res.status(500).json({
+            status: 'fail',
+            message: 'An error occurred while retrieving orders'
+        });
+    }
+};
+
+
+// exports.createOrder = factory.createOne(Order)
+// exports.getOrder = factory.getOne(Order)
+// exports.getAllOrders = factory.getAll(Order)
+// exports.updateOrder = factory.updateOne(Order)
 // exports.deleteOrder = factory.deleteOne(Order)
