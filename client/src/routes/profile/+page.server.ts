@@ -4,14 +4,30 @@ import axios from 'axios'
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
     const session = cookies.get('session')
+
+    const headers = {
+        "Content-type": 'application/json',
+        Authorization: `Bearer ${session}`
+    }
+    const myBooks = await fetch(
+        `https://rebook-by-minilik.onrender.com/api/ordering/my-orders`,
+        {
+            headers
+        }
+    )
+
+    const dataBook = myBooks.json()
+
+
     if (locals.user) {
         return {
             user: locals.user,
-            session
+            session,
+            myBooks: dataBook
         }
     }
 
-    if(!locals.user){
+    if (!locals.user) {
         throw redirect(303, '/login')
     }
 }
@@ -82,13 +98,11 @@ export const actions: Actions = {
                 message: error.response.data.message
             })
         }
-
     },
     changePicture: async ({ request, cookies }) => {
         const formData = await request.formData()
 
-        console.log(formData);
-
+        console.log(formData)
 
         const session = cookies.get('session')
         const headers = {

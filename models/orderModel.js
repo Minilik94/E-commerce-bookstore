@@ -9,12 +9,12 @@ const orderSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.ObjectId,
-        ref: 'user',
+        ref: 'User',
         required: [true,'Orders must belong to a user']
     },
     price: {
         type: Number,
-        requried: [true, 'Orders must have a price']
+        required: [true, 'Orders must have a price']
     },
     createdAt: {
         type: Date,
@@ -30,8 +30,9 @@ const orderSchema = new mongoose.Schema({
 orderSchema.pre(/^find/, function(next) {
     this.populate('user').populate({
         path: 'book',
-        select: 'name'
+        select: 'title'
     })
+    next()
 })
 
 const Order = mongoose.model('Order', orderSchema)

@@ -9,10 +9,18 @@
     // @ts-ignore
     export let data
 
+    console.log(data)
+
     export let form
     let selectedImage = '/default.jpg'
     $: ({ user } = $page.data)
     let selectedSection = 'settings'
+
+    $: {
+        if (selectedSection === 'books') {
+            location.assign('/mybooks')
+        }
+    }
 
     const headers = {
         Authorization: `Bearer ${data.session}`,
@@ -68,22 +76,18 @@
 
     const toggleSideBar = () => {
         const sidebar = document.getElementById('default-sidebar')
-        console.log(sidebar);
-        if(!isSideBarOpen){
+        console.log(sidebar)
+        if (!isSideBarOpen) {
             // sidebar?.classList.add('sm:translate-x-50')
             sidebar?.classList.remove('-translate-x-full')
             isSideBarOpen = true
             document.getElementById('btn')?.classList.remove('hidden')
-        }
-        else{
+        } else {
             sidebar?.classList.add('-translate-x-full')
             isSideBarOpen = false
             document.getElementById('btn')?.classList.add('hidden')
         }
-
     }
-
-
 </script>
 
 {#if showAlert}
@@ -122,16 +126,19 @@
     </button>
 
     <aside
-    id="default-sidebar"
-    class="absolute top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-    aria-label="Sidebar"
+        id="default-sidebar"
+        class="absolute top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+        aria-label="Sidebar"
     >
-
         <div
             class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800"
         >
             <ul class="space-y-2 font-medium">
-                <button class="btn btn-error hidden absolute border-none -right-10 -top-0 py-0 " id="btn" on:click={toggleSideBar}>
+                <button
+                    class="btn btn-error hidden absolute border-none -right-10 -top-0 py-0"
+                    id="btn"
+                    on:click={toggleSideBar}
+                >
                     X
                 </button>
                 <li>
@@ -283,7 +290,9 @@
                             <hr />
                         </div>
                         <div class="">
-                            <h3 class="card card-title pt-2">Password change</h3>
+                            <h3 class="card card-title pt-2">
+                                Password change
+                            </h3>
                             <form
                                 action="?/changePassword"
                                 method="POST"
@@ -326,7 +335,7 @@
                 </div>
             </div>
         {:else if selectedSection === 'books'}
-            <Books />
+            <Books book={data.myBooks.books} />
         {:else if selectedSection === 'reviews'}
             <Reviews />
         {:else if selectedSection === 'billings'}

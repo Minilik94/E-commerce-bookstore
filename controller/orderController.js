@@ -2,6 +2,7 @@ const Book = require('../models/bookModel')
 const Order = require('../models/orderModel')
 const dotenv = require('dotenv')
 const factory = require('./handlerFactory')
+const { Orders } = require('stripe/lib/resources')
 
 dotenv.config({ path: './config.env' })
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
@@ -80,11 +81,7 @@ exports.createOrderCheckout = async (req, res, next) => {
         console.log(order, 'order created successfully');
 
         // Send a JSON response instead of redirecting
-        res.status(200).json({
-            status: 'success',
-            message: 'Order created successfully',
-            order
-        });
+        res.redirect(req.originalUrl.split('?')[0]);
 
     } catch (error) {
         console.log('Error in createOrderCheckout', error);
@@ -95,6 +92,7 @@ exports.createOrderCheckout = async (req, res, next) => {
         next()
     }
 };
+
 
 
 
@@ -121,12 +119,13 @@ exports.getMyOrders = async (req, res, next) => {
             status: 'fail',
             message: 'An error occurred while retrieving orders'
         });
+        next()
     }
 };
 
 
-// exports.createOrder = factory.createOne(Order)
-// exports.getOrder = factory.getOne(Order)
-// exports.getAllOrders = factory.getAll(Order)
-// exports.updateOrder = factory.updateOne(Order)
-// exports.deleteOrder = factory.deleteOne(Order)
+exports.createOrder = factory.createOne(Order)
+exports.getOrder = factory.getOne(Order)
+exports.getAllOrders = factory.getAll(Order)
+exports.updateOrder = factory.updateOne(Order)
+exports.deleteOrder = factory.deleteOne(Order)
