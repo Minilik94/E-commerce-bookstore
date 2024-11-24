@@ -210,7 +210,7 @@
                     <div class="w-10 rounded-full">
                         <img
                             alt="Tailwind CSS Navbar component"
-                            src="/users/{user.photo}"
+                            src="https://rebook.s3.eu-north-1.amazonaws.com/users/{user.photo}"
                         />
                     </div>
                 </div>

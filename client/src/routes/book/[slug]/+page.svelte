@@ -19,7 +19,7 @@
                 <img
                     alt="ecommerce"
                     class="lg:w-2/6 w-1/ mx-auto object-cover object-center rounded border border-gray-200"
-                    src="/books/{book.coverImage}"
+                    src="https://rebook.s3.eu-north-1.amazonaws.com/books/{book.coverImage}"
                 />
                 <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                     <h2

@@ -3,6 +3,9 @@ const sharp = require('sharp')
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const factoryHandler = require('./handlerFactory')
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const dotenv = require("dotenv");
+
 
 // const multerStorage = multer.diskStorage({
 //     destination: (req, file, cb) => {
@@ -13,6 +16,18 @@ const factoryHandler = require('./handlerFactory')
 //         cb(null, `user-${req.user.id}-${Date.now()}.${ext}`)
 //     }
 // })
+
+dotenv.config({ path: "./config.env" });
+
+
+const s3 = new S3Client({
+    region: 'eu-north-1',
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY,
+        secretAccessKey: process.env.AWS_SECRET_KEY
+    }
+});
+
 
 const multerStorage = multer.memoryStorage()
 
@@ -41,15 +56,41 @@ exports.uploadUserPhoto = upload.single('photo')
 exports.resizeImage = async (req, res, next) => {
     if (!req.file) return next()
 
-    req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`
+    const file = req.file
 
-    await sharp(req.file.buffer)
+    console.log(file, 'from user photo')
+    const fileName = req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`
+
+    const buffer = await sharp(file.buffer)
         .resize(500, 500)
         .toFormat('jpeg')
         .jpeg({ quality: 90 })
-        .toFile(`client/static/users/${req.file.filename}`)
+        .toBuffer();
 
-    next()
+    // await sharp(req.file.buffer)
+    //     .resize(500, 500)
+    //     .toFormat('jpeg')
+    //     .jpeg({ quality: 90 })
+    //     .toFile(`client/static/users/${req.file.filename}`)
+
+    const uploadParams = {
+        Bucket: 'rebook',  // Your S3 bucket name
+        Key: `users/${fileName}`,  // Folder and file name in S3
+        Body: buffer,  // File buffer
+        ContentType: 'image/jpeg',
+    };
+
+    try {
+        // Upload the image to S3
+        const data = await s3.send(new PutObjectCommand(uploadParams));
+        console.log('Image uploaded successfully:', data);
+        req.body.photo = fileName;  // Save the S3 file name to the book document
+        next();
+    } catch (error) {
+        console.error('Error uploading image to S3:', error);
+        res.status(500).json({ error: 'Error uploading image to S3.' });
+    }
+
 }
 
 const filtedObj = function (body, ...allowedFields) {

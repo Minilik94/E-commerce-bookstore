@@ -259,7 +259,7 @@
                                 <label for="photo" class="relative">
                                     {#if user.photo}
                                         <img
-                                            src="users/{user.photo}"
+                                            src="https://rebook.s3.eu-north-1.amazonaws.com/users/{user.photo}"
                                             class="profile-img relative"
                                             alt=""
                                             id="previewImage"

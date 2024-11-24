@@ -15,7 +15,7 @@
                     <div
                         class="book__img-container h-[400px] lg:h-[269px] lg:w-[189px]"
                     >
-                        <img class="book-img" src="books/{book.coverImage}" alt="" />
+                        <img class="book-img" src="https://rebook.s3.eu-north-1.amazonaws.com/books/{book.coverImage}" alt="" />
                     </div>
                     <div class="book-details">
                         {#if book.title.length > 16}

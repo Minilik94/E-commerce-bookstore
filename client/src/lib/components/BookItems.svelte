@@ -14,7 +14,7 @@
                 <!-- svelte-ignore a11y-img-redundant-alt -->
                 <img
                     class="rounded-t-lg h-96 w-80 "
-                    src="/books/{book.coverImage}"
+                    src="https://rebook.s3.eu-north-1.amazonaws.com/books/{book.coverImage}"
                     alt="book image"
                 />
             </a>

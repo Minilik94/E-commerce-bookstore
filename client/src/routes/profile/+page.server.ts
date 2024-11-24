@@ -110,7 +110,7 @@ export const actions: Actions = {
         }
         try {
             const response = await axios.patch(
-                'https://rebook-by-minilik.onrender.com/api/users/updateMe',
+                'http://127.0.0.1:3000/api/users/updateMe',
                 formData,
                 { headers }
             )
