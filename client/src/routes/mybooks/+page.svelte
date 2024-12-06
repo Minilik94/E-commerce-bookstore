@@ -1,6 +1,5 @@
 <script lang="ts">
     import type { Book } from '$lib/components/type'
-    import { userBooks } from '$lib/store'
     import { fade } from 'svelte/transition'
 
     export let book: Book[]
