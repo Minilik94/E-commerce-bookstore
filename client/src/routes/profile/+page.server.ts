@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
         Authorization: `Bearer ${session}`
     }
     const myBooks = await fetch(
-        `http://127.0.0.1:3000/api/ordering/my-orders`,
+        `https://rebook-by-minilik.onrender.com/api/ordering/my-orders`,
         {
             headers
         }
@@ -49,7 +49,7 @@ export const actions: Actions = {
 
         try {
             const response = await axios.patch(
-                'http://127.0.0.1:3000/api/users/updateMe',
+                'https://rebook-by-minilik.onrender.com/api/users/updateMe',
                 { name, email },
                 { headers }
             )
@@ -82,7 +82,7 @@ export const actions: Actions = {
 
         try {
             const response = await axios.patch(
-                'http://127.0.0.1:3000/api/users/updatePassword',
+                'https://rebook-by-minilik.onrender.com/api/users/updatePassword',
                 { passwordCurrent, password, passwordConfirm },
                 { headers }
             )
@@ -110,7 +110,7 @@ export const actions: Actions = {
         }
         try {
             const response = await axios.patch(
-                'http://127.0.0.1:3000/api/users/updateMe',
+                'https://rebook-by-minilik.onrender.com/api/users/updateMe',
                 formData,
                 { headers }
             )

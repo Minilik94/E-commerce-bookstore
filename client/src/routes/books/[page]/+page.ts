@@ -11,10 +11,10 @@ export const load: PageData = async ({ params, fetch }) => {
       try {
           const limit = 9
           const response = await axios.get(
-              `http://127.0.0.1:3000/api/books?page=${page}&limit=${limit}`
+              `https://rebook-by-minilik.onrender.com/api/books?page=${page}&limit=${limit}`
           )
 
-          const responseAll = await axios.get(`http://127.0.0.1:3000/api/books`)
+          const responseAll = await axios.get(`https://rebook-by-minilik.onrender.com/api/books`)
           console.log(response.data)
         //   console.log(responseAll.data.result)
   

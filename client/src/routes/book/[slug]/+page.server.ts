@@ -8,7 +8,7 @@ export const load = async ({ params, locals }) => {
     }
 
     const currentSlug = params.slug
-    const res = await fetch(`http://127.0.0.1:3000/api/books`)
+    const res = await fetch(`https://rebook-by-minilik.onrender.com/api/books`)
     const data = await res.json()
     let cb
     let book
@@ -21,7 +21,7 @@ export const load = async ({ params, locals }) => {
         }
     })
     const resReview = await fetch(
-        `http://127.0.0.1:3000/api/books/${book.id}/reviews`
+        `https://rebook-by-minilik.onrender.com/api/books/${book.id}/reviews`
     )
     const reviewData = await resReview.json()
     return {
@@ -42,7 +42,7 @@ export const actions: Actions = {
 
         const currentSlug = params.slug
         const res = await fetch(
-            `http://127.0.0.1:3000/api/books`
+            `https://rebook-by-minilik.onrender.com/api/books`
         )
         const data = await res.json()
         let cb
@@ -58,7 +58,7 @@ export const actions: Actions = {
 
         console.log(book)
         const response = await axios.get(
-            `http://127.0.0.1:3000/api/ordering/checkout-session/${book.id}`,
+            `https://rebook-by-minilik.onrender.com/api/ordering/checkout-session/${book.id}`,
             {
                 headers
             }

@@ -1,4 +1,4 @@
-const base_URL = 'http://127.0.0.1:3000/api/books'
+const base_URL = 'https://rebook-by-minilik.onrender.com/api/books'
 
 export const load = async ({ fetch }) => {
 
