@@ -105,9 +105,8 @@ const createBookingCheckout = async (session) => {
                 expand: ['line_items']
             }
         )
-        console.log(user, 'user id', sessionWithItems.line_items.data[0].price_data.unit_amount / 100)
-        const price =
-            sessionWithItems.line_items.data[0].price_data.unit_amount / 100
+        console.log(user, 'user id', sessionWithItems.line_items)
+        const price = session.amount_total / 100
 
         await Order.create({ book, user, price })
         console.log(`Order created: Book ${book}, User ${user}, Price ${price}`)
