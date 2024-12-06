@@ -6,9 +6,7 @@
     import Billings from '$lib/components/Billings.svelte'
     import Books from '$lib/components/MyBooks.svelte'
     import Reviews from '$lib/components/Reviews.svelte'
-    import { userBooks } from '$lib/store.js'
     import axios from 'axios'
-    import { writable } from 'svelte/store'
     // @ts-ignore
     export let data
 
@@ -21,7 +19,7 @@
 
     $: {
         if (selectedSection === 'books') {
-            location.assign('/mybooks')
+            location.assign('/purchesed')
         }
     }
 
