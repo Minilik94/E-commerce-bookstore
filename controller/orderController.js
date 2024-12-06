@@ -37,7 +37,7 @@ exports.getCheckoutSession = async (req, res, next) => {
                         product_data: {
                             name: `${book.title}`,
                             images: [
-                                `https://rebook-by-minilik.onrender.com/books/${book.coverImage}`
+                                `https://rebook-bucket.s3.eu-north-1.amazonaws.com/books/${book.coverImage}`
                             ]
                         },
                         unit_amount: fixedPrice * 100
@@ -114,6 +114,8 @@ const createBookingCheckout = async (session) => {
     }
 }
 
+console.log(process.env.STRIPE_WEBHOOK_SECRET, 'secret key ')
+
 exports.webhookCheckout = async (req, res, next) => {
     const signature = req.headers['stripe-signature']
 
@@ -125,7 +127,7 @@ exports.webhookCheckout = async (req, res, next) => {
         event = stripe.webhooks.constructEvent(
             req.body,
             req.headers['stripe-signature'], // Your Stripe webhook signature
-            process.env.STRIPE_WEBHOOK_SECRET, 'stripe webhook secret'
+            process.env.STRIPE_WEBHOOK_SECRET
         )
     } catch (err) {
         console.log(`⚠️  Webhook signature verification failed.`, err.message)
