@@ -5,6 +5,7 @@ const userRouter = require('./routes/userRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
 const orderRouter = require('./routes/orderRoutes')
 const rateLimit = require('express-rate-limit')
+const orderController = require('./controller/orderController.js')
 const helmet = require('helmet')
 const mongoSanitize = require('express-mongo-sanitize')
 const xss = require('xss-clean')
@@ -41,7 +42,6 @@ const app = express()
 //     })
 // );
 
-
 // Configure CORS
 const corsOptions = {
     origin: '*',
@@ -59,6 +59,14 @@ const limiter = rateLimit({
     windowMs: 15 * 60 * 1000
 })
 app.use('/api', limiter)
+
+app.post(
+    '/webhook-checkout',
+    express.raw({
+        type: 'application/json'
+    }),
+    orderController.webhookCheckout
+)
 
 // Body parser
 app.use(express.json({ limit: '10kb' }))
@@ -84,8 +92,8 @@ app.use('/api/ordering', orderRouter)
 app.use(express.static(`${__dirname}/client/build`))
 
 // Import and use the handler for the client build
-import("././client/build/handler.js").then(({ handler }) => {
+import('././client/build/handler.js').then(({ handler }) => {
     app.use(handler)
-});
+})
 
 module.exports = app

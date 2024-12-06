@@ -15,7 +15,7 @@ router.get(
 router.get('/my-orders', authController.protect, orderController.getMyOrders);
 
 // Route for creating an order after checkout
-router.get('/create-order', authController.protect, orderController.createOrderCheckout);
+// router.get('/create-order', authController.protect, orderController.createOrderCheckout);
 
 // Routes for getting all orders and creating a new order
 router

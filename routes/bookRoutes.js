@@ -24,7 +24,7 @@ router
 
 router
     .route('/')
-    .get(orderController.createOrderCheckout,bookControllers.getAllBooks, )
+    .get(bookControllers.getAllBooks, )
     .post(authController.protect, bookControllers.createBook)
 
 router
