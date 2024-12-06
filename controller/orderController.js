@@ -123,7 +123,7 @@ exports.webhookCheckout = async (req, res, next) => {
     try {
         event = stripe.webhooks.constructEvent(
             req.body,
-            signature,
+            req.headers['stripe-signature'], // Your Stripe webhook signature
             process.env.STRIPE_WEBHOOK_SECRET
         )
     } catch (err) {
