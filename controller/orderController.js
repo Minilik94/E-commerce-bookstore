@@ -108,8 +108,8 @@ const createBookingCheckout = async (session) => {
         console.log(user, 'user id', sessionWithItems.line_items)
         const price = session.amount_total / 100
 
-        await Order.create({ book, user, price })
-        console.log(`Order created: Book ${book}, User ${user}, Price ${price}`)
+        const order = await Order.create({ book, user, price })
+        console.log(`Order created: order` order)
     } catch (error) {
         console.error('Error in createCheckoutSession:', error.message)
     }
