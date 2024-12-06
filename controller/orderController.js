@@ -98,12 +98,14 @@ const createBookingCheckout = async (session) => {
     try {
         const book = session.client_reference_id
         const user = (await User.findOne({ email: session.customer_email }))._id
+
         const sessionWithItems = await stripe.checkout.sessions.retrieve(
             session.id,
             {
                 expand: ['line_items']
             }
         )
+        console.log(user, 'user id', sessionWithItems.line_items.data[0].price_data.unit_amount / 100)
         const price =
             sessionWithItems.line_items.data[0].price_data.unit_amount / 100
 
@@ -121,6 +123,7 @@ exports.webhookCheckout = async (req, res, next) => {
 
     console.log(signature, 'signature')
 
+    console.log(process.env.STRIPE_WEBHOOK_SECRET, 'out stripe webhook secret')
     let event
     try {
         console.log(process.env.STRIPE_WEBHOOK_SECRET, 'stripe webhook secret')
