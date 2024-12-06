@@ -1,10 +1,11 @@
 <script lang="ts">
+    import type { Book } from '$lib/components/type'
+    import { userBooks } from '$lib/store'
     import { fade } from 'svelte/transition'
-    import type { Books } from './type'
 
-    export let book: Books
+    export let book: Book[]
 
-    console.log(book, 'from booking tab order')
+    console.log(book)
 </script>
 
 {#if !book || book === undefined}

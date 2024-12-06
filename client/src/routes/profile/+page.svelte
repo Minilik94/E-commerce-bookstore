@@ -1,11 +1,14 @@
 <script>
+	import MyBooks from './../../lib/components/MyBooks.svelte';
     import { applyAction, enhance } from '$app/forms'
     import { invalidateAll } from '$app/navigation'
     import { page } from '$app/stores'
     import Billings from '$lib/components/Billings.svelte'
     import Books from '$lib/components/MyBooks.svelte'
     import Reviews from '$lib/components/Reviews.svelte'
+    import { userBooks } from '$lib/store.js'
     import axios from 'axios'
+    import { writable } from 'svelte/store'
     // @ts-ignore
     export let data
 
@@ -88,6 +91,9 @@
             document.getElementById('btn')?.classList.add('hidden')
         }
     }
+
+
+    
 </script>
 
 {#if showAlert}
@@ -335,7 +341,7 @@
                 </div>
             </div>
         {:else if selectedSection === 'books'}
-            <Books book={data.myBooks.books} />
+            <MyBooks book={data.myBooks.books} />
         {:else if selectedSection === 'reviews'}
             <Reviews />
         {:else if selectedSection === 'billings'}
@@ -343,6 +349,7 @@
         {/if}
     </div>
 </section>
+
 
 <style>
     .profile__container {

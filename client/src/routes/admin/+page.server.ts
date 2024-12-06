@@ -6,7 +6,7 @@ export const load: PageServerLoad = async ({ locals }) => {
     if (!locals.user || locals.user.role !== 'admin') {
         throw redirect(303, '/')
     }
-    const base_URL = 'https://rebook-by-minilik.onrender.com/api/books'
+    const base_URL = 'http://127.0.0.1:3000/api/books'
 
     const Allbooks = await fetch(base_URL).then((res) => res.json())
     return Allbooks
@@ -31,7 +31,7 @@ export const actions: Actions = {
 
         try {
             const newBook = await axios.post(
-                'https://rebook-by-minilik.onrender.com/api/books/',
+                'http://127.0.0.1:3000/api/books/',
                 {
                     title,
                     author,
@@ -68,7 +68,7 @@ export const actions: Actions = {
 
         try {
             const newBook = await axios.delete(
-                `https://rebook-by-minilik.onrender.com/api/books/${id}`,
+                `http://127.0.0.1:3000/api/books/${id}`,
 
                 {
                     headers

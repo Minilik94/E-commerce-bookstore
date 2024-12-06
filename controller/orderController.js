@@ -26,7 +26,7 @@ exports.getCheckoutSession = async (req, res, next) => {
             mode: 'payment',
             // success_url: `${req.protocol}://${req.get('host')}/?book=${req.params.bookId
             //     }&user=${req.user.id}&price=${book.price}`,
-            success_url: `${req.protocol}://${req.get('host')}/mybooks`,
+            success_url: `${req.protocol}://${req.get('host')}/purchesed`,
             cancel_url: `${req.protocol}://${req.get('host')}/`,
             customer_email: req.user.email,
             client_reference_id: req.params.bookId,

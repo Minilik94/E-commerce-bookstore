@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ cookies }) => {
         'Content-type': 'application/json',
         Authorization: `Bearer ${session}`
     }
-    const base_URL = 'https://rebook-by-minilik.onrender.com/api/ordering/my-orders'
+    const base_URL = 'http://127.0.0.1:3000/api/ordering/my-orders'
 
     const data = await axios.get(base_URL, {
         headers
