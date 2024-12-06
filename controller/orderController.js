@@ -94,7 +94,7 @@ exports.getCheckoutSession = async (req, res, next) => {
 //     }
 // };
 
-const createCheckoutSession = async (session) => {
+const createBookingCheckout = async (session) => {
     try {
         const book = session.client_reference_id
         const user = (await User.findOne({ email: session.customer_email }))._id
@@ -121,10 +121,11 @@ exports.webhookCheckout = async (req, res, next) => {
 
     let event
     try {
+        console.log(process.env.STRIPE_WEBHOOK_SECRET, 'stripe webhook secret')
         event = stripe.webhooks.constructEvent(
             req.body,
             req.headers['stripe-signature'], // Your Stripe webhook signature
-            process.env.STRIPE_WEBHOOK_SECRET
+            process.env.STRIPE_WEBHOOK_SECRET, 'stripe webhook secret'
         )
     } catch (err) {
         console.log(`⚠️  Webhook signature verification failed.`, err.message)
@@ -132,7 +133,7 @@ exports.webhookCheckout = async (req, res, next) => {
     }
 
     if (event.type === 'checkout.session.completed') {
-        createCheckoutSession(event.data.object)
+        createBookingCheckout(event.data.object)
     }
 
     res.status(200).json({ received: true })
