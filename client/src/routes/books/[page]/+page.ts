@@ -5,7 +5,6 @@ import { fail } from '@sveltejs/kit'
 export const load: PageData = async ({ params, fetch }) => {
     const page = Number(params.page)
 
-    console.log(page, 'page')
 
     async function getBooks(page: Number) {
       try {
@@ -15,7 +14,7 @@ export const load: PageData = async ({ params, fetch }) => {
           )
 
           const responseAll = await axios.get(`https://rebook-by-minilik.onrender.com/api/books`)
-          console.log(response.data)
+          
         //   console.log(responseAll.data.result)
   
           return { books: response.data.data.doc, total: responseAll.data.result }

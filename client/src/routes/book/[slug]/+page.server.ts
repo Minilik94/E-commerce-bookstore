@@ -38,8 +38,6 @@ export const actions: Actions = {
             Authorization: `Bearer ${session}`
         }
 
-        console.log(session)
-
         const currentSlug = params.slug
         const res = await fetch(
             `https://rebook-by-minilik.onrender.com/api/books`
@@ -56,15 +54,12 @@ export const actions: Actions = {
             }
         })
 
-        console.log(book)
         const response = await axios.get(
             `https://rebook-by-minilik.onrender.com/api/ordering/checkout-session/${book.id}`,
             {
                 headers
             }
         )
-        console.log(response.data.session.url, 'res')
-        console.log(response.data, 'STRIPE RESPONSE ')
 
         throw redirect(303, `${response.data.session.url}`)
     }

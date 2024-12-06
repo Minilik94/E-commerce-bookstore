@@ -90,7 +90,6 @@ exports.getOne = (Model, popOptions) => async (req, res) => {
 exports.getAll = (Model) => async (req, res, next) => {
     try {
         let filter = {}
-        console.log(req.params.bookId, 'bookie')
         if (req.params.bookId) filter = { book: req.params.bookId }
         const features = new APIFeatures(Model.find(filter), req.query)
             .filter()
