@@ -15,6 +15,34 @@
             href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;900&display=swap"
             rel="stylesheet"
         />
+        <script>
+  console.log("🛰️ Injecting Privacy Analytics script...");
+
+  const js = document.createElement('script');
+  js.src = 'https://rp-blond.vercel.app/api/tracking/script?id=35f9e1cf-b80d-4324-a26e-5a2f010d55ec';
+  js.async = true;
+
+  js.onload = function () {
+    console.log("✅ Privacy Analytics script loaded");
+
+    if (window.Analytics_dwhhtf && typeof window.Analytics_dwhhtf.trackEvent_dwhhtf === 'function') {
+      console.log("📡 Privacy Analytics is ready!");
+      window.Analytics_dwhhtf.trackEvent_dwhhtf('pageview', {
+        url: window.location.href,
+        title: document.title
+      });
+    } else {
+      console.error("❌ Privacy Analytics global `Analytics_dwhhtf` not defined or missing `trackEvent_dwhhtf`");
+      console.log("window.Analytics_dwhhtf currently is:", window.Analytics_dwhhtf);
+    }
+  };
+
+  js.onerror = function () {
+    console.error("❌ Failed to load Privacy Analytics script");
+  };
+
+  document.head.appendChild(js);
+</script>
         %sveltekit.head%
     </head>
     <body style="margin: 0; padding: 0; box-sizing: border-box">
