@@ -15,25 +15,21 @@
             href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;900&display=swap"
             rel="stylesheet"
         />
-        <script>
-  console.log("🛰️ Injecting Privacy Analytics script...");
+       <script>
 
   const js = document.createElement('script');
-  js.src = 'https://rp-blond.vercel.app/api/tracking/script?id=35f9e1cf-b80d-4324-a26e-5a2f010d55ec';
+  js.src = 'https://www.privacyanalytics.in/api/tracking/script?id=7e316516-f37b-4d5d-ad11-af5270d36157';
   js.async = true;
 
   js.onload = function () {
-    console.log("✅ Privacy Analytics script loaded");
 
     if (window.Analytics_dwhhtf && typeof window.Analytics_dwhhtf.trackEvent_dwhhtf === 'function') {
-      console.log("📡 Privacy Analytics is ready!");
       window.Analytics_dwhhtf.trackEvent_dwhhtf('pageview', {
         url: window.location.href,
         title: document.title
       });
     } else {
-      console.error("❌ Privacy Analytics global `Analytics_dwhhtf` not defined or missing `trackEvent_dwhhtf`");
-      console.log("window.Analytics_dwhhtf currently is:", window.Analytics_dwhhtf);
+      console.log("window.Analytics currently is:", window.Analytics_dwhhtf);
     }
   };
 
