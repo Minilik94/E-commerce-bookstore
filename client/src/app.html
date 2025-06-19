@@ -15,21 +15,19 @@
             href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;900&display=swap"
             rel="stylesheet"
         />
-       <script>
-
+<script>
   const js = document.createElement('script');
-  js.src = 'https://www.privacyanalytics.in/api/tracking/script?id=7e316516-f37b-4d5d-ad11-af5270d36157';
+  js.src = 'https://www.privacyanalytics.in/api/tracking/script?id=36ebf1bb-29c2-4834-a3b9-4badb045db49';
   js.async = true;
 
   js.onload = function () {
-
     if (window.Analytics_dwhhtf && typeof window.Analytics_dwhhtf.trackEvent_dwhhtf === 'function') {
       window.Analytics_dwhhtf.trackEvent_dwhhtf('pageview', {
         url: window.location.href,
         title: document.title
       });
     } else {
-      console.log("window.Analytics currently is:", window.Analytics_dwhhtf);
+      console.log("window.Analytics_dwhhtf currently is:", window.Analytics_dwhhtf);
     }
   };
 
@@ -39,6 +37,7 @@
 
   document.head.appendChild(js);
 </script>
+<!-- End Privacy Analytics Tracking Code -->
         %sveltekit.head%
     </head>
     <body style="margin: 0; padding: 0; box-sizing: border-box">
