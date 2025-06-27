@@ -15,30 +15,56 @@
             href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;900&display=swap"
             rel="stylesheet"
         />
-<!-- Privacy Analytics Tracking Code for https://rebook-by-minilik.onrender.com/ -->
+<!-- Privacy Analytics Tracking Code -->
 <script>
+  console.log("🚀 Privacy Analytics: Initializing tracking script");
+  
+  // Configuration
   window.clientPrivacyPolicyPath = "/legals/privacy-policy";
+  window.privacyAnalyticsShowBanner = true;
+  
+  // Debug mode (set to false in production)
+  window.privacyAnalyticsDebug = true;
+  
   const js = document.createElement('script');
-  js.src = 'http://localhost:5173/api/tracking/script?id=7e316516-f37b-4d5d-ad11-af5270d36157';
+  js.src = 'https://www.privacyanalytics.in/api/tracking/script?id=7e316516-f37b-4d5d-ad11-af5270d36157';
   js.async = true;
 
   js.onload = function () {
-    if (window.Analytics_dwhhtf && typeof window.Analytics_dwhhtf.trackEvent_dwhhtf === 'function') {
-      window.Analytics_dwhhtf.trackEvent_dwhhtf('pageview', {
+    console.log("✅ Privacy Analytics: Script loaded successfully");
+    
+    if (window.PrivacyAnalytics) {
+      console.log("✅ Privacy Analytics: API available", window.PrivacyAnalytics);
+      
+      // Track initial pageview
+      console.log("📊 Privacy Analytics: Tracking initial pageview");
+      window.PrivacyAnalytics.trackEvent('pageview', {
         url: window.location.href,
-        title: document.title
+        title: document.title,
+        initial_load: true
       });
     } else {
-      console.log("window.Analytics_dwhhtf currently is:", window.Analytics_dwhhtf);
+      console.error("❌ Privacy Analytics: API not available after script load");
+      console.log("Available globals:", Object.keys(window).filter(k => k.includes('Analytics') || k.includes('Privacy')));
     }
   };
 
-  js.onerror = function () {
-    console.error("❌ Failed to load Privacy Analytics script");
+  js.onerror = function (error) {
+    console.error("❌ Privacy Analytics: Failed to load script", error);
+    console.error("Script URL:", js.src);
   };
 
+  // Add timeout fallback
+  setTimeout(() => {
+    if (!window.PrivacyAnalytics) {
+      console.error("❌ Privacy Analytics: Script failed to load within 10 seconds");
+    }
+  }, 10000);
+
   document.head.appendChild(js);
+  console.log("📡 Privacy Analytics: Script tag added to head");
 </script>
+<!-- End Privacy Analytics Tracking Code -->
         %sveltekit.head%
     </head>
     <body style="margin: 0; padding: 0; box-sizing: border-box">
